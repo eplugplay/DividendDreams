@@ -58,7 +58,7 @@ namespace DividendDreams
             else
             {
                 gpSharesOptions.Enabled = false;
-                btnSave.Text = "New";
+                btnSave.Text = "Save";
             }
         }
 
@@ -123,21 +123,21 @@ namespace DividendDreams
                 MessageBox.Show("Please enter industry.");
                 return false;
             }
-            if (txtSharePrice.Text == "")
-            {
-                MessageBox.Show("Please enter share price.");
-                return false;
-            }
-            try
-            {
-                decimal.Parse(txtSharePrice.Text);
-            }
-            catch
-            {
-                MessageBox.Show("Please enter numbers only.");
-                txtSharePrice.Focus();
-                return false;
-            }
+            //if (txtSharePrice.Text == "")
+            //{
+            //    MessageBox.Show("Please enter share price.");
+            //    return false;
+            //}
+            //try
+            //{
+            //    decimal.Parse(txtSharePrice.Text);
+            //}
+            //catch
+            //{
+            //    MessageBox.Show("Please enter numbers only.");
+            //    txtSharePrice.Focus();
+            //    return false;
+            //}
             if (txtAnnualDividend.Text == "")
             {
                 MessageBox.Show("Please enter annual dividend.");
@@ -153,21 +153,21 @@ namespace DividendDreams
                 txtAnnualDividend.Focus();
                 return false;
             }
-            if (txtNumberOfShares.Text == "")
-            {
-                MessageBox.Show("Please enter number of shares.");
-                return false;
-            }
-            try
-            {
-                int.Parse(txtNumberOfShares.Text);
-            }
-            catch
-            {
-                MessageBox.Show("Please enter numbers only.");
-                txtNumberOfShares.Focus();
-                return false;
-            }
+            //if (txtNumberOfShares.Text == "")
+            //{
+            //    MessageBox.Show("Please enter number of shares.");
+            //    return false;
+            //}
+            //try
+            //{
+            //    int.Parse(txtNumberOfShares.Text);
+            //}
+            //catch
+            //{
+            //    MessageBox.Show("Please enter numbers only.");
+            //    txtNumberOfShares.Focus();
+            //    return false;
+            //}
             return true;
         }
 
