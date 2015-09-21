@@ -168,16 +168,22 @@ namespace DividendDreams
 
         private void btnGetSharePrice_Click(object sender, EventArgs e)
         {
-            decimal TotalSharePrice = Convert.ToDecimal(txtSharePrice.Text) * Convert.ToDecimal(txtNumberOfShares.Text);
-            MessageBox.Show("$" + Math.Round(TotalSharePrice, 2).ToString());
+            if (txtNumberOfShares.Text != "")
+            {
+                decimal TotalSharePrice = Convert.ToDecimal(txtSharePrice.Text) * Convert.ToDecimal(txtNumberOfShares.Text);
+                MessageBox.Show("$" + Math.Round(TotalSharePrice, 2).ToString());
+            }
         }
 
         private void btnDividendPrice_Click(object sender, EventArgs e)
         {
-            decimal TotalDividendPrice = Convert.ToDecimal(txtAnnualDividend.Text) * Convert.ToDecimal(txtNumberOfShares.Text);
-            decimal QuarterlyDividendPrice = TotalDividendPrice / 3;
-            decimal MonthlyDividendPrice = TotalDividendPrice / 12;
-            MessageBox.Show("Yearly: $" + Math.Round(TotalDividendPrice, 2).ToString() + "\n\n" + "Quarterly: $" + Math.Round(QuarterlyDividendPrice, 2) + "\n\n" + "Monthly: $" + Math.Round(MonthlyDividendPrice, 2));
+            if (txtNumberOfShares.Text != "")
+            {
+                decimal TotalDividendPrice = Convert.ToDecimal(txtAnnualDividend.Text) * Convert.ToDecimal(txtNumberOfShares.Text);
+                decimal QuarterlyDividendPrice = TotalDividendPrice / 3;
+                decimal MonthlyDividendPrice = TotalDividendPrice / 12;
+                MessageBox.Show("Yearly: $" + Math.Round(TotalDividendPrice, 2).ToString() + "\n\n" + "Quarterly: $" + Math.Round(QuarterlyDividendPrice, 2) + "\n\n" + "Monthly: $" + Math.Round(MonthlyDividendPrice, 2));
+            }
         }
 
 
@@ -209,15 +215,21 @@ namespace DividendDreams
 
         private void btnEditShares_Click(object sender, EventArgs e)
         {
-            OpenSharesForm(true);
+            if (txtSharePrice.Text != "")
+            {
+                OpenSharesForm(true);
+            }
         }
 
         private void btnDeleteShares_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Delete?", "Delete?", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (txtSharePrice.Text != "")
             {
-                DividendStocks.DeleteShare(ddlSharePurchaseDate.SelectedValue.ToString());
-                LoadPurchaseDates();
+                if (MessageBox.Show("Delete?", "Delete?", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    DividendStocks.DeleteShare(ddlSharePurchaseDate.SelectedValue.ToString());
+                    LoadPurchaseDates();
+                }
             }
         }
     }
