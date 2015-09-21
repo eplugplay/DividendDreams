@@ -229,6 +229,7 @@ namespace DividendDreams
                 {
                     DividendStocks.DeleteShare(ddlSharePurchaseDate.SelectedValue.ToString());
                     LoadPurchaseDates();
+                    Program.MainMenu.LoadCurrentDividends();
                 }
             }
         }

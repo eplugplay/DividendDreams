@@ -121,22 +121,18 @@ namespace DividendDreams
 
         public void GetDividendPrice(ListBox lb)
         {
-            DataTable dt = DividendStocks.GetDividend(lb.SelectedValue.ToString());
-            decimal NumberOfShares = Convert.ToDecimal(dt.Rows[0]["numberofshares"]);
-            decimal AnnDividend = Convert.ToDecimal(dt.Rows[0]["annDividend"]);
-            decimal TotalDividendPrice = AnnDividend * NumberOfShares;
-            decimal QuarterlyDividendPrice = TotalDividendPrice / 3;
-            decimal MonthlyDividendPrice = TotalDividendPrice / 12;
+            decimal TotalDividendPrice = 0;
+            decimal QuarterlyDividendPrice = 0;
+            decimal MonthlyDividendPrice = 0;
+            DividendStocks.GetDividendPrice(lb.SelectedValue.ToString(), out TotalDividendPrice, out QuarterlyDividendPrice, out MonthlyDividendPrice);
             MessageBox.Show("Yearly: $" + Math.Round(TotalDividendPrice, 2).ToString() + "\n\n" + "Quarterly: $" + Math.Round(QuarterlyDividendPrice, 2) + "\n\n" + "Monthly: $" + Math.Round(MonthlyDividendPrice, 2));
         }
 
         public void GetSharePrice(ListBox lb)
         {
-            DataTable dt = DividendStocks.GetDividend(lb.SelectedValue.ToString());
-            decimal NumberOfShares = Convert.ToDecimal(dt.Rows[0]["numberofshares"]);
-            decimal SharePrice = Convert.ToDecimal(dt.Rows[0]["purchaseprice"]);
-            decimal totalSharePrice = SharePrice * NumberOfShares;
-            MessageBox.Show("$" + Math.Round(totalSharePrice, 2).ToString());
+            decimal totalPrice = 0;
+            DividendStocks.GetTotalSharePrice(lb.SelectedValue.ToString(), out totalPrice);
+            MessageBox.Show("$" + Math.Round(totalPrice, 2).ToString());
         }
 
         private void btnGetSharePrice_Click(object sender, EventArgs e)

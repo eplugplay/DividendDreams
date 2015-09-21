@@ -81,6 +81,7 @@ namespace DividendDreams
                 DividendStocks.NewShare(txtPurchasePrice.Text, txtNumberOfShares.Text, ddlAction.Text, ID);
             }
             MainMenu._Dividends.LoadDividendStock();
+            Program.MainMenu.LoadCurrentDividends();
             this.Close();
         }
     }

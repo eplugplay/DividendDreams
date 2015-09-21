@@ -70,6 +70,90 @@ namespace DividendDreams
             return dt;
         }
 
+        public static void GetTotalSharePrice(string dividendstockid, out decimal totalPrice)
+        {
+            DataTable dt = new DataTable();
+            totalPrice = 0;
+            int numShares = 0;
+            decimal price = 0;
+            try
+            {
+                using (MySqlConnection cnn = new MySqlConnection(ConfigurationManager.ConnectionStrings["cnn"].ToString()))
+                {
+                    cnn.Open();
+                    using (var cmd = cnn.CreateCommand())
+                    {
+                        cmd.CommandText = "SELECT purchaseprice, numberofshares FROM dividendprice WHERE dividendstockid=@dividendstockid AND purchaseaction='bought'";
+                        cmd.Parameters.AddWithValue("dividendstockid", dividendstockid);
+                        MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                        da.Fill(dt);
+                    }
+
+
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        numShares = Convert.ToInt32(dt.Rows[i]["numberofshares"]);
+                        price = Convert.ToDecimal(dt.Rows[i]["purchaseprice"]);
+                        totalPrice += ((decimal)numShares * price);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+        }
+
+        public static void GetDividendPrice(string dividendstockid, out decimal totalDividendPrice, out decimal quarterlyDividendPrice, out decimal monthlyDividendPrice)
+        {
+            DataTable dt = new DataTable();
+            totalDividendPrice = 0;
+            quarterlyDividendPrice = 0;
+            monthlyDividendPrice = 0;
+            int numShares = 0;
+            decimal yield = 0;
+            try
+            {
+                using (MySqlConnection cnn = new MySqlConnection(ConfigurationManager.ConnectionStrings["cnn"].ToString()))
+                {
+                    cnn.Open();
+                    using (var cmd = cnn.CreateCommand())
+                    {
+                        cmd.CommandText = "SELECT purchaseprice, numberofshares FROM dividendprice WHERE dividendstockid=@dividendstockid AND purchaseaction='bought'";
+                        cmd.Parameters.AddWithValue("dividendstockid", dividendstockid);
+                        MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                        da.Fill(dt);
+                    }
+
+
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        numShares = Convert.ToInt32(dt.Rows[i]["numberofshares"]);
+                        yield = GetDividendYield(dividendstockid, cnn);
+                        totalDividendPrice += ((decimal)numShares * yield);
+                    }
+                }
+                quarterlyDividendPrice = totalDividendPrice / 3;
+                monthlyDividendPrice = totalDividendPrice / 12;
+            }
+            catch (Exception e)
+            {
+
+            }
+        }
+
+        public static decimal GetDividendYield(string id, MySqlConnection cnn)
+        {
+            decimal yield = 0;
+            using (var cmd = cnn.CreateCommand())
+            {
+                cmd.CommandText = "SELECT anndividend FROM dividendstocks WHERE id=@id";
+                cmd.Parameters.AddWithValue("id", id);
+                yield = Convert.ToDecimal(cmd.ExecuteScalar());
+            }
+            return yield;
+        }
+
         public static DataTable GetSharePriceInfo(string id)
         {
             DataTable dt = new DataTable();
@@ -144,7 +228,10 @@ namespace DividendDreams
 
         public static void LoadDividends(ListBox lb, string stockactive, out int totalDividends)
         {
-            DataTable dt = new DataTable();
+            DataTable dtTemp = new DataTable();
+            DataTable dtDividends = new DataTable();
+            dtDividends.Columns.Add("id", typeof(int));
+            dtDividends.Columns.Add("symbolName", typeof(string));
             totalDividends = 0;
             try
             {
@@ -153,25 +240,28 @@ namespace DividendDreams
                     cnn.Open();
                     using (var cmd = cnn.CreateCommand())
                     {
-                        //cmd.CommandText = "SELECT id, symbol FROM dividendstocks WHERE stockactive=@stockactive order by id";
-                        //cmd.CommandText = "SELECT id, CONCAT(symbol, \"(\", stockname, \")/\", industry, \"/\", numberofshares, \" Shares/\", ROUND(anndividend, 3), \" Annual Dividend\") as symbolName FROM dividendstocks WHERE stockactive=@stockactive order by id";
-                        //if (stockactive == "true")
-                        //{
-                        //    cmd.CommandText = "SELECT ds.id, dp.purchaseprice, CONCAT(ds.symbol, \" (\", ds.stockname, \")   -   \", ds.industry, \"   -   \", ds.numberofshares, \" Shares   -   $\", ROUND(ds.anndividend, 2), \" (\", ROUND(ds.dividendpercent, 2), \"%)\") as symbolName FROM dividendstocks ds JOIN dividendprice dp on ds.priceid = dp.id WHERE ds.stockactive=@stockactive order by ds.id";
-                        //}
-                        //else
-                        //{
-                            cmd.CommandText = "SELECT ds.id, CONCAT(ds.symbol, \" (\", ds.stockname, \")   -   \", ds.industry, \"   -   \", ds.numberofshares, \" Shares   -   $\", ROUND(ds.anndividend, 2), \" (\", ROUND(ds.dividendpercent, 2), \"%)\") as symbolName FROM dividendstocks ds WHERE ds.stockactive=@stockactive order by ds.id";
-                        //}
+                        cmd.CommandText = "SELECT id, symbol, stockname, industry, ROUND(anndividend, 2) as anndividend, ROUND(dividendpercent, 2) as dividendpercent FROM dividendstocks WHERE stockactive=@stockactive order by id";
+                        //cmd.CommandText = "SELECT ds.id, dp.purchaseprice, ds.symbol, ds.stockname, ds.industry, dp.numberofshares, ROUND(ds.anndividend, 2) as anndividend, ROUND(ds.dividendpercent, 2) as dividendpercent FROM dividendstocks ds JOIN dividendprice dp on ds.id = dp.dividendstockid WHERE ds.stockactive=@stockactive AND dp.purchaseaction='bought' order by ds.id";
                         cmd.Parameters.AddWithValue("stockactive", stockactive);
                         MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-                        da.Fill(dt);
-                        lb.ValueMember = "id";
-                        lb.DisplayMember = "symbolName";
-                        lb.DataSource = dt;
+                        da.Fill(dtTemp);
                     }
+
+                    dtTemp = BuildDividendTable(dtTemp);
+                    dtTemp = AddPrice(dtTemp, cnn);
+                    for (int i = 0; i < dtTemp.Rows.Count; i++)
+                    {
+                        DataRow dr = dtDividends.NewRow();
+                        dr["id"] = Convert.ToInt32(dtTemp.Rows[i]["id"]);
+                        dr["symbolName"] = dtTemp.Rows[i]["symbol"].ToString() + "  -  (" + dtTemp.Rows[i]["stockname"].ToString() + ")  -  " + dtTemp.Rows[i]["industry"].ToString() + "  -  " + dtTemp.Rows[i]["numberofshares"].ToString() + " Shares  -  $" + dtTemp.Rows[i]["anndividend"].ToString() + "  -  (" + dtTemp.Rows[i]["dividendpercent"].ToString() + "%)";
+                        dtDividends.Rows.Add(dr);
+                    }
+
+                    lb.ValueMember = "id";
+                    lb.DisplayMember = "symbolName";
+                    lb.DataSource = dtDividends;
                 }
-                for (int i = 0; i < dt.Rows.Count; i++)
+                for (int i = 0; i < dtDividends.Rows.Count; i++)
                 {
                     totalDividends++;
                 }
@@ -180,6 +270,58 @@ namespace DividendDreams
             {
 
             }
+        }
+
+        public static DataTable BuildDividendTable(DataTable dt)
+        {
+            DataTable dtFinal = new DataTable();
+            dtFinal.Columns.Add("id", typeof(int));
+            dtFinal.Columns.Add("symbol", typeof(string));
+            dtFinal.Columns.Add("stockname", typeof(string));
+            dtFinal.Columns.Add("industry", typeof(string));
+            dtFinal.Columns.Add("numberofshares", typeof(int));
+            dtFinal.Columns.Add("anndividend", typeof(string));
+            dtFinal.Columns.Add("dividendpercent", typeof(string));
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                DataRow dr = dtFinal.NewRow();
+                dr["id"] = Convert.ToInt32(dt.Rows[i]["id"]);
+                dr["symbol"] = dt.Rows[i]["symbol"].ToString();
+                dr["stockname"] = dt.Rows[i]["stockname"].ToString();
+                dr["industry"] = dt.Rows[i]["industry"].ToString();
+                //dr["numberofshares"] = Convert.ToInt32(dt.Rows[i]["numberofshares"]);
+                dr["anndividend"] = Convert.ToDecimal(dt.Rows[i]["anndividend"]);
+                dr["dividendpercent"] = Convert.ToDecimal(dt.Rows[i]["dividendpercent"]);
+                //dr["symbolName"] = dt.Rows[i]["symbol"].ToString() + "  -  (" + dt.Rows[i]["stockname"].ToString() + ")  -  " + dt.Rows[i]["industry"].ToString() + "  -  " + dt.Rows[i]["numberofshares"].ToString() + " Shares  -  $" + dt.Rows[i]["anndividend"].ToString() + "  -  (" + dt.Rows[i]["dividendpercent"].ToString() + "%)";
+                dtFinal.Rows.Add(dr);
+            }
+            return dtFinal;
+        }
+
+        public static DataTable AddPrice(DataTable dt, MySqlConnection cnn)
+        {
+            DataTable dtTemp = new DataTable();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                using (var cmd = cnn.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT purchaseprice, numberofshares FROM dividendprice WHERE purchaseaction='bought' AND dividendstockid=@dividendstockid order by dividendstockid";
+                    cmd.Parameters.AddWithValue("dividendstockid", dt.Rows[i]["id"].ToString());
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                    da.Fill(dtTemp);
+                }
+                int numShares = 0;
+                for (int a = 0; a < dtTemp.Rows.Count; a++)
+                {
+                    numShares += Convert.ToInt32(dtTemp.Rows[a]["numberofshares"]);
+                }
+
+                dt.Rows[i]["numberofshares"] = numShares;
+                dtTemp.Clear();
+                //dr["symbolName"] = dt.Rows[i]["symbol"].ToString() + "  -  (" + dt.Rows[i]["stockname"].ToString() + ")  -  " + dt.Rows[i]["industry"].ToString() + "  -  " + dt.Rows[i]["numberofshares"].ToString() + " Shares  -  $" + dt.Rows[i]["anndividend"].ToString() + "  -  (" + dt.Rows[i]["dividendpercent"].ToString() + "%)";
+                //dtFinal.Rows.Add(dr);
+            }
+            return dt;
         }
 
 
