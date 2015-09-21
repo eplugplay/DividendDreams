@@ -1,0 +1,20 @@
+c:\users\stevey\documents\visual studio 2010\Projects\DividendDreams\DividendDreams\bin\Debug\DividendDreams.exe.config
+c:\users\stevey\documents\visual studio 2010\Projects\DividendDreams\DividendDreams\bin\Debug\DividendDreams.exe
+c:\users\stevey\documents\visual studio 2010\Projects\DividendDreams\DividendDreams\bin\Debug\DividendDreams.pdb
+c:\users\stevey\documents\visual studio 2010\Projects\DividendDreams\DividendDreams\obj\x86\Debug\DividendDreams.csprojResolveAssemblyReference.cache
+c:\users\stevey\documents\visual studio 2010\Projects\DividendDreams\DividendDreams\obj\x86\Debug\DividendDreams.MainMenu.resources
+c:\users\stevey\documents\visual studio 2010\Projects\DividendDreams\DividendDreams\obj\x86\Debug\DividendDreams.Properties.Resources.resources
+c:\users\stevey\documents\visual studio 2010\Projects\DividendDreams\DividendDreams\obj\x86\Debug\DividendDreams.csproj.GenerateResource.Cache
+c:\users\stevey\documents\visual studio 2010\Projects\DividendDreams\DividendDreams\obj\x86\Debug\DividendDreams.exe
+c:\users\stevey\documents\visual studio 2010\Projects\DividendDreams\DividendDreams\obj\x86\Debug\DividendDreams.pdb
+c:\users\stevey\documents\visual studio 2010\Projects\DividendDreams\DividendDreams\obj\x86\Debug\DividendDreams.Dividends.resources
+C:\Users\stevey\Documents\GitHub\DividendDreams\DividendDreams\bin\Debug\DividendDreams.exe.config
+C:\Users\stevey\Documents\GitHub\DividendDreams\DividendDreams\obj\x86\Debug\DividendDreams.exe
+C:\Users\stevey\Documents\GitHub\DividendDreams\DividendDreams\obj\x86\Debug\DividendDreams.pdb
+C:\Users\stevey\Documents\GitHub\DividendDreams\DividendDreams\obj\x86\Debug\DividendDreams.MainMenu.resources
+C:\Users\stevey\Documents\GitHub\DividendDreams\DividendDreams\obj\x86\Debug\DividendDreams.Dividends.resources
+C:\Users\stevey\Documents\GitHub\DividendDreams\DividendDreams\obj\x86\Debug\DividendDreams.Properties.Resources.resources
+C:\Users\stevey\Documents\GitHub\DividendDreams\DividendDreams\obj\x86\Debug\DividendDreams.csproj.GenerateResource.Cache
+C:\Users\stevey\Documents\GitHub\DividendDreams\DividendDreams\bin\Debug\DividendDreams.exe
+C:\Users\stevey\Documents\GitHub\DividendDreams\DividendDreams\bin\Debug\DividendDreams.pdb
+C:\Users\stevey\Documents\GitHub\DividendDreams\DividendDreams\obj\x86\Debug\DividendDreams.Shares.resources
