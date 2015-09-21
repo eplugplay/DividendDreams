@@ -55,6 +55,11 @@ namespace DividendDreams
                 LoadDividendStock();
                 btnSave.Text = "Update";
             }
+            else
+            {
+                gpSharesOptions.Enabled = false;
+                btnSave.Text = "New";
+            }
         }
 
         public void LoadDividendStock()

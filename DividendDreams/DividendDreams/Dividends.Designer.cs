@@ -53,9 +53,9 @@
             this.btnNewShares = new System.Windows.Forms.Button();
             this.btnEditShares = new System.Windows.Forms.Button();
             this.btnDeleteShares = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gpSharesOptions = new System.Windows.Forms.GroupBox();
             this.gpDividendInfo.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.gpSharesOptions.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtSymbol
@@ -316,30 +316,30 @@
             this.btnDeleteShares.UseVisualStyleBackColor = true;
             this.btnDeleteShares.Click += new System.EventHandler(this.btnDeleteShares_Click);
             // 
-            // groupBox1
+            // gpSharesOptions
             // 
-            this.groupBox1.Controls.Add(this.btnDeleteShares);
-            this.groupBox1.Controls.Add(this.btnEditShares);
-            this.groupBox1.Controls.Add(this.ddlSharePurchaseDate);
-            this.groupBox1.Controls.Add(this.btnNewShares);
-            this.groupBox1.Controls.Add(this.txtSharePrice);
-            this.groupBox1.Controls.Add(this.txtNumberOfShares);
-            this.groupBox1.Controls.Add(this.lblNumberShare);
-            this.groupBox1.Controls.Add(this.lblSharePurchaseDate);
-            this.groupBox1.Controls.Add(this.lblSharePrice);
-            this.groupBox1.Location = new System.Drawing.Point(620, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(353, 130);
-            this.groupBox1.TabIndex = 21;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Shares Options:";
+            this.gpSharesOptions.Controls.Add(this.btnDeleteShares);
+            this.gpSharesOptions.Controls.Add(this.btnEditShares);
+            this.gpSharesOptions.Controls.Add(this.ddlSharePurchaseDate);
+            this.gpSharesOptions.Controls.Add(this.btnNewShares);
+            this.gpSharesOptions.Controls.Add(this.txtSharePrice);
+            this.gpSharesOptions.Controls.Add(this.txtNumberOfShares);
+            this.gpSharesOptions.Controls.Add(this.lblNumberShare);
+            this.gpSharesOptions.Controls.Add(this.lblSharePurchaseDate);
+            this.gpSharesOptions.Controls.Add(this.lblSharePrice);
+            this.gpSharesOptions.Location = new System.Drawing.Point(620, 12);
+            this.gpSharesOptions.Name = "gpSharesOptions";
+            this.gpSharesOptions.Size = new System.Drawing.Size(353, 130);
+            this.gpSharesOptions.TabIndex = 21;
+            this.gpSharesOptions.TabStop = false;
+            this.gpSharesOptions.Text = "Shares Options:";
             // 
             // Dividends
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(980, 152);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.gpSharesOptions);
             this.Controls.Add(this.gpDividendInfo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
@@ -349,8 +349,8 @@
             this.Load += new System.EventHandler(this.Dividends_Load);
             this.gpDividendInfo.ResumeLayout(false);
             this.gpDividendInfo.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.gpSharesOptions.ResumeLayout(false);
+            this.gpSharesOptions.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -382,6 +382,6 @@
         private System.Windows.Forms.Button btnEditShares;
         private System.Windows.Forms.Button btnNewShares;
         private System.Windows.Forms.Button btnDeleteShares;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gpSharesOptions;
     }
 }
