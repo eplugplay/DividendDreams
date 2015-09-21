@@ -34,17 +34,15 @@
             this.lbAllDividends = new System.Windows.Forms.ListBox();
             this.lbCurrentDividends = new System.Windows.Forms.ListBox();
             this.gpDividendStocks = new System.Windows.Forms.GroupBox();
+            this.btnDividendPrice = new System.Windows.Forms.Button();
+            this.btnGetSharePrice = new System.Windows.Forms.Button();
+            this.lblTotalAllDividends = new System.Windows.Forms.Label();
+            this.lblTotalPortfolioDividends = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnCalculate = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.lblTotalPortfolioDividends = new System.Windows.Forms.Label();
-            this.lblTotalAllDividends = new System.Windows.Forms.Label();
-            this.btnDividendPrice = new System.Windows.Forms.Button();
-            this.btnGetSharePrice = new System.Windows.Forms.Button();
-            this.btnGetAllDivPrice = new System.Windows.Forms.Button();
-            this.btnGetAllPrice = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.gpDividendStocks.SuspendLayout();
             this.SuspendLayout();
@@ -99,8 +97,6 @@
             // 
             // gpDividendStocks
             // 
-            this.gpDividendStocks.Controls.Add(this.btnGetAllDivPrice);
-            this.gpDividendStocks.Controls.Add(this.btnGetAllPrice);
             this.gpDividendStocks.Controls.Add(this.btnDividendPrice);
             this.gpDividendStocks.Controls.Add(this.btnGetSharePrice);
             this.gpDividendStocks.Controls.Add(this.lblTotalAllDividends);
@@ -118,6 +114,48 @@
             this.gpDividendStocks.TabIndex = 3;
             this.gpDividendStocks.TabStop = false;
             this.gpDividendStocks.Text = "Dividend Stocks";
+            // 
+            // btnDividendPrice
+            // 
+            this.btnDividendPrice.Location = new System.Drawing.Point(1218, 10);
+            this.btnDividendPrice.Name = "btnDividendPrice";
+            this.btnDividendPrice.Size = new System.Drawing.Size(109, 23);
+            this.btnDividendPrice.TabIndex = 20;
+            this.btnDividendPrice.TabStop = false;
+            this.btnDividendPrice.Text = "Get Dividend Price";
+            this.btnDividendPrice.UseVisualStyleBackColor = true;
+            this.btnDividendPrice.Click += new System.EventHandler(this.btnDividendPrice_Click);
+            // 
+            // btnGetSharePrice
+            // 
+            this.btnGetSharePrice.Location = new System.Drawing.Point(1137, 10);
+            this.btnGetSharePrice.Name = "btnGetSharePrice";
+            this.btnGetSharePrice.Size = new System.Drawing.Size(75, 23);
+            this.btnGetSharePrice.TabIndex = 19;
+            this.btnGetSharePrice.TabStop = false;
+            this.btnGetSharePrice.Text = "Get Price";
+            this.btnGetSharePrice.UseVisualStyleBackColor = true;
+            this.btnGetSharePrice.Click += new System.EventHandler(this.btnGetSharePrice_Click);
+            // 
+            // lblTotalAllDividends
+            // 
+            this.lblTotalAllDividends.AutoSize = true;
+            this.lblTotalAllDividends.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalAllDividends.Location = new System.Drawing.Point(112, 18);
+            this.lblTotalAllDividends.Name = "lblTotalAllDividends";
+            this.lblTotalAllDividends.Size = new System.Drawing.Size(14, 13);
+            this.lblTotalAllDividends.TabIndex = 9;
+            this.lblTotalAllDividends.Text = "0";
+            // 
+            // lblTotalPortfolioDividends
+            // 
+            this.lblTotalPortfolioDividends.AutoSize = true;
+            this.lblTotalPortfolioDividends.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalPortfolioDividends.Location = new System.Drawing.Point(748, 20);
+            this.lblTotalPortfolioDividends.Name = "lblTotalPortfolioDividends";
+            this.lblTotalPortfolioDividends.Size = new System.Drawing.Size(14, 13);
+            this.lblTotalPortfolioDividends.TabIndex = 8;
+            this.lblTotalPortfolioDividends.Text = "0";
             // 
             // label2
             // 
@@ -169,70 +207,6 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // lblTotalPortfolioDividends
-            // 
-            this.lblTotalPortfolioDividends.AutoSize = true;
-            this.lblTotalPortfolioDividends.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalPortfolioDividends.Location = new System.Drawing.Point(748, 20);
-            this.lblTotalPortfolioDividends.Name = "lblTotalPortfolioDividends";
-            this.lblTotalPortfolioDividends.Size = new System.Drawing.Size(14, 13);
-            this.lblTotalPortfolioDividends.TabIndex = 8;
-            this.lblTotalPortfolioDividends.Text = "0";
-            // 
-            // lblTotalAllDividends
-            // 
-            this.lblTotalAllDividends.AutoSize = true;
-            this.lblTotalAllDividends.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalAllDividends.Location = new System.Drawing.Point(112, 18);
-            this.lblTotalAllDividends.Name = "lblTotalAllDividends";
-            this.lblTotalAllDividends.Size = new System.Drawing.Size(14, 13);
-            this.lblTotalAllDividends.TabIndex = 9;
-            this.lblTotalAllDividends.Text = "0";
-            // 
-            // btnDividendPrice
-            // 
-            this.btnDividendPrice.Location = new System.Drawing.Point(1218, 10);
-            this.btnDividendPrice.Name = "btnDividendPrice";
-            this.btnDividendPrice.Size = new System.Drawing.Size(109, 23);
-            this.btnDividendPrice.TabIndex = 20;
-            this.btnDividendPrice.TabStop = false;
-            this.btnDividendPrice.Text = "Get Dividend Price";
-            this.btnDividendPrice.UseVisualStyleBackColor = true;
-            this.btnDividendPrice.Click += new System.EventHandler(this.btnDividendPrice_Click);
-            // 
-            // btnGetSharePrice
-            // 
-            this.btnGetSharePrice.Location = new System.Drawing.Point(1137, 10);
-            this.btnGetSharePrice.Name = "btnGetSharePrice";
-            this.btnGetSharePrice.Size = new System.Drawing.Size(75, 23);
-            this.btnGetSharePrice.TabIndex = 19;
-            this.btnGetSharePrice.TabStop = false;
-            this.btnGetSharePrice.Text = "Get Price";
-            this.btnGetSharePrice.UseVisualStyleBackColor = true;
-            this.btnGetSharePrice.Click += new System.EventHandler(this.btnGetSharePrice_Click);
-            // 
-            // btnGetAllDivPrice
-            // 
-            this.btnGetAllDivPrice.Location = new System.Drawing.Point(543, 10);
-            this.btnGetAllDivPrice.Name = "btnGetAllDivPrice";
-            this.btnGetAllDivPrice.Size = new System.Drawing.Size(109, 23);
-            this.btnGetAllDivPrice.TabIndex = 22;
-            this.btnGetAllDivPrice.TabStop = false;
-            this.btnGetAllDivPrice.Text = "Get Dividend Price";
-            this.btnGetAllDivPrice.UseVisualStyleBackColor = true;
-            this.btnGetAllDivPrice.Click += new System.EventHandler(this.btnGetAllDivPrice_Click);
-            // 
-            // btnGetAllPrice
-            // 
-            this.btnGetAllPrice.Location = new System.Drawing.Point(462, 10);
-            this.btnGetAllPrice.Name = "btnGetAllPrice";
-            this.btnGetAllPrice.Size = new System.Drawing.Size(75, 23);
-            this.btnGetAllPrice.TabIndex = 21;
-            this.btnGetAllPrice.TabStop = false;
-            this.btnGetAllPrice.Text = "Get Price";
-            this.btnGetAllPrice.UseVisualStyleBackColor = true;
-            this.btnGetAllPrice.Click += new System.EventHandler(this.btnGetAllPrice_Click);
-            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -273,8 +247,6 @@
         private System.Windows.Forms.Label lblTotalAllDividends;
         private System.Windows.Forms.Button btnDividendPrice;
         private System.Windows.Forms.Button btnGetSharePrice;
-        private System.Windows.Forms.Button btnGetAllDivPrice;
-        private System.Windows.Forms.Button btnGetAllPrice;
     }
 }
 

@@ -144,15 +144,5 @@ namespace DividendDreams
         {
             GetDividendPrice(lbCurrentDividends);
         }
-
-        private void btnGetAllPrice_Click(object sender, EventArgs e)
-        {
-            GetSharePrice(lbAllDividends);
-        }
-
-        private void btnGetAllDivPrice_Click(object sender, EventArgs e)
-        {
-            GetDividendPrice(lbAllDividends);
-        }
     }
 }
