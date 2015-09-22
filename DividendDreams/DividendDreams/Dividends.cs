@@ -31,7 +31,7 @@ namespace DividendDreams
             {
                 if (MessageBox.Show("Update?", "Update?", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    DividendStocks.UpdateDividendStock(ID, txtSymbol.Text, txtStockName.Text, txtIndustry.Text, txtSharePrice.Text, txtAnnualDividend.Text, txtNumberOfShares.Text, txtDividendPercent.Text, ddlCapSize.Text);
+                    DividendStocks.UpdateDividendStock(ID, txtSymbol.Text, txtStockName.Text, txtIndustry.Text, txtAnnualDividend.Text, txtDividendPercent.Text, ddlCapSize.Text);
                     Program.MainMenu.LoadDividendStocks();
                     this.Close();
                 }
@@ -51,7 +51,6 @@ namespace DividendDreams
             ddlCapSize.SelectedIndex = 0;
             if (Edit)
             {
-                //LoadPurchaseData();
                 LoadDividendStock();
                 btnSave.Text = "Update";
             }

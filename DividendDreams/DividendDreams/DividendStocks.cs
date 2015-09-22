@@ -356,8 +356,8 @@ namespace DividendDreams
                     cnn.Open();
                     using (var cmd = cnn.CreateCommand())
                     {
-                        cmd.CommandText = @"INSERT INTO dividendstocks (symbol, stockname, industry, boughtshareprice, anndividend, numberofshares, dividendpercent, capsize, stockactive) 
-                                        VALUES (@symbol, @stockname, @industry, @boughtshareprice, @anndividend, @numberofshares, @dividendpercent, @capsize, 'true')";
+                        cmd.CommandText = @"INSERT INTO dividendstocks (symbol, stockname, industry, anndividend, dividendpercent, capsize, stockactive) 
+                                        VALUES (@symbol, @stockname, @industry, @anndividend, @dividendpercent, @capsize, 'true')";
                         cmd.Parameters.AddWithValue("symbol", symbol);
                         cmd.Parameters.AddWithValue("stockname", stockname);
                         cmd.Parameters.AddWithValue("industry", industry);
@@ -376,7 +376,7 @@ namespace DividendDreams
             }
         }
 
-        public static void UpdateDividendStock(string id, string symbol, string stockname, string industry, string boughtshareprice, string anndividend, string numberofshares, string dividendpercent, string capsize)
+        public static void UpdateDividendStock(string id, string symbol, string stockname, string industry, string anndividend, string dividendpercent, string capsize)
         {
             try
             {
@@ -385,14 +385,11 @@ namespace DividendDreams
                     cnn.Open();
                     using (var cmd = cnn.CreateCommand())
                     {
-                        cmd.CommandText = @"UPDATE dividendstocks SET symbol=@symbol, stockname=@stockname, industry=@industry, boughtshareprice=@boughtshareprice, anndividend=@anndividend, 
-                                        numberofshares=@numberofshares, dividendpercent=@dividendpercent, capsize=@capsize WHERE id=@id";
+                        cmd.CommandText = @"UPDATE dividendstocks SET symbol=@symbol, stockname=@stockname, industry=@industry, anndividend=@anndividend, dividendpercent=@dividendpercent, capsize=@capsize WHERE id=@id";
                         cmd.Parameters.AddWithValue("symbol", symbol);
                         cmd.Parameters.AddWithValue("stockname", stockname);
                         cmd.Parameters.AddWithValue("industry", industry);
-                        cmd.Parameters.AddWithValue("boughtshareprice", boughtshareprice);
                         cmd.Parameters.AddWithValue("anndividend", anndividend);
-                        cmd.Parameters.AddWithValue("numberofshares", numberofshares);
                         cmd.Parameters.AddWithValue("dividendpercent", dividendpercent);
                         cmd.Parameters.AddWithValue("capsize", capsize);
                         cmd.Parameters.AddWithValue("id", id);
