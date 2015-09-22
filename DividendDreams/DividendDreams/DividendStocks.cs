@@ -21,7 +21,7 @@ namespace DividendDreams
                     cnn.Open();
                     using (var cmd = cnn.CreateCommand())
                     {
-                        cmd.CommandText = "SELECT ds.anndividend, dp.numberofshares, dp.purchaseprice FROM dividendstocks ds JOIN dividendprice dp ON ds.id=dp.dividendstockid WHERE ds.stockactive='true' AND dp.purchaseaction='bought' order by ds.id";
+                        cmd.CommandText = "SELECT ds.anndividend, dp.numberofshares, dp.purchaseprice, dp.purchaseaction FROM dividendstocks ds JOIN dividendprice dp ON ds.id=dp.dividendstockid WHERE ds.stockactive='true' order by ds.id";
                         MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                         da.Fill(dt);
                     }
@@ -83,7 +83,8 @@ namespace DividendDreams
                     cnn.Open();
                     using (var cmd = cnn.CreateCommand())
                     {
-                        cmd.CommandText = "SELECT purchaseprice, numberofshares FROM dividendprice WHERE dividendstockid=@dividendstockid AND purchaseaction='bought'";
+                        //cmd.CommandText = "SELECT purchaseprice, numberofshares FROM dividendprice WHERE dividendstockid=@dividendstockid AND purchaseaction='bought'";
+                        cmd.CommandText = "SELECT purchaseprice, numberofshares, purchaseaction FROM dividendprice WHERE dividendstockid=@dividendstockid";
                         cmd.Parameters.AddWithValue("dividendstockid", dividendstockid);
                         MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                         da.Fill(dt);
@@ -92,9 +93,18 @@ namespace DividendDreams
 
                     for (int i = 0; i < dt.Rows.Count; i++)
                     {
-                        numShares = Convert.ToInt32(dt.Rows[i]["numberofshares"]);
-                        price = Convert.ToDecimal(dt.Rows[i]["purchaseprice"]);
-                        totalPrice += ((decimal)numShares * price);
+                        if (dt.Rows[i]["purchaseaction"].ToString() == "bought")
+                        {
+                            numShares = Convert.ToInt32(dt.Rows[i]["numberofshares"]);
+                            price = Convert.ToDecimal(dt.Rows[i]["purchaseprice"]);
+                            totalPrice += ((decimal)numShares * price);
+                        }
+                        else
+                        {
+                            numShares = Convert.ToInt32(dt.Rows[i]["numberofshares"]);
+                            price = Convert.ToDecimal(dt.Rows[i]["purchaseprice"]);
+                            totalPrice -= ((decimal)numShares * price);
+                        }
                     }
                 }
             }

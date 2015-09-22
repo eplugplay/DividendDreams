@@ -54,8 +54,17 @@ namespace DividendDreams
                 decimal ShareNum = Convert.ToDecimal(dt.Rows[i]["numberofshares"]);
                 decimal AnnDiv = Convert.ToDecimal(dt.Rows[i]["annDividend"]);
                 decimal purchaseprice = Convert.ToDecimal(dt.Rows[i]["purchaseprice"]);
-                YearDiv += (ShareNum * AnnDiv);
-                DividendStockValue += (ShareNum * purchaseprice);
+                if (dt.Rows[i]["purchaseaction"].ToString() == "bought")
+                {
+                    YearDiv += (ShareNum * AnnDiv);
+                    DividendStockValue += (ShareNum * purchaseprice);
+                }
+                else
+                {
+                    YearDiv -= (ShareNum * AnnDiv);
+                    DividendStockValue -= (ShareNum * purchaseprice);
+                }
+
             }
             QuarterDiv = (YearDiv / 4);
             MonthlyDiv = (YearDiv / 12);

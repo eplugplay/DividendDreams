@@ -26,10 +26,10 @@ namespace DividendDreams
         {
             if (Edit)
             {
+                ddlAction.SelectedIndex = 0;
                 LoadSharesInfo();
                 btnSave.Text = "Update";
             }
-            ddlAction.SelectedIndex = 0;
         }
 
         public void LoadSharesInfo()
