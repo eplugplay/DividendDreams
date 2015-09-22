@@ -265,15 +265,12 @@ namespace DividendDreams
                         dr["id"] = Convert.ToInt32(dtTemp.Rows[i]["id"]);
                         dr["symbolName"] = dtTemp.Rows[i]["symbol"].ToString() + "  -  (" + dtTemp.Rows[i]["stockname"].ToString() + ")  -  " + dtTemp.Rows[i]["industry"].ToString() + "  -  " + dtTemp.Rows[i]["numberofshares"].ToString() + " Shares  -  $" + dtTemp.Rows[i]["anndividend"].ToString() + "  -  (" + dtTemp.Rows[i]["dividendpercent"].ToString() + "%)";
                         dtDividends.Rows.Add(dr);
+                        totalDividends++;
                     }
 
                     lb.ValueMember = "id";
                     lb.DisplayMember = "symbolName";
                     lb.DataSource = dtDividends;
-                }
-                for (int i = 0; i < dtDividends.Rows.Count; i++)
-                {
-                    totalDividends++;
                 }
             }
             catch (Exception e)
