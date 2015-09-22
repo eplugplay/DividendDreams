@@ -24,9 +24,9 @@ namespace DividendDreams
 
         private void Shares_Load(object sender, EventArgs e)
         {
+            ddlAction.SelectedIndex = 0;
             if (Edit)
             {
-                ddlAction.SelectedIndex = 0;
                 LoadSharesInfo();
                 btnSave.Text = "Update";
             }
@@ -83,6 +83,17 @@ namespace DividendDreams
             MainMenu._Dividends.LoadDividendStock();
             Program.MainMenu.LoadCurrentDividends();
             this.Close();
+        }
+
+        public void GetSharePrice()
+        {
+            decimal TotalSharePrice = Convert.ToDecimal(txtPurchasePrice.Text) * Convert.ToDecimal(txtNumberOfShares.Text);
+            MessageBox.Show("$" + Math.Round(TotalSharePrice, 2).ToString());
+        }
+
+        private void btnGetPrice_Click(object sender, EventArgs e)
+        {
+            GetSharePrice();
         }
     }
 }

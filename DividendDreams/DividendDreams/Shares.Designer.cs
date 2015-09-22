@@ -29,18 +29,20 @@
         private void InitializeComponent()
         {
             this.gpShares = new System.Windows.Forms.GroupBox();
-            this.txtNumberOfShares = new System.Windows.Forms.TextBox();
-            this.lblSymbol = new System.Windows.Forms.Label();
-            this.txtPurchasePrice = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnSave = new System.Windows.Forms.Button();
             this.ddlAction = new System.Windows.Forms.ComboBox();
             this.lblAction = new System.Windows.Forms.Label();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.txtPurchasePrice = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtNumberOfShares = new System.Windows.Forms.TextBox();
+            this.lblSymbol = new System.Windows.Forms.Label();
+            this.btnGetPrice = new System.Windows.Forms.Button();
             this.gpShares.SuspendLayout();
             this.SuspendLayout();
             // 
             // gpShares
             // 
+            this.gpShares.Controls.Add(this.btnGetPrice);
             this.gpShares.Controls.Add(this.ddlAction);
             this.gpShares.Controls.Add(this.lblAction);
             this.gpShares.Controls.Add(this.btnSave);
@@ -54,48 +56,6 @@
             this.gpShares.TabIndex = 0;
             this.gpShares.TabStop = false;
             this.gpShares.Text = "Shares";
-            // 
-            // txtNumberOfShares
-            // 
-            this.txtNumberOfShares.Location = new System.Drawing.Point(107, 27);
-            this.txtNumberOfShares.Name = "txtNumberOfShares";
-            this.txtNumberOfShares.Size = new System.Drawing.Size(233, 20);
-            this.txtNumberOfShares.TabIndex = 2;
-            // 
-            // lblSymbol
-            // 
-            this.lblSymbol.AutoSize = true;
-            this.lblSymbol.Location = new System.Drawing.Point(19, 30);
-            this.lblSymbol.Name = "lblSymbol";
-            this.lblSymbol.Size = new System.Drawing.Size(62, 13);
-            this.lblSymbol.TabIndex = 3;
-            this.lblSymbol.Text = "# of Shares";
-            // 
-            // txtPurchasePrice
-            // 
-            this.txtPurchasePrice.Location = new System.Drawing.Point(107, 53);
-            this.txtPurchasePrice.Name = "txtPurchasePrice";
-            this.txtPurchasePrice.Size = new System.Drawing.Size(233, 20);
-            this.txtPurchasePrice.TabIndex = 4;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(19, 56);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Purchase Price:";
-            // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(346, 77);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(56, 23);
-            this.btnSave.TabIndex = 6;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // ddlAction
             // 
@@ -117,6 +77,58 @@
             this.lblAction.Size = new System.Drawing.Size(40, 13);
             this.lblAction.TabIndex = 19;
             this.lblAction.Text = "Action:";
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(346, 77);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(56, 23);
+            this.btnSave.TabIndex = 6;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // txtPurchasePrice
+            // 
+            this.txtPurchasePrice.Location = new System.Drawing.Point(107, 53);
+            this.txtPurchasePrice.Name = "txtPurchasePrice";
+            this.txtPurchasePrice.Size = new System.Drawing.Size(233, 20);
+            this.txtPurchasePrice.TabIndex = 4;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(19, 56);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(82, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Purchase Price:";
+            // 
+            // txtNumberOfShares
+            // 
+            this.txtNumberOfShares.Location = new System.Drawing.Point(107, 27);
+            this.txtNumberOfShares.Name = "txtNumberOfShares";
+            this.txtNumberOfShares.Size = new System.Drawing.Size(233, 20);
+            this.txtNumberOfShares.TabIndex = 2;
+            // 
+            // lblSymbol
+            // 
+            this.lblSymbol.AutoSize = true;
+            this.lblSymbol.Location = new System.Drawing.Point(19, 30);
+            this.lblSymbol.Name = "lblSymbol";
+            this.lblSymbol.Size = new System.Drawing.Size(62, 13);
+            this.lblSymbol.TabIndex = 3;
+            this.lblSymbol.Text = "# of Shares";
+            // 
+            // btnGetPrice
+            // 
+            this.btnGetPrice.Location = new System.Drawing.Point(346, 46);
+            this.btnGetPrice.Name = "btnGetPrice";
+            this.btnGetPrice.Size = new System.Drawing.Size(56, 23);
+            this.btnGetPrice.TabIndex = 20;
+            this.btnGetPrice.Text = "Price";
+            this.btnGetPrice.UseVisualStyleBackColor = true;
+            this.btnGetPrice.Click += new System.EventHandler(this.btnGetPrice_Click);
             // 
             // Shares
             // 
@@ -146,5 +158,6 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.ComboBox ddlAction;
         private System.Windows.Forms.Label lblAction;
+        private System.Windows.Forms.Button btnGetPrice;
     }
 }
