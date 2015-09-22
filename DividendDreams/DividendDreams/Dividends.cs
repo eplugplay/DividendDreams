@@ -67,12 +67,9 @@ namespace DividendDreams
             txtSymbol.Text = dt.Rows[0]["symbol"].ToString();
             txtStockName.Text = dt.Rows[0]["stockname"].ToString();
             txtIndustry.Text = dt.Rows[0]["industry"].ToString();
-            //txtSharePrice.Text = dt.Rows[0]["purchaseprice"].ToString();
             txtAnnualDividend.Text = dt.Rows[0]["anndividend"].ToString();
-            //txtNumberOfShares.Text = dt.Rows[0]["numberofshares"].ToString();
             txtDividendPercent.Text = dt.Rows[0]["dividendpercent"].ToString();
             ddlCapSize.SelectedIndex = ddlCapSize.FindString(dt.Rows[0]["capsize"].ToString());
-
 
             // load purchase dates
             LoadPurchaseDates();
@@ -100,9 +97,12 @@ namespace DividendDreams
 
         public void LoadPurchaseData()
         {
-            DataTable dt = DividendStocks.GetPurchasePrice(ddlSharePurchaseDate.SelectedValue.ToString());
-            txtSharePrice.Text = dt.Rows[0]["purchaseprice"].ToString();
-            txtNumberOfShares.Text = dt.Rows[0]["numberofshares"].ToString();
+            if (ddlSharePurchaseDate.SelectedValue != null)
+            {
+                DataTable dt = DividendStocks.GetPurchasePrice(ddlSharePurchaseDate.SelectedValue.ToString());
+                txtSharePrice.Text = dt.Rows[0]["purchaseprice"].ToString();
+                txtNumberOfShares.Text = dt.Rows[0]["numberofshares"].ToString();
+            }
         }
 
         public bool ValidateAll()
