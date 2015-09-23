@@ -35,7 +35,6 @@
             this.lblSharePrice = new System.Windows.Forms.Label();
             this.txtSharePrice = new System.Windows.Forms.TextBox();
             this.lblIndustry = new System.Windows.Forms.Label();
-            this.txtIndustry = new System.Windows.Forms.TextBox();
             this.lblNumberShare = new System.Windows.Forms.Label();
             this.txtNumberOfShares = new System.Windows.Forms.TextBox();
             this.lblAnnualDividend = new System.Windows.Forms.Label();
@@ -54,6 +53,7 @@
             this.btnEditShares = new System.Windows.Forms.Button();
             this.btnDeleteShares = new System.Windows.Forms.Button();
             this.gpSharesOptions = new System.Windows.Forms.GroupBox();
+            this.ddlIndustry = new System.Windows.Forms.ComboBox();
             this.gpDividendInfo.SuspendLayout();
             this.gpSharesOptions.SuspendLayout();
             this.SuspendLayout();
@@ -121,13 +121,6 @@
             this.lblIndustry.TabIndex = 5;
             this.lblIndustry.Text = "Industry:";
             // 
-            // txtIndustry
-            // 
-            this.txtIndustry.Location = new System.Drawing.Point(107, 47);
-            this.txtIndustry.Name = "txtIndustry";
-            this.txtIndustry.Size = new System.Drawing.Size(210, 20);
-            this.txtIndustry.TabIndex = 2;
-            // 
             // lblNumberShare
             // 
             this.lblNumberShare.AutoSize = true;
@@ -194,6 +187,7 @@
             // 
             // gpDividendInfo
             // 
+            this.gpDividendInfo.Controls.Add(this.ddlIndustry);
             this.gpDividendInfo.Controls.Add(this.btnDividendPrice);
             this.gpDividendInfo.Controls.Add(this.ddlCapSize);
             this.gpDividendInfo.Controls.Add(this.lblCapSize);
@@ -205,7 +199,6 @@
             this.gpDividendInfo.Controls.Add(this.txtDividendPercent);
             this.gpDividendInfo.Controls.Add(this.txtStockName);
             this.gpDividendInfo.Controls.Add(this.lblStockName);
-            this.gpDividendInfo.Controls.Add(this.txtIndustry);
             this.gpDividendInfo.Controls.Add(this.lblAnnualDividend);
             this.gpDividendInfo.Controls.Add(this.lblIndustry);
             this.gpDividendInfo.Controls.Add(this.txtAnnualDividend);
@@ -334,6 +327,26 @@
             this.gpSharesOptions.TabStop = false;
             this.gpSharesOptions.Text = "Shares Options:";
             // 
+            // ddlIndustry
+            // 
+            this.ddlIndustry.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlIndustry.FormattingEnabled = true;
+            this.ddlIndustry.Items.AddRange(new object[] {
+            "Consumer Discretionary",
+            "Consumer Staples",
+            "Energy",
+            "Financials",
+            "Health Care",
+            "Industrials",
+            "Information Technology",
+            "Materials",
+            "Telecommunication Services",
+            "Utilities"});
+            this.ddlIndustry.Location = new System.Drawing.Point(107, 47);
+            this.ddlIndustry.Name = "ddlIndustry";
+            this.ddlIndustry.Size = new System.Drawing.Size(210, 21);
+            this.ddlIndustry.TabIndex = 19;
+            // 
             // Dividends
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -364,7 +377,6 @@
         private System.Windows.Forms.Label lblSharePrice;
         private System.Windows.Forms.TextBox txtSharePrice;
         private System.Windows.Forms.Label lblIndustry;
-        private System.Windows.Forms.TextBox txtIndustry;
         private System.Windows.Forms.Label lblNumberShare;
         private System.Windows.Forms.TextBox txtNumberOfShares;
         private System.Windows.Forms.Label lblAnnualDividend;
@@ -383,5 +395,6 @@
         private System.Windows.Forms.Button btnNewShares;
         private System.Windows.Forms.Button btnDeleteShares;
         private System.Windows.Forms.GroupBox gpSharesOptions;
+        private System.Windows.Forms.ComboBox ddlIndustry;
     }
 }

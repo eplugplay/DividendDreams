@@ -29,26 +29,22 @@ namespace DividendDreams
             }
             if (Edit)
             {
-                if (MessageBox.Show("Update?", "Update?", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    DividendStocks.UpdateDividendStock(ID, txtSymbol.Text, txtStockName.Text, txtIndustry.Text, txtAnnualDividend.Text, txtDividendPercent.Text, ddlCapSize.Text);
-                    Program.MainMenu.LoadDividendStocks();
-                    this.Close();
-                }
+                DividendStocks.UpdateDividendStock(ID, txtSymbol.Text, txtStockName.Text, ddlIndustry.Text, txtAnnualDividend.Text, txtDividendPercent.Text, ddlCapSize.Text);
+                Program.MainMenu.LoadDividendStocks();
+                this.Close();
             }
             else
             {
-                if (MessageBox.Show("Save?", "Save?", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    DividendStocks.NewDividendStock(txtSymbol.Text, txtStockName.Text, txtIndustry.Text, txtSharePrice.Text, txtAnnualDividend.Text, txtNumberOfShares.Text, txtDividendPercent.Text, ddlCapSize.Text);
-                    Program.MainMenu.LoadDividendStocks();
-                    this.Close();
-                }
+                DividendStocks.NewDividendStock(txtSymbol.Text, txtStockName.Text, ddlIndustry.Text, txtSharePrice.Text, txtAnnualDividend.Text, txtNumberOfShares.Text, txtDividendPercent.Text, ddlCapSize.Text);
+                Program.MainMenu.LoadDividendStocks();
+                this.Close();
             }
         }
+
         private void Dividends_Load(object sender, EventArgs e)
         {
             ddlCapSize.SelectedIndex = 0;
+            ddlIndustry.SelectedIndex = 0;
             if (Edit)
             {
                 LoadDividendStock();
@@ -66,7 +62,7 @@ namespace DividendDreams
             DataTable dt = DividendStocks.GetDividend(ID);
             txtSymbol.Text = dt.Rows[0]["symbol"].ToString();
             txtStockName.Text = dt.Rows[0]["stockname"].ToString();
-            txtIndustry.Text = dt.Rows[0]["industry"].ToString();
+            ddlIndustry.SelectedIndex = ddlIndustry.FindString(dt.Rows[0]["industry"].ToString());
             txtAnnualDividend.Text = dt.Rows[0]["anndividend"].ToString();
             txtDividendPercent.Text = dt.Rows[0]["dividendpercent"].ToString();
             ddlCapSize.SelectedIndex = ddlCapSize.FindString(dt.Rows[0]["capsize"].ToString());
@@ -117,9 +113,9 @@ namespace DividendDreams
                 MessageBox.Show("Please enter stock name.");
                 return false;
             }
-            if (txtIndustry.Text == "")
+            if (ddlIndustry.SelectedIndex == -1)
             {
-                MessageBox.Show("Please enter industry.");
+                MessageBox.Show("Please select Industry.");
                 return false;
             }
             //if (txtSharePrice.Text == "")
