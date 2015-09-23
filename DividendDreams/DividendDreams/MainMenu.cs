@@ -113,9 +113,16 @@ namespace DividendDreams
 
         public void AddRemoveDividends(ListBox lb, string stockActive)
         {
-            foreach (DataRowView drv in lb.SelectedItems)
+            if (lb.SelectedItems.Count > 1)
             {
-                DividendStocks.UpdateDividendStock(drv.Row["id"].ToString(), stockActive);
+                foreach (DataRowView drv in lb.SelectedItems)
+                {
+                    DividendStocks.UpdateDividendStock(drv.Row["id"].ToString(), stockActive);
+                }
+            }
+            else
+            {
+                DividendStocks.UpdateDividendStock(lb.SelectedValue.ToString(), stockActive);
             }
             LoadDividendStocks();
         }
