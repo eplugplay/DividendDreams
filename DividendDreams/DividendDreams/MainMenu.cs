@@ -165,7 +165,7 @@ namespace DividendDreams
 
         private void btnHighlight_Click(object sender, EventArgs e)
         {
-            Highlight(lbCurrentDividends, ddlIndustry, lblTotalPortfolioDividends);
+            Highlight(lbCurrentDividends, ddlIndustry, lblTotalPortfolioDividends, true);
         }
 
         public void SearchSymbol(TextBox tb, ListBox lb)
@@ -182,7 +182,7 @@ namespace DividendDreams
             //MessageBox.Show("");
         }
 
-        public void Highlight(ListBox lb, ComboBox ddl, Label lbl)
+        public void Highlight(ListBox lb, ComboBox ddl, Label lbl, bool showMsg)
         {
             lb.ClearSelected();
             decimal count = 0;
@@ -197,7 +197,10 @@ namespace DividendDreams
                 }
             }
             percentage = (count / percentage) * 100;
-            MessageBox.Show(ddl.Text + ": " + Math.Round(percentage, 2) + "%");
+            if (showMsg)
+            {
+                MessageBox.Show(ddl.Text + ": " + Math.Round(percentage, 2) + "%");
+            }
         }
 
         public void ShowIndustryPercentages(ListBox lb, Label lbl)
@@ -233,7 +236,7 @@ namespace DividendDreams
 
         private void btnHighlightAll_Click(object sender, EventArgs e)
         {
-            Highlight(lbAllDividends, ddlIndustryAll, lblTotalAllDividends);
+            Highlight(lbAllDividends, ddlIndustryAll, lblTotalAllDividends, false);
         }
 
         private void btnCurrentIndustryPercentage_Click(object sender, EventArgs e)
