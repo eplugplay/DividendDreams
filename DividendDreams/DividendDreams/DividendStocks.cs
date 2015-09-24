@@ -259,6 +259,9 @@ namespace DividendDreams
 
                     dtTemp = BuildDividendTable(dtTemp);
                     dtTemp = AddPrice(dtTemp, cnn);
+                    DataView drv = dtTemp.DefaultView;
+                    drv.Sort = "symbol asc";
+                    dtTemp = drv.ToTable();
                     for (int i = 0; i < dtTemp.Rows.Count; i++)
                     {
                         DataRow dr = dtDividends.NewRow();
@@ -267,7 +270,6 @@ namespace DividendDreams
                         dtDividends.Rows.Add(dr);
                         totalDividends++;
                     }
-
                     lb.ValueMember = "id";
                     lb.DisplayMember = "symbolName";
                     lb.DataSource = dtDividends;

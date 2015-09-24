@@ -43,6 +43,18 @@
             this.btnCalculate = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.ddlIndustry = new System.Windows.Forms.ComboBox();
+            this.lblIndustry = new System.Windows.Forms.Label();
+            this.btnHighlight = new System.Windows.Forms.Button();
+            this.btnHighlightAll = new System.Windows.Forms.Button();
+            this.lblIndustryAll = new System.Windows.Forms.Label();
+            this.ddlIndustryAll = new System.Windows.Forms.ComboBox();
+            this.btnCurrentIndustryPercentage = new System.Windows.Forms.Button();
+            this.btnAllIndustryPercentages = new System.Windows.Forms.Button();
+            this.txtSearchSymbol = new System.Windows.Forms.TextBox();
+            this.lblSearchSymbol = new System.Windows.Forms.Label();
+            this.lblSearchAllSymbol = new System.Windows.Forms.Label();
+            this.txtSearchAllSymbol = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.gpDividendStocks.SuspendLayout();
             this.SuspendLayout();
@@ -97,6 +109,18 @@
             // 
             // gpDividendStocks
             // 
+            this.gpDividendStocks.Controls.Add(this.lblSearchAllSymbol);
+            this.gpDividendStocks.Controls.Add(this.txtSearchAllSymbol);
+            this.gpDividendStocks.Controls.Add(this.lblSearchSymbol);
+            this.gpDividendStocks.Controls.Add(this.txtSearchSymbol);
+            this.gpDividendStocks.Controls.Add(this.btnAllIndustryPercentages);
+            this.gpDividendStocks.Controls.Add(this.btnCurrentIndustryPercentage);
+            this.gpDividendStocks.Controls.Add(this.btnHighlightAll);
+            this.gpDividendStocks.Controls.Add(this.lblIndustryAll);
+            this.gpDividendStocks.Controls.Add(this.ddlIndustryAll);
+            this.gpDividendStocks.Controls.Add(this.btnHighlight);
+            this.gpDividendStocks.Controls.Add(this.lblIndustry);
+            this.gpDividendStocks.Controls.Add(this.ddlIndustry);
             this.gpDividendStocks.Controls.Add(this.btnDividendPrice);
             this.gpDividendStocks.Controls.Add(this.btnGetSharePrice);
             this.gpDividendStocks.Controls.Add(this.lblTotalAllDividends);
@@ -207,6 +231,142 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
+            // ddlIndustry
+            // 
+            this.ddlIndustry.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlIndustry.FormattingEnabled = true;
+            this.ddlIndustry.Items.AddRange(new object[] {
+            "Consumer Discretionary",
+            "Consumer Staples",
+            "Energy",
+            "Financials",
+            "Health Care",
+            "Industrials",
+            "Information Technology",
+            "Materials",
+            "Telecommunication Services",
+            "Utilities"});
+            this.ddlIndustry.Location = new System.Drawing.Point(884, 12);
+            this.ddlIndustry.Name = "ddlIndustry";
+            this.ddlIndustry.Size = new System.Drawing.Size(160, 21);
+            this.ddlIndustry.TabIndex = 21;
+            // 
+            // lblIndustry
+            // 
+            this.lblIndustry.AutoSize = true;
+            this.lblIndustry.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIndustry.Location = new System.Drawing.Point(822, 18);
+            this.lblIndustry.Name = "lblIndustry";
+            this.lblIndustry.Size = new System.Drawing.Size(56, 13);
+            this.lblIndustry.TabIndex = 22;
+            this.lblIndustry.Text = "Industry:";
+            // 
+            // btnHighlight
+            // 
+            this.btnHighlight.Location = new System.Drawing.Point(1050, 10);
+            this.btnHighlight.Name = "btnHighlight";
+            this.btnHighlight.Size = new System.Drawing.Size(57, 23);
+            this.btnHighlight.TabIndex = 23;
+            this.btnHighlight.TabStop = false;
+            this.btnHighlight.Text = "Highlight";
+            this.btnHighlight.UseVisualStyleBackColor = true;
+            this.btnHighlight.Click += new System.EventHandler(this.btnHighlight_Click);
+            // 
+            // btnHighlightAll
+            // 
+            this.btnHighlightAll.Location = new System.Drawing.Point(595, 10);
+            this.btnHighlightAll.Name = "btnHighlightAll";
+            this.btnHighlightAll.Size = new System.Drawing.Size(57, 23);
+            this.btnHighlightAll.TabIndex = 26;
+            this.btnHighlightAll.TabStop = false;
+            this.btnHighlightAll.Text = "Highlight";
+            this.btnHighlightAll.UseVisualStyleBackColor = true;
+            this.btnHighlightAll.Click += new System.EventHandler(this.btnHighlightAll_Click);
+            // 
+            // lblIndustryAll
+            // 
+            this.lblIndustryAll.AutoSize = true;
+            this.lblIndustryAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIndustryAll.Location = new System.Drawing.Point(367, 18);
+            this.lblIndustryAll.Name = "lblIndustryAll";
+            this.lblIndustryAll.Size = new System.Drawing.Size(56, 13);
+            this.lblIndustryAll.TabIndex = 25;
+            this.lblIndustryAll.Text = "Industry:";
+            // 
+            // ddlIndustryAll
+            // 
+            this.ddlIndustryAll.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlIndustryAll.FormattingEnabled = true;
+            this.ddlIndustryAll.Items.AddRange(new object[] {
+            "Consumer Discretionary",
+            "Consumer Staples",
+            "Energy",
+            "Financials",
+            "Health Care",
+            "Industrials",
+            "Information Technology",
+            "Materials",
+            "Telecommunication Services",
+            "Utilities"});
+            this.ddlIndustryAll.Location = new System.Drawing.Point(429, 12);
+            this.ddlIndustryAll.Name = "ddlIndustryAll";
+            this.ddlIndustryAll.Size = new System.Drawing.Size(160, 21);
+            this.ddlIndustryAll.TabIndex = 24;
+            // 
+            // btnCurrentIndustryPercentage
+            // 
+            this.btnCurrentIndustryPercentage.Location = new System.Drawing.Point(1100, 331);
+            this.btnCurrentIndustryPercentage.Name = "btnCurrentIndustryPercentage";
+            this.btnCurrentIndustryPercentage.Size = new System.Drawing.Size(112, 23);
+            this.btnCurrentIndustryPercentage.TabIndex = 27;
+            this.btnCurrentIndustryPercentage.Text = "Show Percentages";
+            this.btnCurrentIndustryPercentage.UseVisualStyleBackColor = true;
+            this.btnCurrentIndustryPercentage.Click += new System.EventHandler(this.btnCurrentIndustryPercentage_Click);
+            // 
+            // btnAllIndustryPercentages
+            // 
+            this.btnAllIndustryPercentages.Location = new System.Drawing.Point(540, 331);
+            this.btnAllIndustryPercentages.Name = "btnAllIndustryPercentages";
+            this.btnAllIndustryPercentages.Size = new System.Drawing.Size(112, 23);
+            this.btnAllIndustryPercentages.TabIndex = 28;
+            this.btnAllIndustryPercentages.Text = "Show Percentages";
+            this.btnAllIndustryPercentages.UseVisualStyleBackColor = true;
+            this.btnAllIndustryPercentages.Click += new System.EventHandler(this.btnAllIndustryPercentages_Click);
+            // 
+            // txtSearchSymbol
+            // 
+            this.txtSearchSymbol.Location = new System.Drawing.Point(994, 333);
+            this.txtSearchSymbol.Name = "txtSearchSymbol";
+            this.txtSearchSymbol.Size = new System.Drawing.Size(100, 20);
+            this.txtSearchSymbol.TabIndex = 29;
+            this.txtSearchSymbol.TextChanged += new System.EventHandler(this.txtSearchSymbol_TextChanged);
+            // 
+            // lblSearchSymbol
+            // 
+            this.lblSearchSymbol.AutoSize = true;
+            this.lblSearchSymbol.Location = new System.Drawing.Point(907, 338);
+            this.lblSearchSymbol.Name = "lblSearchSymbol";
+            this.lblSearchSymbol.Size = new System.Drawing.Size(81, 13);
+            this.lblSearchSymbol.TabIndex = 30;
+            this.lblSearchSymbol.Text = "Search Symbol:";
+            // 
+            // lblSearchAllSymbol
+            // 
+            this.lblSearchAllSymbol.AutoSize = true;
+            this.lblSearchAllSymbol.Location = new System.Drawing.Point(347, 338);
+            this.lblSearchAllSymbol.Name = "lblSearchAllSymbol";
+            this.lblSearchAllSymbol.Size = new System.Drawing.Size(81, 13);
+            this.lblSearchAllSymbol.TabIndex = 32;
+            this.lblSearchAllSymbol.Text = "Search Symbol:";
+            // 
+            // txtSearchAllSymbol
+            // 
+            this.txtSearchAllSymbol.Location = new System.Drawing.Point(434, 333);
+            this.txtSearchAllSymbol.Name = "txtSearchAllSymbol";
+            this.txtSearchAllSymbol.Size = new System.Drawing.Size(100, 20);
+            this.txtSearchAllSymbol.TabIndex = 31;
+            this.txtSearchAllSymbol.TextChanged += new System.EventHandler(this.txtSearchAllSymbol_TextChanged);
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -247,6 +407,18 @@
         private System.Windows.Forms.Label lblTotalAllDividends;
         private System.Windows.Forms.Button btnDividendPrice;
         private System.Windows.Forms.Button btnGetSharePrice;
+        private System.Windows.Forms.ComboBox ddlIndustry;
+        private System.Windows.Forms.Button btnHighlight;
+        private System.Windows.Forms.Label lblIndustry;
+        private System.Windows.Forms.Button btnHighlightAll;
+        private System.Windows.Forms.Label lblIndustryAll;
+        private System.Windows.Forms.ComboBox ddlIndustryAll;
+        private System.Windows.Forms.Button btnCurrentIndustryPercentage;
+        private System.Windows.Forms.Button btnAllIndustryPercentages;
+        private System.Windows.Forms.TextBox txtSearchSymbol;
+        private System.Windows.Forms.Label lblSearchAllSymbol;
+        private System.Windows.Forms.TextBox txtSearchAllSymbol;
+        private System.Windows.Forms.Label lblSearchSymbol;
     }
 }
 

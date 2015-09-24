@@ -87,6 +87,8 @@ namespace DividendDreams
 
         private void MainMenu_Load(object sender, EventArgs e)
         {
+            ddlIndustry.SelectedIndex = 0;
+            ddlIndustryAll.SelectedIndex = 0;
             LoadDividendStocks();
         }
 
@@ -159,6 +161,113 @@ namespace DividendDreams
         private void btnDividendPrice_Click(object sender, EventArgs e)
         {
             GetDividendPrice(lbCurrentDividends);
+        }
+
+        private void btnHighlight_Click(object sender, EventArgs e)
+        {
+            Highlight(lbCurrentDividends, ddlIndustry, lblTotalPortfolioDividends);
+        }
+
+        public void SearchSymbol(TextBox tb, ListBox lb)
+        {
+            lb.ClearSelected();
+            for (int i = 0; i < lb.Items.Count; i++)
+            {
+                DataRowView drv = lb.Items[i] as DataRowView;
+                if (drv["symbolName"].ToString().Contains(tb.Text.ToUpper()))
+                {
+                    lb.SelectedIndices.Add(i);
+                }
+            }
+            //MessageBox.Show("");
+        }
+
+        public void Highlight(ListBox lb, ComboBox ddl, Label lbl)
+        {
+            lb.ClearSelected();
+            decimal count = 0;
+            decimal percentage = Convert.ToDecimal(lbl.Text);
+            for (int i = 0; i < lb.Items.Count; i++)
+            {
+                DataRowView drv = lb.Items[i] as DataRowView;
+                if (drv["symbolName"].ToString().Contains(ddl.Text))
+                {
+                    count++;
+                    lb.SelectedIndices.Add(i);
+                }
+            }
+            percentage = (count / percentage) * 100;
+            MessageBox.Show(ddl.Text + ": " + Math.Round(percentage, 2) + "%");
+        }
+
+        public void ShowIndustryPercentages(ListBox lb, Label lbl)
+        {
+            decimal portfolioCnt = Convert.ToDecimal(lbl.Text);
+            decimal percentage = 0;
+            List<string> lstIndustries = new List<string>() {"Consumer Discretionary", "Consumer Staples", "Energy", "Financials", "Health Care", "Industrials", "Information Technology", 
+                                                            "Materials", "Telecommunication Services", "Utilities" };
+            List<decimal> count = new List<decimal>();
+            decimal cnt = 0;
+            for (int i = 0; i < lstIndustries.Count; i++)
+            {
+                for (int a = 0; a < lb.Items.Count; a++)
+                {
+                    DataRowView drv = lb.Items[a] as DataRowView;
+                    if (drv["symbolName"].ToString().Contains(lstIndustries[i].ToString()))
+                    {
+                        cnt++;
+                    }
+                }
+                percentage = cnt == 0 ? 0 : (cnt / portfolioCnt) * 100;
+                count.Add(percentage);
+                cnt = 0;
+            }
+            string msg = "";
+            for (int i = 0; i < lstIndustries.Count; i++)
+            {
+                msg += lstIndustries[i] + ": " + Math.Round(count[i], 2) + "%" + "\n\n";
+            }
+            msg = msg.Substring(0, msg.Length - 2);
+            MessageBox.Show(msg);
+        }
+
+        private void btnHighlightAll_Click(object sender, EventArgs e)
+        {
+            Highlight(lbAllDividends, ddlIndustryAll, lblTotalAllDividends);
+        }
+
+        private void btnCurrentIndustryPercentage_Click(object sender, EventArgs e)
+        {
+            ShowIndustryPercentages(lbCurrentDividends, lblTotalPortfolioDividends);
+        }
+
+        private void btnAllIndustryPercentages_Click(object sender, EventArgs e)
+        {
+            ShowIndustryPercentages(lbAllDividends, lblTotalAllDividends);
+        }
+
+        private void txtSearchSymbol_TextChanged(object sender, EventArgs e)
+        {
+            if (txtSearchSymbol.Text != "")
+            {
+                SearchSymbol(txtSearchSymbol, lbCurrentDividends);
+            }
+            else
+            {
+                lbCurrentDividends.ClearSelected();
+            }
+        }
+
+        private void txtSearchAllSymbol_TextChanged(object sender, EventArgs e)
+        {
+            if (txtSearchAllSymbol.Text != "")
+            {
+                SearchSymbol(txtSearchAllSymbol, lbAllDividends);
+            }
+            else
+            {
+                lbAllDividends.ClearSelected();
+            }
         }
     }
 }

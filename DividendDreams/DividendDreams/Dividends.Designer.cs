@@ -264,6 +264,7 @@
             this.ddlSharePurchaseDate.Name = "ddlSharePurchaseDate";
             this.ddlSharePurchaseDate.Size = new System.Drawing.Size(210, 21);
             this.ddlSharePurchaseDate.TabIndex = 6;
+            this.ddlSharePurchaseDate.TabStop = false;
             this.ddlSharePurchaseDate.SelectedIndexChanged += new System.EventHandler(this.ddlSharePurchaseDate_SelectedIndexChanged);
             // 
             // lblSharePurchaseDate
@@ -345,7 +346,7 @@
             this.ddlIndustry.Location = new System.Drawing.Point(107, 47);
             this.ddlIndustry.Name = "ddlIndustry";
             this.ddlIndustry.Size = new System.Drawing.Size(210, 21);
-            this.ddlIndustry.TabIndex = 19;
+            this.ddlIndustry.TabIndex = 2;
             // 
             // Dividends
             // 
