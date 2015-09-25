@@ -44,10 +44,12 @@ namespace DividendDreams
 
         public void CalculateResults()
         {
+            decimal dividendCount = 0;
             decimal DividendStockValue = 0;
             decimal YearDiv = 0;
             decimal QuarterDiv = 0;
             decimal MonthlyDiv = 0;
+            decimal DividendTotalPercentage = 0;
             DataTable dt = DividendStocks.GetCurrentDividends();
             for (int i = 0; i < dt.Rows.Count; i++)
             {
@@ -64,11 +66,13 @@ namespace DividendDreams
                     YearDiv -= (ShareNum * AnnDiv);
                     DividendStockValue -= (ShareNum * purchaseprice);
                 }
-
+                dividendCount++;
+                DividendTotalPercentage += Convert.ToDecimal(dt.Rows[i]["dividendpercent"]);
             }
+            DividendTotalPercentage = DividendTotalPercentage / dividendCount;
             QuarterDiv = (YearDiv / 4);
             MonthlyDiv = (YearDiv / 12);
-            MessageBox.Show("Portfolio Value: $" + Math.Round(DividendStockValue, 2) + "\n\n" + "Annual Dividend: $" + Math.Round(YearDiv, 2) + "\n\n" + "Quarterly Dividend: $" + Math.Round(QuarterDiv, 2) + "\n\n" + "Monthly Dividend: $" + Math.Round(MonthlyDiv, 2));
+            MessageBox.Show("Portfolio Value: $" + Math.Round(DividendStockValue, 2) + "\n\n" + "Annual Dividend: $" + Math.Round(YearDiv, 2) + "\n\n" + "Quarterly Dividend: $" + Math.Round(QuarterDiv, 2) + "\n\n" + "Monthly Dividend: $" + Math.Round(MonthlyDiv, 2) + "\n\n" + "Total Dividend: " + Math.Round(DividendTotalPercentage, 2) + "%");
         }
 
         public void LoadCurrentDividends()
