@@ -141,6 +141,15 @@ namespace DividendDreams
             }
         }
 
+
+        private void lbAllDividends_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (lbAllDividends.SelectedIndex != -1)
+            {
+                OpenDividends(true, lbAllDividends.SelectedValue.ToString());
+            }
+        }
+
         public void GetDividendPrice(ListBox lb)
         {
             decimal TotalDividendPrice = 0;

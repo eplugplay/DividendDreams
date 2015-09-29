@@ -94,6 +94,7 @@
             this.lbAllDividends.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.lbAllDividends.Size = new System.Drawing.Size(736, 289);
             this.lbAllDividends.TabIndex = 1;
+            this.lbAllDividends.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbAllDividends_MouseDoubleClick);
             // 
             // lbCurrentDividends
             // 
