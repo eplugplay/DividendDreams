@@ -155,6 +155,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.ClientSize = new System.Drawing.Size(443, 148);
             this.Controls.Add(this.gpShares);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
