@@ -114,6 +114,7 @@
             // 
             // gpDividendStocks
             // 
+            this.gpDividendStocks.BackColor = System.Drawing.Color.CornflowerBlue;
             this.gpDividendStocks.Controls.Add(this.lblSearchAllSymbol);
             this.gpDividendStocks.Controls.Add(this.txtSearchAllSymbol);
             this.gpDividendStocks.Controls.Add(this.lblSearchSymbol);
@@ -155,6 +156,7 @@
             // 
             // txtSearchAllSymbol
             // 
+            this.txtSearchAllSymbol.BackColor = System.Drawing.Color.AliceBlue;
             this.txtSearchAllSymbol.Location = new System.Drawing.Point(525, 334);
             this.txtSearchAllSymbol.Name = "txtSearchAllSymbol";
             this.txtSearchAllSymbol.Size = new System.Drawing.Size(100, 20);
@@ -172,6 +174,7 @@
             // 
             // txtSearchSymbol
             // 
+            this.txtSearchSymbol.BackColor = System.Drawing.Color.AliceBlue;
             this.txtSearchSymbol.Location = new System.Drawing.Point(1208, 334);
             this.txtSearchSymbol.Name = "txtSearchSymbol";
             this.txtSearchSymbol.Size = new System.Drawing.Size(100, 20);
@@ -380,7 +383,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.BackColor = System.Drawing.Color.CornflowerBlue;
             this.ClientSize = new System.Drawing.Size(1571, 406);
             this.Controls.Add(this.gpDividendStocks);
             this.Controls.Add(this.menuStrip1);
