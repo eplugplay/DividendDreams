@@ -133,21 +133,6 @@ namespace DividendDreams
                 MessageBox.Show("Please select Industry.");
                 return false;
             }
-            //if (txtSharePrice.Text == "")
-            //{
-            //    MessageBox.Show("Please enter share price.");
-            //    return false;
-            //}
-            //try
-            //{
-            //    decimal.Parse(txtSharePrice.Text);
-            //}
-            //catch
-            //{
-            //    MessageBox.Show("Please enter numbers only.");
-            //    txtSharePrice.Focus();
-            //    return false;
-            //}
             if (txtAnnualDividend.Text == "")
             {
                 MessageBox.Show("Please enter annual dividend.");
@@ -163,21 +148,6 @@ namespace DividendDreams
                 txtAnnualDividend.Focus();
                 return false;
             }
-            //if (txtNumberOfShares.Text == "")
-            //{
-            //    MessageBox.Show("Please enter number of shares.");
-            //    return false;
-            //}
-            //try
-            //{
-            //    int.Parse(txtNumberOfShares.Text);
-            //}
-            //catch
-            //{
-            //    MessageBox.Show("Please enter numbers only.");
-            //    txtNumberOfShares.Focus();
-            //    return false;
-            //}
             return true;
         }
 
@@ -185,7 +155,16 @@ namespace DividendDreams
         {
             if (txtNumberOfShares.Text != "")
             {
-                decimal TotalSharePrice = Convert.ToDecimal(txtSharePrice.Text) * Convert.ToDecimal(txtNumberOfShares.Text);
+                decimal transactionPrice = (decimal)9.99;
+                decimal TotalSharePrice = 0;
+                if (ddlSharePurchaseDate.Text.ToLower().Contains("bought"))
+                {
+                    TotalSharePrice = (Convert.ToDecimal(txtNumberOfShares.Text) * Convert.ToDecimal(txtSharePrice.Text)) + transactionPrice;
+                }
+                else
+                {
+                    TotalSharePrice = (Convert.ToDecimal(txtNumberOfShares.Text) * Convert.ToDecimal(txtSharePrice.Text)) - transactionPrice;
+                }
                 MessageBox.Show("$" + Math.Round(TotalSharePrice, 2).ToString());
             }
         }
@@ -252,10 +231,14 @@ namespace DividendDreams
             {
                 if (MessageBox.Show("Delete?", "Delete?", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
+                    PleaseWait pw = new PleaseWait();
+                    pw.Show();
+                    Application.DoEvents();
                     DividendStocks.DeleteShare(ddlSharePurchaseDate.SelectedValue.ToString());
                     LoadPurchaseDates();
                     LoadPurchaseData();
                     Program.MainMenu.LoadCurrentDividends();
+                    pw.Close();
                 }
             }
         }

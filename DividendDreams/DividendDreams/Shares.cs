@@ -92,7 +92,18 @@ namespace DividendDreams
 
         public void GetSharePrice()
         {
-            decimal TotalSharePrice = Convert.ToDecimal(txtPurchasePrice.Text) * Convert.ToDecimal(txtNumberOfShares.Text);
+            decimal transactionPrice = (decimal)9.99;
+            decimal TotalSharePrice = 0;
+            if (ddlAction.Text.ToLower().Contains("bought"))
+            {
+                TotalSharePrice = (Convert.ToDecimal(txtNumberOfShares.Text) * Convert.ToDecimal(txtPurchasePrice.Text)) + transactionPrice;
+            }
+            else
+            {
+                TotalSharePrice = (Convert.ToDecimal(txtNumberOfShares.Text) * Convert.ToDecimal(txtPurchasePrice.Text)) - transactionPrice;
+            }
+            //decimal transactionPrice = (decimal)9.99;
+            //decimal TotalSharePrice = (Convert.ToDecimal(txtNumberOfShares.Text) * Convert.ToDecimal(txtPurchasePrice.Text)) + transactionPrice;
             MessageBox.Show("$" + Math.Round(TotalSharePrice, 2).ToString());
         }
 

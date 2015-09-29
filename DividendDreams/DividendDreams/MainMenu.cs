@@ -50,21 +50,23 @@ namespace DividendDreams
             decimal QuarterDiv = 0;
             decimal MonthlyDiv = 0;
             decimal DividendTotalPercentage = 0;
+            decimal TransactionFee = (decimal)9.99;
             DataTable dt = DividendStocks.GetCurrentDividends();
             for (int i = 0; i < dt.Rows.Count; i++)
             {
+                string id = dt.Rows[i]["id"].ToString();
                 decimal ShareNum = Convert.ToDecimal(dt.Rows[i]["numberofshares"]);
                 decimal AnnDiv = Convert.ToDecimal(dt.Rows[i]["annDividend"]);
                 decimal purchaseprice = Convert.ToDecimal(dt.Rows[i]["purchaseprice"]);
                 if (dt.Rows[i]["purchaseaction"].ToString() == "bought")
                 {
                     YearDiv += (ShareNum * AnnDiv);
-                    DividendStockValue += (ShareNum * purchaseprice);
+                    DividendStockValue += (ShareNum * purchaseprice) + TransactionFee;
                 }
                 else
                 {
                     YearDiv -= (ShareNum * AnnDiv);
-                    DividendStockValue -= (ShareNum * purchaseprice);
+                    DividendStockValue -= (ShareNum * purchaseprice + TransactionFee) + TransactionFee;
                 }
                 dividendCount++;
                 DividendTotalPercentage += Convert.ToDecimal(dt.Rows[i]["dividendpercent"]);

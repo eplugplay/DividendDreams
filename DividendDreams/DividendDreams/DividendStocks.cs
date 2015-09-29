@@ -21,7 +21,7 @@ namespace DividendDreams
                     cnn.Open();
                     using (var cmd = cnn.CreateCommand())
                     {
-                        cmd.CommandText = "SELECT ds.anndividend, dp.numberofshares, dp.purchaseprice, dp.purchaseaction, ds.dividendpercent FROM dividendstocks ds JOIN dividendprice dp ON ds.id=dp.dividendstockid WHERE ds.stockactive='true' order by ds.id";
+                        cmd.CommandText = "SELECT ds.id, ds.anndividend, dp.numberofshares, dp.purchaseprice, dp.purchaseaction, ds.dividendpercent FROM dividendstocks ds JOIN dividendprice dp ON ds.id=dp.dividendstockid WHERE ds.stockactive='true' order by ds.id";
                         MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                         da.Fill(dt);
                     }
@@ -73,6 +73,7 @@ namespace DividendDreams
         public static void GetTotalSharePrice(string dividendstockid, out decimal totalPrice)
         {
             DataTable dt = new DataTable();
+            decimal transactionPrice = (decimal)9.99;
             totalPrice = 0;
             int numShares = 0;
             decimal price = 0;
@@ -97,13 +98,13 @@ namespace DividendDreams
                         {
                             numShares = Convert.ToInt32(dt.Rows[i]["numberofshares"]);
                             price = Convert.ToDecimal(dt.Rows[i]["purchaseprice"]);
-                            totalPrice += ((decimal)numShares * price);
+                            totalPrice += ((decimal)numShares * price) + transactionPrice;
                         }
                         else
                         {
                             numShares = Convert.ToInt32(dt.Rows[i]["numberofshares"]);
                             price = Convert.ToDecimal(dt.Rows[i]["purchaseprice"]);
-                            totalPrice -= ((decimal)numShares * price);
+                            totalPrice -= ((decimal)numShares * price) + transactionPrice;
                         }
                     }
                 }
@@ -134,7 +135,7 @@ namespace DividendDreams
                     cnn.Open();
                     using (var cmd = cnn.CreateCommand())
                     {
-                        cmd.CommandText = "SELECT purchaseprice, numberofshares FROM dividendprice WHERE dividendstockid=@dividendstockid AND purchaseaction='bought'";
+                        cmd.CommandText = "SELECT purchaseprice, numberofshares, purchaseaction FROM dividendprice WHERE dividendstockid=@dividendstockid";
                         cmd.Parameters.AddWithValue("dividendstockid", dividendstockid);
                         MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                         da.Fill(dt);
@@ -145,11 +146,18 @@ namespace DividendDreams
                     {
                         numShares = Convert.ToInt32(dt.Rows[i]["numberofshares"]);
                         yield = GetDividendYield(dividendstockid, cnn);
-                        totalDividendPrice += ((decimal)numShares * yield);
+                        if (dt.Rows[i]["purchaseaction"].ToString() == "bought")
+                        {
+                            totalDividendPrice += ((decimal)numShares * yield);
+                        }
+                        else
+                        {
+                            totalDividendPrice -= ((decimal)numShares * yield);
+                        }
                     }
                     if (drip)
                     {
-                        totalDividendPrice -= (dripCost * numShares) + dripinitial;
+                        totalDividendPrice -= (dripCost * (decimal)numShares) + dripinitial;
                     }
                 }
                 quarterlyDividendPrice = totalDividendPrice / 3;
