@@ -34,6 +34,18 @@
             this.lbAllDividends = new System.Windows.Forms.ListBox();
             this.lbCurrentDividends = new System.Windows.Forms.ListBox();
             this.gpDividendStocks = new System.Windows.Forms.GroupBox();
+            this.lblSearchAllSymbol = new System.Windows.Forms.Label();
+            this.txtSearchAllSymbol = new System.Windows.Forms.TextBox();
+            this.lblSearchSymbol = new System.Windows.Forms.Label();
+            this.txtSearchSymbol = new System.Windows.Forms.TextBox();
+            this.btnAllIndustryPercentages = new System.Windows.Forms.Button();
+            this.btnCurrentIndustryPercentage = new System.Windows.Forms.Button();
+            this.btnHighlightAll = new System.Windows.Forms.Button();
+            this.lblIndustryAll = new System.Windows.Forms.Label();
+            this.ddlIndustryAll = new System.Windows.Forms.ComboBox();
+            this.btnHighlight = new System.Windows.Forms.Button();
+            this.lblIndustry = new System.Windows.Forms.Label();
+            this.ddlIndustry = new System.Windows.Forms.ComboBox();
             this.btnDividendPrice = new System.Windows.Forms.Button();
             this.btnGetSharePrice = new System.Windows.Forms.Button();
             this.lblTotalAllDividends = new System.Windows.Forms.Label();
@@ -43,18 +55,6 @@
             this.btnCalculate = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.ddlIndustry = new System.Windows.Forms.ComboBox();
-            this.lblIndustry = new System.Windows.Forms.Label();
-            this.btnHighlight = new System.Windows.Forms.Button();
-            this.btnHighlightAll = new System.Windows.Forms.Button();
-            this.lblIndustryAll = new System.Windows.Forms.Label();
-            this.ddlIndustryAll = new System.Windows.Forms.ComboBox();
-            this.btnCurrentIndustryPercentage = new System.Windows.Forms.Button();
-            this.btnAllIndustryPercentages = new System.Windows.Forms.Button();
-            this.txtSearchSymbol = new System.Windows.Forms.TextBox();
-            this.lblSearchSymbol = new System.Windows.Forms.Label();
-            this.lblSearchAllSymbol = new System.Windows.Forms.Label();
-            this.txtSearchAllSymbol = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.gpDividendStocks.SuspendLayout();
             this.SuspendLayout();
@@ -65,7 +65,7 @@
             this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1373, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1571, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -89,10 +89,10 @@
             this.lbAllDividends.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbAllDividends.FormattingEnabled = true;
             this.lbAllDividends.ItemHeight = 15;
-            this.lbAllDividends.Location = new System.Drawing.Point(16, 36);
+            this.lbAllDividends.Location = new System.Drawing.Point(6, 39);
             this.lbAllDividends.Name = "lbAllDividends";
             this.lbAllDividends.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lbAllDividends.Size = new System.Drawing.Size(636, 289);
+            this.lbAllDividends.Size = new System.Drawing.Size(736, 289);
             this.lbAllDividends.TabIndex = 1;
             // 
             // lbCurrentDividends
@@ -100,10 +100,10 @@
             this.lbCurrentDividends.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbCurrentDividends.FormattingEnabled = true;
             this.lbCurrentDividends.ItemHeight = 15;
-            this.lbCurrentDividends.Location = new System.Drawing.Point(691, 36);
+            this.lbCurrentDividends.Location = new System.Drawing.Point(805, 39);
             this.lbCurrentDividends.Name = "lbCurrentDividends";
             this.lbCurrentDividends.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lbCurrentDividends.Size = new System.Drawing.Size(636, 289);
+            this.lbCurrentDividends.Size = new System.Drawing.Size(736, 289);
             this.lbCurrentDividends.TabIndex = 2;
             this.lbCurrentDividends.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbCurrentDividends_MouseDoubleClick);
             // 
@@ -134,147 +134,68 @@
             this.gpDividendStocks.Controls.Add(this.lbCurrentDividends);
             this.gpDividendStocks.Location = new System.Drawing.Point(12, 37);
             this.gpDividendStocks.Name = "gpDividendStocks";
-            this.gpDividendStocks.Size = new System.Drawing.Size(1348, 363);
+            this.gpDividendStocks.Size = new System.Drawing.Size(1547, 366);
             this.gpDividendStocks.TabIndex = 3;
             this.gpDividendStocks.TabStop = false;
             this.gpDividendStocks.Text = "Dividend Stocks";
             // 
-            // btnDividendPrice
+            // lblSearchAllSymbol
             // 
-            this.btnDividendPrice.Location = new System.Drawing.Point(1218, 10);
-            this.btnDividendPrice.Name = "btnDividendPrice";
-            this.btnDividendPrice.Size = new System.Drawing.Size(109, 23);
-            this.btnDividendPrice.TabIndex = 20;
-            this.btnDividendPrice.TabStop = false;
-            this.btnDividendPrice.Text = "Get Dividend Price";
-            this.btnDividendPrice.UseVisualStyleBackColor = true;
-            this.btnDividendPrice.Click += new System.EventHandler(this.btnDividendPrice_Click);
+            this.lblSearchAllSymbol.AutoSize = true;
+            this.lblSearchAllSymbol.Location = new System.Drawing.Point(438, 337);
+            this.lblSearchAllSymbol.Name = "lblSearchAllSymbol";
+            this.lblSearchAllSymbol.Size = new System.Drawing.Size(81, 13);
+            this.lblSearchAllSymbol.TabIndex = 32;
+            this.lblSearchAllSymbol.Text = "Search Symbol:";
             // 
-            // btnGetSharePrice
+            // txtSearchAllSymbol
             // 
-            this.btnGetSharePrice.Location = new System.Drawing.Point(1137, 10);
-            this.btnGetSharePrice.Name = "btnGetSharePrice";
-            this.btnGetSharePrice.Size = new System.Drawing.Size(75, 23);
-            this.btnGetSharePrice.TabIndex = 19;
-            this.btnGetSharePrice.TabStop = false;
-            this.btnGetSharePrice.Text = "Get Price";
-            this.btnGetSharePrice.UseVisualStyleBackColor = true;
-            this.btnGetSharePrice.Click += new System.EventHandler(this.btnGetSharePrice_Click);
+            this.txtSearchAllSymbol.Location = new System.Drawing.Point(525, 334);
+            this.txtSearchAllSymbol.Name = "txtSearchAllSymbol";
+            this.txtSearchAllSymbol.Size = new System.Drawing.Size(100, 20);
+            this.txtSearchAllSymbol.TabIndex = 31;
+            this.txtSearchAllSymbol.TextChanged += new System.EventHandler(this.txtSearchAllSymbol_TextChanged);
             // 
-            // lblTotalAllDividends
+            // lblSearchSymbol
             // 
-            this.lblTotalAllDividends.AutoSize = true;
-            this.lblTotalAllDividends.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalAllDividends.Location = new System.Drawing.Point(112, 18);
-            this.lblTotalAllDividends.Name = "lblTotalAllDividends";
-            this.lblTotalAllDividends.Size = new System.Drawing.Size(14, 13);
-            this.lblTotalAllDividends.TabIndex = 9;
-            this.lblTotalAllDividends.Text = "0";
+            this.lblSearchSymbol.AutoSize = true;
+            this.lblSearchSymbol.Location = new System.Drawing.Point(1121, 339);
+            this.lblSearchSymbol.Name = "lblSearchSymbol";
+            this.lblSearchSymbol.Size = new System.Drawing.Size(81, 13);
+            this.lblSearchSymbol.TabIndex = 30;
+            this.lblSearchSymbol.Text = "Search Symbol:";
             // 
-            // lblTotalPortfolioDividends
+            // txtSearchSymbol
             // 
-            this.lblTotalPortfolioDividends.AutoSize = true;
-            this.lblTotalPortfolioDividends.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalPortfolioDividends.Location = new System.Drawing.Point(748, 20);
-            this.lblTotalPortfolioDividends.Name = "lblTotalPortfolioDividends";
-            this.lblTotalPortfolioDividends.Size = new System.Drawing.Size(14, 13);
-            this.lblTotalPortfolioDividends.TabIndex = 8;
-            this.lblTotalPortfolioDividends.Text = "0";
+            this.txtSearchSymbol.Location = new System.Drawing.Point(1208, 334);
+            this.txtSearchSymbol.Name = "txtSearchSymbol";
+            this.txtSearchSymbol.Size = new System.Drawing.Size(100, 20);
+            this.txtSearchSymbol.TabIndex = 29;
+            this.txtSearchSymbol.TextChanged += new System.EventHandler(this.txtSearchSymbol_TextChanged);
             // 
-            // label2
+            // btnAllIndustryPercentages
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(13, 18);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(97, 13);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Not In Portfolio:";
+            this.btnAllIndustryPercentages.Location = new System.Drawing.Point(631, 332);
+            this.btnAllIndustryPercentages.Name = "btnAllIndustryPercentages";
+            this.btnAllIndustryPercentages.Size = new System.Drawing.Size(112, 23);
+            this.btnAllIndustryPercentages.TabIndex = 28;
+            this.btnAllIndustryPercentages.Text = "Show Percentages";
+            this.btnAllIndustryPercentages.UseVisualStyleBackColor = true;
+            this.btnAllIndustryPercentages.Click += new System.EventHandler(this.btnAllIndustryPercentages_Click);
             // 
-            // label1
+            // btnCurrentIndustryPercentage
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(688, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 13);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Portfolio:";
-            // 
-            // btnCalculate
-            // 
-            this.btnCalculate.Location = new System.Drawing.Point(1215, 331);
-            this.btnCalculate.Name = "btnCalculate";
-            this.btnCalculate.Size = new System.Drawing.Size(112, 23);
-            this.btnCalculate.TabIndex = 5;
-            this.btnCalculate.Text = "Calculate Results";
-            this.btnCalculate.UseVisualStyleBackColor = true;
-            this.btnCalculate.Click += new System.EventHandler(this.btnCalculate_Click);
-            // 
-            // btnRemove
-            // 
-            this.btnRemove.Location = new System.Drawing.Point(658, 229);
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(27, 23);
-            this.btnRemove.TabIndex = 4;
-            this.btnRemove.Text = "←";
-            this.btnRemove.UseVisualStyleBackColor = true;
-            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Location = new System.Drawing.Point(658, 86);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(27, 23);
-            this.btnAdd.TabIndex = 3;
-            this.btnAdd.Text = "→";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // ddlIndustry
-            // 
-            this.ddlIndustry.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ddlIndustry.FormattingEnabled = true;
-            this.ddlIndustry.Items.AddRange(new object[] {
-            "Consumer Discretionary",
-            "Consumer Staples",
-            "Energy",
-            "Financials",
-            "Health Care",
-            "Industrials",
-            "Information Technology",
-            "Materials",
-            "Telecommunication Services",
-            "Utilities"});
-            this.ddlIndustry.Location = new System.Drawing.Point(884, 12);
-            this.ddlIndustry.Name = "ddlIndustry";
-            this.ddlIndustry.Size = new System.Drawing.Size(160, 21);
-            this.ddlIndustry.TabIndex = 21;
-            // 
-            // lblIndustry
-            // 
-            this.lblIndustry.AutoSize = true;
-            this.lblIndustry.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIndustry.Location = new System.Drawing.Point(822, 18);
-            this.lblIndustry.Name = "lblIndustry";
-            this.lblIndustry.Size = new System.Drawing.Size(56, 13);
-            this.lblIndustry.TabIndex = 22;
-            this.lblIndustry.Text = "Industry:";
-            // 
-            // btnHighlight
-            // 
-            this.btnHighlight.Location = new System.Drawing.Point(1050, 10);
-            this.btnHighlight.Name = "btnHighlight";
-            this.btnHighlight.Size = new System.Drawing.Size(57, 23);
-            this.btnHighlight.TabIndex = 23;
-            this.btnHighlight.TabStop = false;
-            this.btnHighlight.Text = "Highlight";
-            this.btnHighlight.UseVisualStyleBackColor = true;
-            this.btnHighlight.Click += new System.EventHandler(this.btnHighlight_Click);
+            this.btnCurrentIndustryPercentage.Location = new System.Drawing.Point(1314, 332);
+            this.btnCurrentIndustryPercentage.Name = "btnCurrentIndustryPercentage";
+            this.btnCurrentIndustryPercentage.Size = new System.Drawing.Size(112, 23);
+            this.btnCurrentIndustryPercentage.TabIndex = 27;
+            this.btnCurrentIndustryPercentage.Text = "Show Percentages";
+            this.btnCurrentIndustryPercentage.UseVisualStyleBackColor = true;
+            this.btnCurrentIndustryPercentage.Click += new System.EventHandler(this.btnCurrentIndustryPercentage_Click);
             // 
             // btnHighlightAll
             // 
-            this.btnHighlightAll.Location = new System.Drawing.Point(595, 10);
+            this.btnHighlightAll.Location = new System.Drawing.Point(686, 13);
             this.btnHighlightAll.Name = "btnHighlightAll";
             this.btnHighlightAll.Size = new System.Drawing.Size(57, 23);
             this.btnHighlightAll.TabIndex = 26;
@@ -287,7 +208,7 @@
             // 
             this.lblIndustryAll.AutoSize = true;
             this.lblIndustryAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIndustryAll.Location = new System.Drawing.Point(367, 18);
+            this.lblIndustryAll.Location = new System.Drawing.Point(458, 21);
             this.lblIndustryAll.Name = "lblIndustryAll";
             this.lblIndustryAll.Size = new System.Drawing.Size(56, 13);
             this.lblIndustryAll.TabIndex = 25;
@@ -308,70 +229,149 @@
             "Materials",
             "Telecommunication Services",
             "Utilities"});
-            this.ddlIndustryAll.Location = new System.Drawing.Point(429, 12);
+            this.ddlIndustryAll.Location = new System.Drawing.Point(520, 15);
             this.ddlIndustryAll.Name = "ddlIndustryAll";
             this.ddlIndustryAll.Size = new System.Drawing.Size(160, 21);
             this.ddlIndustryAll.TabIndex = 24;
             // 
-            // btnCurrentIndustryPercentage
+            // btnHighlight
             // 
-            this.btnCurrentIndustryPercentage.Location = new System.Drawing.Point(1100, 331);
-            this.btnCurrentIndustryPercentage.Name = "btnCurrentIndustryPercentage";
-            this.btnCurrentIndustryPercentage.Size = new System.Drawing.Size(112, 23);
-            this.btnCurrentIndustryPercentage.TabIndex = 27;
-            this.btnCurrentIndustryPercentage.Text = "Show Percentages";
-            this.btnCurrentIndustryPercentage.UseVisualStyleBackColor = true;
-            this.btnCurrentIndustryPercentage.Click += new System.EventHandler(this.btnCurrentIndustryPercentage_Click);
+            this.btnHighlight.Location = new System.Drawing.Point(1264, 13);
+            this.btnHighlight.Name = "btnHighlight";
+            this.btnHighlight.Size = new System.Drawing.Size(57, 23);
+            this.btnHighlight.TabIndex = 23;
+            this.btnHighlight.TabStop = false;
+            this.btnHighlight.Text = "Highlight";
+            this.btnHighlight.UseVisualStyleBackColor = true;
+            this.btnHighlight.Click += new System.EventHandler(this.btnHighlight_Click);
             // 
-            // btnAllIndustryPercentages
+            // lblIndustry
             // 
-            this.btnAllIndustryPercentages.Location = new System.Drawing.Point(540, 331);
-            this.btnAllIndustryPercentages.Name = "btnAllIndustryPercentages";
-            this.btnAllIndustryPercentages.Size = new System.Drawing.Size(112, 23);
-            this.btnAllIndustryPercentages.TabIndex = 28;
-            this.btnAllIndustryPercentages.Text = "Show Percentages";
-            this.btnAllIndustryPercentages.UseVisualStyleBackColor = true;
-            this.btnAllIndustryPercentages.Click += new System.EventHandler(this.btnAllIndustryPercentages_Click);
+            this.lblIndustry.AutoSize = true;
+            this.lblIndustry.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIndustry.Location = new System.Drawing.Point(1036, 21);
+            this.lblIndustry.Name = "lblIndustry";
+            this.lblIndustry.Size = new System.Drawing.Size(56, 13);
+            this.lblIndustry.TabIndex = 22;
+            this.lblIndustry.Text = "Industry:";
             // 
-            // txtSearchSymbol
+            // ddlIndustry
             // 
-            this.txtSearchSymbol.Location = new System.Drawing.Point(994, 333);
-            this.txtSearchSymbol.Name = "txtSearchSymbol";
-            this.txtSearchSymbol.Size = new System.Drawing.Size(100, 20);
-            this.txtSearchSymbol.TabIndex = 29;
-            this.txtSearchSymbol.TextChanged += new System.EventHandler(this.txtSearchSymbol_TextChanged);
+            this.ddlIndustry.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlIndustry.FormattingEnabled = true;
+            this.ddlIndustry.Items.AddRange(new object[] {
+            "Consumer Discretionary",
+            "Consumer Staples",
+            "Energy",
+            "Financials",
+            "Health Care",
+            "Industrials",
+            "Information Technology",
+            "Materials",
+            "Telecommunication Services",
+            "Utilities"});
+            this.ddlIndustry.Location = new System.Drawing.Point(1098, 15);
+            this.ddlIndustry.Name = "ddlIndustry";
+            this.ddlIndustry.Size = new System.Drawing.Size(160, 21);
+            this.ddlIndustry.TabIndex = 21;
             // 
-            // lblSearchSymbol
+            // btnDividendPrice
             // 
-            this.lblSearchSymbol.AutoSize = true;
-            this.lblSearchSymbol.Location = new System.Drawing.Point(907, 338);
-            this.lblSearchSymbol.Name = "lblSearchSymbol";
-            this.lblSearchSymbol.Size = new System.Drawing.Size(81, 13);
-            this.lblSearchSymbol.TabIndex = 30;
-            this.lblSearchSymbol.Text = "Search Symbol:";
+            this.btnDividendPrice.Location = new System.Drawing.Point(1432, 13);
+            this.btnDividendPrice.Name = "btnDividendPrice";
+            this.btnDividendPrice.Size = new System.Drawing.Size(109, 23);
+            this.btnDividendPrice.TabIndex = 20;
+            this.btnDividendPrice.TabStop = false;
+            this.btnDividendPrice.Text = "Get Dividend Price";
+            this.btnDividendPrice.UseVisualStyleBackColor = true;
+            this.btnDividendPrice.Click += new System.EventHandler(this.btnDividendPrice_Click);
             // 
-            // lblSearchAllSymbol
+            // btnGetSharePrice
             // 
-            this.lblSearchAllSymbol.AutoSize = true;
-            this.lblSearchAllSymbol.Location = new System.Drawing.Point(347, 338);
-            this.lblSearchAllSymbol.Name = "lblSearchAllSymbol";
-            this.lblSearchAllSymbol.Size = new System.Drawing.Size(81, 13);
-            this.lblSearchAllSymbol.TabIndex = 32;
-            this.lblSearchAllSymbol.Text = "Search Symbol:";
+            this.btnGetSharePrice.Location = new System.Drawing.Point(1351, 13);
+            this.btnGetSharePrice.Name = "btnGetSharePrice";
+            this.btnGetSharePrice.Size = new System.Drawing.Size(75, 23);
+            this.btnGetSharePrice.TabIndex = 19;
+            this.btnGetSharePrice.TabStop = false;
+            this.btnGetSharePrice.Text = "Get Price";
+            this.btnGetSharePrice.UseVisualStyleBackColor = true;
+            this.btnGetSharePrice.Click += new System.EventHandler(this.btnGetSharePrice_Click);
             // 
-            // txtSearchAllSymbol
+            // lblTotalAllDividends
             // 
-            this.txtSearchAllSymbol.Location = new System.Drawing.Point(434, 333);
-            this.txtSearchAllSymbol.Name = "txtSearchAllSymbol";
-            this.txtSearchAllSymbol.Size = new System.Drawing.Size(100, 20);
-            this.txtSearchAllSymbol.TabIndex = 31;
-            this.txtSearchAllSymbol.TextChanged += new System.EventHandler(this.txtSearchAllSymbol_TextChanged);
+            this.lblTotalAllDividends.AutoSize = true;
+            this.lblTotalAllDividends.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalAllDividends.Location = new System.Drawing.Point(102, 18);
+            this.lblTotalAllDividends.Name = "lblTotalAllDividends";
+            this.lblTotalAllDividends.Size = new System.Drawing.Size(14, 13);
+            this.lblTotalAllDividends.TabIndex = 9;
+            this.lblTotalAllDividends.Text = "0";
+            // 
+            // lblTotalPortfolioDividends
+            // 
+            this.lblTotalPortfolioDividends.AutoSize = true;
+            this.lblTotalPortfolioDividends.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalPortfolioDividends.Location = new System.Drawing.Point(962, 23);
+            this.lblTotalPortfolioDividends.Name = "lblTotalPortfolioDividends";
+            this.lblTotalPortfolioDividends.Size = new System.Drawing.Size(14, 13);
+            this.lblTotalPortfolioDividends.TabIndex = 8;
+            this.lblTotalPortfolioDividends.Text = "0";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(3, 18);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(97, 13);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Not In Portfolio:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(902, 23);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(58, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Portfolio:";
+            // 
+            // btnCalculate
+            // 
+            this.btnCalculate.Location = new System.Drawing.Point(1429, 332);
+            this.btnCalculate.Name = "btnCalculate";
+            this.btnCalculate.Size = new System.Drawing.Size(112, 23);
+            this.btnCalculate.TabIndex = 5;
+            this.btnCalculate.Text = "Calculate Results";
+            this.btnCalculate.UseVisualStyleBackColor = true;
+            this.btnCalculate.Click += new System.EventHandler(this.btnCalculate_Click);
+            // 
+            // btnRemove
+            // 
+            this.btnRemove.Location = new System.Drawing.Point(763, 228);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(27, 23);
+            this.btnRemove.TabIndex = 4;
+            this.btnRemove.Text = "←";
+            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(763, 86);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(27, 23);
+            this.btnAdd.TabIndex = 3;
+            this.btnAdd.Text = "→";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1373, 404);
+            this.ClientSize = new System.Drawing.Size(1571, 406);
             this.Controls.Add(this.gpDividendStocks);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;

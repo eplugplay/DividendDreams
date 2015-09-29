@@ -146,8 +146,12 @@ namespace DividendDreams
             decimal TotalDividendPrice = 0;
             decimal QuarterlyDividendPrice = 0;
             decimal MonthlyDividendPrice = 0;
-            DividendStocks.GetDividendPrice(lb.SelectedValue.ToString(), out TotalDividendPrice, out QuarterlyDividendPrice, out MonthlyDividendPrice);
-            MessageBox.Show("Yearly: $" + Math.Round(TotalDividendPrice, 2).ToString() + "\n\n" + "Quarterly: $" + Math.Round(QuarterlyDividendPrice, 2) + "\n\n" + "Monthly: $" + Math.Round(MonthlyDividendPrice, 2));
+            decimal AutoDripCost = 0;
+            decimal OriginalDripCost = 0;
+            bool drip = false;
+            DividendStocks.GetDividendPrice(lb.SelectedValue.ToString(), out TotalDividendPrice, out QuarterlyDividendPrice, out MonthlyDividendPrice, out OriginalDripCost, out AutoDripCost, out drip);
+            string dripMsg = drip == true ? "\n\n Drip Cost: $" + Math.Round(OriginalDripCost, 2) : "";
+            MessageBox.Show("Yearly: $" + Math.Round(TotalDividendPrice, 2).ToString() + "\n\n Quarterly: $" + Math.Round(QuarterlyDividendPrice, 2) + "\n\n Monthly: $" + Math.Round(MonthlyDividendPrice, 2) + dripMsg);
         }
 
         public void GetSharePrice(ListBox lb)
@@ -174,16 +178,21 @@ namespace DividendDreams
 
         public void SearchSymbol(TextBox tb, ListBox lb)
         {
+            bool selectedOne = false;
             lb.ClearSelected();
             for (int i = 0; i < lb.Items.Count; i++)
             {
                 DataRowView drv = lb.Items[i] as DataRowView;
                 if (drv["symbolName"].ToString().Contains(tb.Text.ToUpper()))
                 {
+                    selectedOne = true;
                     lb.SelectedIndices.Add(i);
                 }
             }
-            //MessageBox.Show("");
+            if (!selectedOne)
+            {
+                MessageBox.Show("Not Found");
+            }
         }
 
         public void Highlight(ListBox lb, ComboBox ddl, Label lbl, bool showMsg)

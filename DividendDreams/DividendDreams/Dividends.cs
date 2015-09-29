@@ -29,13 +29,13 @@ namespace DividendDreams
             }
             if (Edit)
             {
-                DividendStocks.UpdateDividendStock(ID, txtSymbol.Text, txtStockName.Text, ddlIndustry.Text, txtAnnualDividend.Text, txtDividendPercent.Text, ddlCapSize.Text);
+                DividendStocks.UpdateDividendStock(ID, txtSymbol.Text, txtStockName.Text, ddlIndustry.Text, txtAnnualDividend.Text, txtDividendPercent.Text, ddlCapSize.Text, txtDripCostInitial.Text, txtDripCost.Text, chkdrip.Checked == true ? "true" : "false", dtpExDividend.Value);
                 Program.MainMenu.LoadDividendStocks();
                 this.Close();
             }
             else
             {
-                DividendStocks.NewDividendStock(txtSymbol.Text, txtStockName.Text, ddlIndustry.Text, txtSharePrice.Text, txtAnnualDividend.Text, txtNumberOfShares.Text, txtDividendPercent.Text, ddlCapSize.Text);
+                DividendStocks.NewDividendStock(txtSymbol.Text, txtStockName.Text, ddlIndustry.Text, txtSharePrice.Text, txtAnnualDividend.Text, txtNumberOfShares.Text, txtDividendPercent.Text, ddlCapSize.Text, txtDripCost.Text, txtDripCostInitial.Text, chkdrip.Checked == true ? "true" : "false", dtpExDividend.Value);
                 Program.MainMenu.LoadDividendStocks();
                 this.Close();
             }
@@ -66,7 +66,13 @@ namespace DividendDreams
             txtAnnualDividend.Text = dt.Rows[0]["anndividend"].ToString();
             txtDividendPercent.Text = dt.Rows[0]["dividendpercent"].ToString();
             ddlCapSize.SelectedIndex = ddlCapSize.FindString(dt.Rows[0]["capsize"].ToString());
-
+            txtDripCostInitial.Text = dt.Rows[0]["dripinitialcost"].ToString();
+            txtDripCost.Text = dt.Rows[0]["dripcost"].ToString();
+            chkdrip.Checked = dt.Rows[0]["drip"].ToString() == "true" ? true : false;
+            if (dt.Rows[0]["exdividend"] != DBNull.Value)
+            {
+                dtpExDividend.Value = Convert.ToDateTime(dt.Rows[0]["exdividend"]);
+            }
             // load purchase dates
             LoadPurchaseDates();
             LoadPurchaseData();
@@ -179,10 +185,20 @@ namespace DividendDreams
         {
             if (txtNumberOfShares.Text != "")
             {
-                decimal TotalDividendPrice = Convert.ToDecimal(txtAnnualDividend.Text) * Convert.ToDecimal(txtNumberOfShares.Text);
+                decimal AutoDripCost = 0;
+                try
+                {
+                    AutoDripCost = (Convert.ToDecimal(txtDripCost.Text) * Convert.ToDecimal(txtNumberOfShares.Text)) + Convert.ToDecimal(txtDripCostInitial.Text);
+                }
+                catch
+                {
+                    AutoDripCost = 0;
+                }
+                decimal TotalDividendPrice = chkdrip.Checked == true ? (Convert.ToDecimal(txtAnnualDividend.Text) * Convert.ToDecimal(txtNumberOfShares.Text) - AutoDripCost) 
+                    : Convert.ToDecimal(txtAnnualDividend.Text) * Convert.ToDecimal(txtNumberOfShares.Text);
                 decimal QuarterlyDividendPrice = TotalDividendPrice / 3;
                 decimal MonthlyDividendPrice = TotalDividendPrice / 12;
-                MessageBox.Show("Yearly: $" + Math.Round(TotalDividendPrice, 2).ToString() + "\n\n" + "Quarterly: $" + Math.Round(QuarterlyDividendPrice, 2) + "\n\n" + "Monthly: $" + Math.Round(MonthlyDividendPrice, 2));
+                MessageBox.Show("Yearly: $" + Math.Round(TotalDividendPrice, 2).ToString() + "\n\n Quarterly: $" + Math.Round(QuarterlyDividendPrice, 2) + "\n\n Monthly: $" + Math.Round(MonthlyDividendPrice, 2));
             }
         }
 

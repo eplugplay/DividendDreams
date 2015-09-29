@@ -43,6 +43,7 @@
             this.txtDividendPercent = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.gpDividendInfo = new System.Windows.Forms.GroupBox();
+            this.ddlIndustry = new System.Windows.Forms.ComboBox();
             this.btnDividendPrice = new System.Windows.Forms.Button();
             this.ddlCapSize = new System.Windows.Forms.ComboBox();
             this.lblCapSize = new System.Windows.Forms.Label();
@@ -53,7 +54,12 @@
             this.btnEditShares = new System.Windows.Forms.Button();
             this.btnDeleteShares = new System.Windows.Forms.Button();
             this.gpSharesOptions = new System.Windows.Forms.GroupBox();
-            this.ddlIndustry = new System.Windows.Forms.ComboBox();
+            this.lblDripCost = new System.Windows.Forms.Label();
+            this.txtDripCostInitial = new System.Windows.Forms.TextBox();
+            this.chkdrip = new System.Windows.Forms.CheckBox();
+            this.lblExDividend = new System.Windows.Forms.Label();
+            this.dtpExDividend = new System.Windows.Forms.DateTimePicker();
+            this.txtDripCost = new System.Windows.Forms.TextBox();
             this.gpDividendInfo.SuspendLayout();
             this.gpSharesOptions.SuspendLayout();
             this.SuspendLayout();
@@ -176,7 +182,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(528, 99);
+            this.btnSave.Location = new System.Drawing.Point(528, 135);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 14;
@@ -187,11 +193,15 @@
             // 
             // gpDividendInfo
             // 
+            this.gpDividendInfo.Controls.Add(this.txtDripCost);
+            this.gpDividendInfo.Controls.Add(this.dtpExDividend);
+            this.gpDividendInfo.Controls.Add(this.lblExDividend);
+            this.gpDividendInfo.Controls.Add(this.chkdrip);
+            this.gpDividendInfo.Controls.Add(this.lblDripCost);
+            this.gpDividendInfo.Controls.Add(this.txtDripCostInitial);
             this.gpDividendInfo.Controls.Add(this.ddlIndustry);
-            this.gpDividendInfo.Controls.Add(this.btnDividendPrice);
             this.gpDividendInfo.Controls.Add(this.ddlCapSize);
             this.gpDividendInfo.Controls.Add(this.lblCapSize);
-            this.gpDividendInfo.Controls.Add(this.btnGetSharePrice);
             this.gpDividendInfo.Controls.Add(this.btnSave);
             this.gpDividendInfo.Controls.Add(this.txtSymbol);
             this.gpDividendInfo.Controls.Add(this.label1);
@@ -204,14 +214,36 @@
             this.gpDividendInfo.Controls.Add(this.txtAnnualDividend);
             this.gpDividendInfo.Location = new System.Drawing.Point(5, 5);
             this.gpDividendInfo.Name = "gpDividendInfo";
-            this.gpDividendInfo.Size = new System.Drawing.Size(609, 137);
+            this.gpDividendInfo.Size = new System.Drawing.Size(609, 164);
             this.gpDividendInfo.TabIndex = 15;
             this.gpDividendInfo.TabStop = false;
             this.gpDividendInfo.Text = "Shares Info:";
             // 
+            // ddlIndustry
+            // 
+            this.ddlIndustry.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlIndustry.FormattingEnabled = true;
+            this.ddlIndustry.Items.AddRange(new object[] {
+            "Consumer Discretionary",
+            "Consumer Staples",
+            "Energy",
+            "Financials",
+            "Health Care",
+            "Industrials",
+            "Information Technology",
+            "Materials",
+            "Telecommunication Services",
+            "Utilities",
+            "Equity Precious Metals",
+            "Other"});
+            this.ddlIndustry.Location = new System.Drawing.Point(107, 47);
+            this.ddlIndustry.Name = "ddlIndustry";
+            this.ddlIndustry.Size = new System.Drawing.Size(210, 21);
+            this.ddlIndustry.TabIndex = 2;
+            // 
             // btnDividendPrice
             // 
-            this.btnDividendPrice.Location = new System.Drawing.Point(413, 99);
+            this.btnDividendPrice.Location = new System.Drawing.Point(226, 124);
             this.btnDividendPrice.Name = "btnDividendPrice";
             this.btnDividendPrice.Size = new System.Drawing.Size(109, 23);
             this.btnDividendPrice.TabIndex = 18;
@@ -247,7 +279,7 @@
             // 
             // btnGetSharePrice
             // 
-            this.btnGetSharePrice.Location = new System.Drawing.Point(332, 99);
+            this.btnGetSharePrice.Location = new System.Drawing.Point(145, 124);
             this.btnGetSharePrice.Name = "btnGetSharePrice";
             this.btnGetSharePrice.Size = new System.Drawing.Size(75, 23);
             this.btnGetSharePrice.TabIndex = 15;
@@ -313,8 +345,10 @@
             // gpSharesOptions
             // 
             this.gpSharesOptions.Controls.Add(this.btnDeleteShares);
+            this.gpSharesOptions.Controls.Add(this.btnDividendPrice);
             this.gpSharesOptions.Controls.Add(this.btnEditShares);
             this.gpSharesOptions.Controls.Add(this.ddlSharePurchaseDate);
+            this.gpSharesOptions.Controls.Add(this.btnGetSharePrice);
             this.gpSharesOptions.Controls.Add(this.btnNewShares);
             this.gpSharesOptions.Controls.Add(this.txtSharePrice);
             this.gpSharesOptions.Controls.Add(this.txtNumberOfShares);
@@ -323,36 +357,68 @@
             this.gpSharesOptions.Controls.Add(this.lblSharePrice);
             this.gpSharesOptions.Location = new System.Drawing.Point(620, 12);
             this.gpSharesOptions.Name = "gpSharesOptions";
-            this.gpSharesOptions.Size = new System.Drawing.Size(353, 130);
+            this.gpSharesOptions.Size = new System.Drawing.Size(353, 157);
             this.gpSharesOptions.TabIndex = 21;
             this.gpSharesOptions.TabStop = false;
             this.gpSharesOptions.Text = "Shares Options:";
             // 
-            // ddlIndustry
+            // lblDripCost
             // 
-            this.ddlIndustry.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ddlIndustry.FormattingEnabled = true;
-            this.ddlIndustry.Items.AddRange(new object[] {
-            "Consumer Discretionary",
-            "Consumer Staples",
-            "Energy",
-            "Financials",
-            "Health Care",
-            "Industrials",
-            "Information Technology",
-            "Materials",
-            "Telecommunication Services",
-            "Utilities"});
-            this.ddlIndustry.Location = new System.Drawing.Point(107, 47);
-            this.ddlIndustry.Name = "ddlIndustry";
-            this.ddlIndustry.Size = new System.Drawing.Size(210, 21);
-            this.ddlIndustry.TabIndex = 2;
+            this.lblDripCost.AutoSize = true;
+            this.lblDripCost.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDripCost.Location = new System.Drawing.Point(19, 102);
+            this.lblDripCost.Name = "lblDripCost";
+            this.lblDripCost.Size = new System.Drawing.Size(63, 13);
+            this.lblDripCost.TabIndex = 19;
+            this.lblDripCost.Text = "Drip Cost:";
+            // 
+            // txtDripCostInitial
+            // 
+            this.txtDripCostInitial.Location = new System.Drawing.Point(107, 99);
+            this.txtDripCostInitial.Name = "txtDripCostInitial";
+            this.txtDripCostInitial.Size = new System.Drawing.Size(95, 20);
+            this.txtDripCostInitial.TabIndex = 18;
+            // 
+            // chkdrip
+            // 
+            this.chkdrip.AutoSize = true;
+            this.chkdrip.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkdrip.Location = new System.Drawing.Point(327, 102);
+            this.chkdrip.Name = "chkdrip";
+            this.chkdrip.Size = new System.Drawing.Size(49, 17);
+            this.chkdrip.TabIndex = 20;
+            this.chkdrip.Text = "Drip";
+            this.chkdrip.UseVisualStyleBackColor = true;
+            // 
+            // lblExDividend
+            // 
+            this.lblExDividend.AutoSize = true;
+            this.lblExDividend.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblExDividend.Location = new System.Drawing.Point(19, 128);
+            this.lblExDividend.Name = "lblExDividend";
+            this.lblExDividend.Size = new System.Drawing.Size(79, 13);
+            this.lblExDividend.TabIndex = 22;
+            this.lblExDividend.Text = "Ex-Dividend:";
+            // 
+            // dtpExDividend
+            // 
+            this.dtpExDividend.Location = new System.Drawing.Point(107, 125);
+            this.dtpExDividend.Name = "dtpExDividend";
+            this.dtpExDividend.Size = new System.Drawing.Size(210, 20);
+            this.dtpExDividend.TabIndex = 23;
+            // 
+            // txtDripCost
+            // 
+            this.txtDripCost.Location = new System.Drawing.Point(222, 99);
+            this.txtDripCost.Name = "txtDripCost";
+            this.txtDripCost.Size = new System.Drawing.Size(95, 20);
+            this.txtDripCost.TabIndex = 24;
             // 
             // Dividends
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(980, 152);
+            this.ClientSize = new System.Drawing.Size(980, 181);
             this.Controls.Add(this.gpSharesOptions);
             this.Controls.Add(this.gpDividendInfo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -397,5 +463,11 @@
         private System.Windows.Forms.Button btnDeleteShares;
         private System.Windows.Forms.GroupBox gpSharesOptions;
         private System.Windows.Forms.ComboBox ddlIndustry;
+        private System.Windows.Forms.Label lblDripCost;
+        private System.Windows.Forms.TextBox txtDripCostInitial;
+        private System.Windows.Forms.CheckBox chkdrip;
+        private System.Windows.Forms.DateTimePicker dtpExDividend;
+        private System.Windows.Forms.Label lblExDividend;
+        private System.Windows.Forms.TextBox txtDripCost;
     }
 }
