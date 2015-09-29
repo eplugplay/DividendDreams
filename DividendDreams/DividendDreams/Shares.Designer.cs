@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.gpShares = new System.Windows.Forms.GroupBox();
+            this.btnGetPrice = new System.Windows.Forms.Button();
             this.ddlAction = new System.Windows.Forms.ComboBox();
             this.lblAction = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
@@ -36,12 +37,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtNumberOfShares = new System.Windows.Forms.TextBox();
             this.lblSymbol = new System.Windows.Forms.Label();
-            this.btnGetPrice = new System.Windows.Forms.Button();
+            this.dtpPurchaseDate = new System.Windows.Forms.DateTimePicker();
+            this.lblPurchaseDate = new System.Windows.Forms.Label();
             this.gpShares.SuspendLayout();
             this.SuspendLayout();
             // 
             // gpShares
             // 
+            this.gpShares.Controls.Add(this.dtpPurchaseDate);
+            this.gpShares.Controls.Add(this.lblPurchaseDate);
             this.gpShares.Controls.Add(this.btnGetPrice);
             this.gpShares.Controls.Add(this.ddlAction);
             this.gpShares.Controls.Add(this.lblAction);
@@ -52,10 +56,20 @@
             this.gpShares.Controls.Add(this.lblSymbol);
             this.gpShares.Location = new System.Drawing.Point(12, 12);
             this.gpShares.Name = "gpShares";
-            this.gpShares.Size = new System.Drawing.Size(421, 110);
+            this.gpShares.Size = new System.Drawing.Size(421, 131);
             this.gpShares.TabIndex = 0;
             this.gpShares.TabStop = false;
             this.gpShares.Text = "Shares";
+            // 
+            // btnGetPrice
+            // 
+            this.btnGetPrice.Location = new System.Drawing.Point(359, 64);
+            this.btnGetPrice.Name = "btnGetPrice";
+            this.btnGetPrice.Size = new System.Drawing.Size(56, 23);
+            this.btnGetPrice.TabIndex = 20;
+            this.btnGetPrice.Text = "Price";
+            this.btnGetPrice.UseVisualStyleBackColor = true;
+            this.btnGetPrice.Click += new System.EventHandler(this.btnGetPrice_Click);
             // 
             // ddlAction
             // 
@@ -64,7 +78,7 @@
             this.ddlAction.Items.AddRange(new object[] {
             "bought",
             "sold"});
-            this.ddlAction.Location = new System.Drawing.Point(107, 79);
+            this.ddlAction.Location = new System.Drawing.Point(108, 97);
             this.ddlAction.Name = "ddlAction";
             this.ddlAction.Size = new System.Drawing.Size(233, 21);
             this.ddlAction.TabIndex = 18;
@@ -72,7 +86,7 @@
             // lblAction
             // 
             this.lblAction.AutoSize = true;
-            this.lblAction.Location = new System.Drawing.Point(19, 82);
+            this.lblAction.Location = new System.Drawing.Point(20, 100);
             this.lblAction.Name = "lblAction";
             this.lblAction.Size = new System.Drawing.Size(40, 13);
             this.lblAction.TabIndex = 19;
@@ -80,7 +94,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(346, 77);
+            this.btnSave.Location = new System.Drawing.Point(359, 95);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(56, 23);
             this.btnSave.TabIndex = 6;
@@ -90,7 +104,7 @@
             // 
             // txtPurchasePrice
             // 
-            this.txtPurchasePrice.Location = new System.Drawing.Point(107, 53);
+            this.txtPurchasePrice.Location = new System.Drawing.Point(108, 71);
             this.txtPurchasePrice.Name = "txtPurchasePrice";
             this.txtPurchasePrice.Size = new System.Drawing.Size(233, 20);
             this.txtPurchasePrice.TabIndex = 4;
@@ -98,7 +112,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(19, 56);
+            this.label1.Location = new System.Drawing.Point(20, 74);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(82, 13);
             this.label1.TabIndex = 5;
@@ -106,7 +120,7 @@
             // 
             // txtNumberOfShares
             // 
-            this.txtNumberOfShares.Location = new System.Drawing.Point(107, 27);
+            this.txtNumberOfShares.Location = new System.Drawing.Point(108, 45);
             this.txtNumberOfShares.Name = "txtNumberOfShares";
             this.txtNumberOfShares.Size = new System.Drawing.Size(233, 20);
             this.txtNumberOfShares.TabIndex = 2;
@@ -114,27 +128,34 @@
             // lblSymbol
             // 
             this.lblSymbol.AutoSize = true;
-            this.lblSymbol.Location = new System.Drawing.Point(19, 30);
+            this.lblSymbol.Location = new System.Drawing.Point(20, 48);
             this.lblSymbol.Name = "lblSymbol";
             this.lblSymbol.Size = new System.Drawing.Size(62, 13);
             this.lblSymbol.TabIndex = 3;
             this.lblSymbol.Text = "# of Shares";
             // 
-            // btnGetPrice
+            // dtpPurchaseDate
             // 
-            this.btnGetPrice.Location = new System.Drawing.Point(346, 46);
-            this.btnGetPrice.Name = "btnGetPrice";
-            this.btnGetPrice.Size = new System.Drawing.Size(56, 23);
-            this.btnGetPrice.TabIndex = 20;
-            this.btnGetPrice.Text = "Price";
-            this.btnGetPrice.UseVisualStyleBackColor = true;
-            this.btnGetPrice.Click += new System.EventHandler(this.btnGetPrice_Click);
+            this.dtpPurchaseDate.Location = new System.Drawing.Point(108, 19);
+            this.dtpPurchaseDate.Name = "dtpPurchaseDate";
+            this.dtpPurchaseDate.Size = new System.Drawing.Size(233, 20);
+            this.dtpPurchaseDate.TabIndex = 25;
+            // 
+            // lblPurchaseDate
+            // 
+            this.lblPurchaseDate.AutoSize = true;
+            this.lblPurchaseDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPurchaseDate.Location = new System.Drawing.Point(20, 22);
+            this.lblPurchaseDate.Name = "lblPurchaseDate";
+            this.lblPurchaseDate.Size = new System.Drawing.Size(67, 13);
+            this.lblPurchaseDate.TabIndex = 24;
+            this.lblPurchaseDate.Text = "Ex-Dividend:";
             // 
             // Shares
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(443, 127);
+            this.ClientSize = new System.Drawing.Size(443, 148);
             this.Controls.Add(this.gpShares);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MinimizeBox = false;
@@ -159,5 +180,7 @@
         private System.Windows.Forms.ComboBox ddlAction;
         private System.Windows.Forms.Label lblAction;
         private System.Windows.Forms.Button btnGetPrice;
+        private System.Windows.Forms.DateTimePicker dtpPurchaseDate;
+        private System.Windows.Forms.Label lblPurchaseDate;
     }
 }

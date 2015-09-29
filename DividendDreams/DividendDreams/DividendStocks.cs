@@ -216,7 +216,7 @@ namespace DividendDreams
                     cnn.Open();
                     using (var cmd = cnn.CreateCommand())
                     {
-                        cmd.CommandText = "SELECT purchaseprice, numberofshares, purchaseaction FROM dividendprice WHERE id=@id";
+                        cmd.CommandText = "SELECT purchaseprice, numberofshares, purchaseaction, purchasedate FROM dividendprice WHERE id=@id";
                         cmd.Parameters.AddWithValue("id", id);
                         MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                         da.Fill(dt);
@@ -467,7 +467,7 @@ namespace DividendDreams
             }
         }
 
-        public static void NewShare(string purchaseprice, string numberofshares, string purchaseaction, string dividendstockid)
+        public static void NewShare(string purchaseprice, string numberofshares, string purchaseaction, string dividendstockid, DateTime purchasedate)
         {
             try
             {
@@ -476,11 +476,12 @@ namespace DividendDreams
                     cnn.Open();
                     using (var cmd = cnn.CreateCommand())
                     {
-                        cmd.CommandText = "INSERT INTO dividendprice (purchaseprice, numberofshares, purchaseaction, dividendstockid, purchasedate) VALUES (@purchaseprice, @numberofshares, @purchaseaction, @dividendstockid, NOW())";
+                        cmd.CommandText = "INSERT INTO dividendprice (purchaseprice, numberofshares, purchaseaction, dividendstockid, purchasedate) VALUES (@purchaseprice, @numberofshares, @purchaseaction, @dividendstockid, @purchasedate)";
                         cmd.Parameters.AddWithValue("purchaseprice", purchaseprice);
                         cmd.Parameters.AddWithValue("numberofshares", numberofshares);
                         cmd.Parameters.AddWithValue("purchaseaction", purchaseaction);
                         cmd.Parameters.AddWithValue("dividendstockid", dividendstockid);
+                        cmd.Parameters.AddWithValue("purchasedate", purchasedate);
                         cmd.ExecuteNonQuery();
                     }
                 }
@@ -491,7 +492,7 @@ namespace DividendDreams
             }
         }
 
-        public static void UpdateShare(string purchaseprice, string numberofshares, string purchaseaction, string id)
+        public static void UpdateShare(string purchaseprice, string numberofshares, string purchaseaction, string id, DateTime purchasedate)
         {
             try
             {
@@ -500,10 +501,11 @@ namespace DividendDreams
                     cnn.Open();
                     using (var cmd = cnn.CreateCommand())
                     {
-                        cmd.CommandText = "UPDATE dividendprice SET purchaseprice=@purchaseprice, numberofshares=@numberofshares, purchaseaction=@purchaseaction WHERE id=@id";
+                        cmd.CommandText = "UPDATE dividendprice SET purchaseprice=@purchaseprice, numberofshares=@numberofshares, purchaseaction=@purchaseaction, purchasedate=@purchasedate WHERE id=@id";
                         cmd.Parameters.AddWithValue("purchaseprice", purchaseprice);
                         cmd.Parameters.AddWithValue("numberofshares", numberofshares);
                         cmd.Parameters.AddWithValue("purchaseaction", purchaseaction);
+                        cmd.Parameters.AddWithValue("purchasedate", purchasedate);
                         cmd.Parameters.AddWithValue("id", id);
                         cmd.ExecuteNonQuery();
                     }

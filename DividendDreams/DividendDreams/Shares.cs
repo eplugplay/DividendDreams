@@ -35,9 +35,10 @@ namespace DividendDreams
         public void LoadSharesInfo()
         {
             DataTable dt = DividendStocks.GetSharePriceInfo(DividendPriceID);
-           txtPurchasePrice.Text = dt.Rows[0]["purchaseprice"].ToString();
-           txtNumberOfShares.Text = dt.Rows[0]["numberofshares"].ToString();
-           ddlAction.SelectedIndex = ddlAction.FindString(dt.Rows[0]["purchaseaction"].ToString());
+            txtPurchasePrice.Text = dt.Rows[0]["purchaseprice"].ToString();
+            txtNumberOfShares.Text = dt.Rows[0]["numberofshares"].ToString();
+            ddlAction.SelectedIndex = ddlAction.FindString(dt.Rows[0]["purchaseaction"].ToString());
+            dtpPurchaseDate.Value = Convert.ToDateTime(dt.Rows[0]["purchasedate"]);
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -74,11 +75,11 @@ namespace DividendDreams
             }
             if (Edit)
             {
-                DividendStocks.UpdateShare(txtPurchasePrice.Text, txtNumberOfShares.Text, ddlAction.Text, DividendPriceID);
+                DividendStocks.UpdateShare(txtPurchasePrice.Text, txtNumberOfShares.Text, ddlAction.Text, DividendPriceID, dtpPurchaseDate.Value);
             }
             else
             {
-                DividendStocks.NewShare(txtPurchasePrice.Text, txtNumberOfShares.Text, ddlAction.Text, ID);
+                DividendStocks.NewShare(txtPurchasePrice.Text, txtNumberOfShares.Text, ddlAction.Text, ID, dtpPurchaseDate.Value);
             }
             MainMenu._Dividends.LoadDividendStock();
             Program.MainMenu.LoadCurrentDividends();

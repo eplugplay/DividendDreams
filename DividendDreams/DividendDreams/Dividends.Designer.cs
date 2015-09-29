@@ -316,7 +316,7 @@
             this.btnNewShares.Size = new System.Drawing.Size(75, 23);
             this.btnNewShares.TabIndex = 21;
             this.btnNewShares.TabStop = false;
-            this.btnNewShares.Text = "New Shares";
+            this.btnNewShares.Text = "New Share";
             this.btnNewShares.UseVisualStyleBackColor = true;
             this.btnNewShares.Click += new System.EventHandler(this.btnNewShares_Click);
             // 
@@ -327,7 +327,7 @@
             this.btnEditShares.Size = new System.Drawing.Size(75, 23);
             this.btnEditShares.TabIndex = 22;
             this.btnEditShares.TabStop = false;
-            this.btnEditShares.Text = "Edit Shares";
+            this.btnEditShares.Text = "Edit Share";
             this.btnEditShares.UseVisualStyleBackColor = true;
             this.btnEditShares.Click += new System.EventHandler(this.btnEditShares_Click);
             // 
@@ -338,7 +338,7 @@
             this.btnDeleteShares.Size = new System.Drawing.Size(88, 23);
             this.btnDeleteShares.TabIndex = 23;
             this.btnDeleteShares.TabStop = false;
-            this.btnDeleteShares.Text = "Delete Shares";
+            this.btnDeleteShares.Text = "Delete Share";
             this.btnDeleteShares.UseVisualStyleBackColor = true;
             this.btnDeleteShares.Click += new System.EventHandler(this.btnDeleteShares_Click);
             // 
