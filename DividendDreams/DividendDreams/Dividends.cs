@@ -56,6 +56,7 @@ namespace DividendDreams
             {
                 LoadDividendStock();
                 btnSave.Text = "Update";
+                this.Text = "Edit Dividend Stock";
             }
             else
             {

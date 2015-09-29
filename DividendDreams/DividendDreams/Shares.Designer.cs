@@ -73,6 +73,7 @@
             // 
             // ddlAction
             // 
+            this.ddlAction.BackColor = System.Drawing.Color.AliceBlue;
             this.ddlAction.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlAction.FormattingEnabled = true;
             this.ddlAction.Items.AddRange(new object[] {
@@ -104,6 +105,7 @@
             // 
             // txtPurchasePrice
             // 
+            this.txtPurchasePrice.BackColor = System.Drawing.Color.AliceBlue;
             this.txtPurchasePrice.Location = new System.Drawing.Point(108, 71);
             this.txtPurchasePrice.Name = "txtPurchasePrice";
             this.txtPurchasePrice.Size = new System.Drawing.Size(233, 20);
@@ -120,6 +122,7 @@
             // 
             // txtNumberOfShares
             // 
+            this.txtNumberOfShares.BackColor = System.Drawing.Color.AliceBlue;
             this.txtNumberOfShares.Location = new System.Drawing.Point(108, 45);
             this.txtNumberOfShares.Name = "txtNumberOfShares";
             this.txtNumberOfShares.Size = new System.Drawing.Size(233, 20);
@@ -136,6 +139,7 @@
             // 
             // dtpPurchaseDate
             // 
+            this.dtpPurchaseDate.CalendarMonthBackground = System.Drawing.Color.AliceBlue;
             this.dtpPurchaseDate.Location = new System.Drawing.Point(108, 19);
             this.dtpPurchaseDate.Name = "dtpPurchaseDate";
             this.dtpPurchaseDate.Size = new System.Drawing.Size(233, 20);

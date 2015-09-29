@@ -70,6 +70,7 @@
             // 
             // txtSymbol
             // 
+            this.txtSymbol.BackColor = System.Drawing.Color.AliceBlue;
             this.txtSymbol.Location = new System.Drawing.Point(107, 21);
             this.txtSymbol.Name = "txtSymbol";
             this.txtSymbol.Size = new System.Drawing.Size(210, 20);
@@ -97,6 +98,7 @@
             // 
             // txtStockName
             // 
+            this.txtStockName.BackColor = System.Drawing.Color.AliceBlue;
             this.txtStockName.Location = new System.Drawing.Point(399, 21);
             this.txtStockName.Name = "txtStockName";
             this.txtStockName.Size = new System.Drawing.Size(199, 20);
@@ -162,6 +164,7 @@
             // 
             // txtAnnualDividend
             // 
+            this.txtAnnualDividend.BackColor = System.Drawing.Color.AliceBlue;
             this.txtAnnualDividend.Location = new System.Drawing.Point(107, 73);
             this.txtAnnualDividend.Name = "txtAnnualDividend";
             this.txtAnnualDividend.Size = new System.Drawing.Size(210, 20);
@@ -179,6 +182,7 @@
             // 
             // txtDividendPercent
             // 
+            this.txtDividendPercent.BackColor = System.Drawing.Color.AliceBlue;
             this.txtDividendPercent.Location = new System.Drawing.Point(399, 73);
             this.txtDividendPercent.Name = "txtDividendPercent";
             this.txtDividendPercent.Size = new System.Drawing.Size(199, 20);
@@ -229,6 +233,7 @@
             // 
             // ddlIndustry
             // 
+            this.ddlIndustry.BackColor = System.Drawing.Color.AliceBlue;
             this.ddlIndustry.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlIndustry.FormattingEnabled = true;
             this.ddlIndustry.Items.AddRange(new object[] {
@@ -262,6 +267,7 @@
             // 
             // ddlCapSize
             // 
+            this.ddlCapSize.BackColor = System.Drawing.Color.AliceBlue;
             this.ddlCapSize.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlCapSize.FormattingEnabled = true;
             this.ddlCapSize.Items.AddRange(new object[] {
@@ -298,6 +304,7 @@
             // 
             // ddlSharePurchaseDate
             // 
+            this.ddlSharePurchaseDate.BackColor = System.Drawing.Color.AliceBlue;
             this.ddlSharePurchaseDate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlSharePurchaseDate.FormattingEnabled = true;
             this.ddlSharePurchaseDate.Location = new System.Drawing.Point(125, 17);
@@ -382,6 +389,7 @@
             // 
             // txtDripCostInitial
             // 
+            this.txtDripCostInitial.BackColor = System.Drawing.Color.AliceBlue;
             this.txtDripCostInitial.Location = new System.Drawing.Point(164, 99);
             this.txtDripCostInitial.Name = "txtDripCostInitial";
             this.txtDripCostInitial.Size = new System.Drawing.Size(40, 20);
@@ -394,7 +402,7 @@
             this.chkdrip.Location = new System.Drawing.Point(327, 102);
             this.chkdrip.Name = "chkdrip";
             this.chkdrip.Size = new System.Drawing.Size(49, 17);
-            this.chkdrip.TabIndex = 20;
+            this.chkdrip.TabIndex = 8;
             this.chkdrip.Text = "Drip";
             this.chkdrip.UseVisualStyleBackColor = true;
             // 
@@ -410,13 +418,15 @@
             // 
             // dtpExDividend
             // 
+            this.dtpExDividend.CalendarMonthBackground = System.Drawing.Color.AliceBlue;
             this.dtpExDividend.Location = new System.Drawing.Point(107, 130);
             this.dtpExDividend.Name = "dtpExDividend";
             this.dtpExDividend.Size = new System.Drawing.Size(210, 20);
-            this.dtpExDividend.TabIndex = 9;
+            this.dtpExDividend.TabIndex = 10;
             // 
             // txtDripCost
             // 
+            this.txtDripCost.BackColor = System.Drawing.Color.AliceBlue;
             this.txtDripCost.Location = new System.Drawing.Point(277, 99);
             this.txtDripCost.Name = "txtDripCost";
             this.txtDripCost.Size = new System.Drawing.Size(40, 20);
@@ -444,11 +454,12 @@
             // 
             // txtDripNotes
             // 
+            this.txtDripNotes.BackColor = System.Drawing.Color.AliceBlue;
             this.txtDripNotes.Location = new System.Drawing.Point(399, 100);
             this.txtDripNotes.Multiline = true;
             this.txtDripNotes.Name = "txtDripNotes";
             this.txtDripNotes.Size = new System.Drawing.Size(199, 58);
-            this.txtDripNotes.TabIndex = 8;
+            this.txtDripNotes.TabIndex = 9;
             // 
             // lblDripNotes
             // 

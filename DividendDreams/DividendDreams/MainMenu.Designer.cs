@@ -221,7 +221,9 @@
             // 
             // ddlIndustryAll
             // 
+            this.ddlIndustryAll.BackColor = System.Drawing.Color.AliceBlue;
             this.ddlIndustryAll.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlIndustryAll.ForeColor = System.Drawing.SystemColors.WindowText;
             this.ddlIndustryAll.FormattingEnabled = true;
             this.ddlIndustryAll.Items.AddRange(new object[] {
             "Consumer Discretionary",
@@ -262,7 +264,9 @@
             // 
             // ddlIndustry
             // 
+            this.ddlIndustry.BackColor = System.Drawing.Color.AliceBlue;
             this.ddlIndustry.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlIndustry.ForeColor = System.Drawing.SystemColors.WindowText;
             this.ddlIndustry.FormattingEnabled = true;
             this.ddlIndustry.Items.AddRange(new object[] {
             "Consumer Discretionary",
@@ -354,9 +358,9 @@
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(763, 228);
+            this.btnRemove.Location = new System.Drawing.Point(751, 235);
             this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(27, 23);
+            this.btnRemove.Size = new System.Drawing.Size(42, 34);
             this.btnRemove.TabIndex = 4;
             this.btnRemove.Text = "←";
             this.btnRemove.UseVisualStyleBackColor = true;
@@ -364,9 +368,9 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(763, 86);
+            this.btnAdd.Location = new System.Drawing.Point(751, 90);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(27, 23);
+            this.btnAdd.Size = new System.Drawing.Size(42, 34);
             this.btnAdd.TabIndex = 3;
             this.btnAdd.Text = "→";
             this.btnAdd.UseVisualStyleBackColor = true;
