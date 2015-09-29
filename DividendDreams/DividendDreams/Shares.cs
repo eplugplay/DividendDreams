@@ -73,6 +73,9 @@ namespace DividendDreams
                 txtPurchasePrice.Focus();
                 return;
             }
+            PleaseWait pw = new PleaseWait();
+            pw.Show();
+            Application.DoEvents();
             if (Edit)
             {
                 DividendStocks.UpdateShare(txtPurchasePrice.Text, txtNumberOfShares.Text, ddlAction.Text, DividendPriceID, dtpPurchaseDate.Value);
@@ -83,6 +86,7 @@ namespace DividendDreams
             }
             MainMenu._Dividends.LoadDividendStock();
             Program.MainMenu.LoadCurrentDividends();
+            pw.Close();
             this.Close();
         }
 

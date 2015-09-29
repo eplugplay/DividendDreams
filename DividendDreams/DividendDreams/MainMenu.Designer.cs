@@ -86,7 +86,9 @@
             // 
             // lbAllDividends
             // 
+            this.lbAllDividends.BackColor = System.Drawing.Color.AliceBlue;
             this.lbAllDividends.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbAllDividends.ForeColor = System.Drawing.Color.DarkGreen;
             this.lbAllDividends.FormattingEnabled = true;
             this.lbAllDividends.ItemHeight = 15;
             this.lbAllDividends.Location = new System.Drawing.Point(6, 39);
@@ -98,7 +100,9 @@
             // 
             // lbCurrentDividends
             // 
+            this.lbCurrentDividends.BackColor = System.Drawing.Color.AliceBlue;
             this.lbCurrentDividends.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCurrentDividends.ForeColor = System.Drawing.Color.DarkGreen;
             this.lbCurrentDividends.FormattingEnabled = true;
             this.lbCurrentDividends.ItemHeight = 15;
             this.lbCurrentDividends.Location = new System.Drawing.Point(805, 39);
@@ -372,6 +376,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.ClientSize = new System.Drawing.Size(1571, 406);
             this.Controls.Add(this.gpDividendStocks);
             this.Controls.Add(this.menuStrip1);
@@ -380,7 +385,7 @@
             this.MaximizeBox = false;
             this.Name = "MainMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Main Menu";
+            this.Text = "Dividend Dreams";
             this.Load += new System.EventHandler(this.MainMenu_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

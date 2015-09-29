@@ -38,3 +38,4 @@ C:\Users\Steve Yi\Documents\GitHub\DividendDreams\DividendDreams\DividendDreams\
 C:\Users\Steve Yi\Documents\GitHub\DividendDreams\DividendDreams\DividendDreams\obj\x86\Debug\DividendDreams.Properties.Resources.resources
 C:\Users\Steve Yi\Documents\GitHub\DividendDreams\DividendDreams\DividendDreams\obj\x86\Debug\DividendDreams.Shares.resources
 C:\Users\Steve Yi\Documents\GitHub\DividendDreams\DividendDreams\DividendDreams\obj\x86\Debug\DividendDreams.csproj.GenerateResource.Cache
+C:\Users\stevey\Documents\GitHub\DividendDreams\DividendDreams\DividendDreams\obj\x86\Debug\DividendDreams.PleaseWait.resources

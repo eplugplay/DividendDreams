@@ -62,6 +62,8 @@
             this.txtDripCost = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.txtDripNotes = new System.Windows.Forms.TextBox();
+            this.lblDripNotes = new System.Windows.Forms.Label();
             this.gpDividendInfo.SuspendLayout();
             this.gpSharesOptions.SuspendLayout();
             this.SuspendLayout();
@@ -184,7 +186,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(528, 135);
+            this.btnSave.Location = new System.Drawing.Point(528, 164);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 14;
@@ -195,6 +197,8 @@
             // 
             // gpDividendInfo
             // 
+            this.gpDividendInfo.Controls.Add(this.lblDripNotes);
+            this.gpDividendInfo.Controls.Add(this.txtDripNotes);
             this.gpDividendInfo.Controls.Add(this.label3);
             this.gpDividendInfo.Controls.Add(this.label2);
             this.gpDividendInfo.Controls.Add(this.txtDripCost);
@@ -218,7 +222,7 @@
             this.gpDividendInfo.Controls.Add(this.txtAnnualDividend);
             this.gpDividendInfo.Location = new System.Drawing.Point(5, 5);
             this.gpDividendInfo.Name = "gpDividendInfo";
-            this.gpDividendInfo.Size = new System.Drawing.Size(609, 164);
+            this.gpDividendInfo.Size = new System.Drawing.Size(609, 193);
             this.gpDividendInfo.TabIndex = 15;
             this.gpDividendInfo.TabStop = false;
             this.gpDividendInfo.Text = "Shares Info:";
@@ -381,7 +385,7 @@
             this.txtDripCostInitial.Location = new System.Drawing.Point(164, 99);
             this.txtDripCostInitial.Name = "txtDripCostInitial";
             this.txtDripCostInitial.Size = new System.Drawing.Size(40, 20);
-            this.txtDripCostInitial.TabIndex = 18;
+            this.txtDripCostInitial.TabIndex = 6;
             // 
             // chkdrip
             // 
@@ -398,7 +402,7 @@
             // 
             this.lblExDividend.AutoSize = true;
             this.lblExDividend.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblExDividend.Location = new System.Drawing.Point(19, 128);
+            this.lblExDividend.Location = new System.Drawing.Point(19, 133);
             this.lblExDividend.Name = "lblExDividend";
             this.lblExDividend.Size = new System.Drawing.Size(79, 13);
             this.lblExDividend.TabIndex = 22;
@@ -406,17 +410,17 @@
             // 
             // dtpExDividend
             // 
-            this.dtpExDividend.Location = new System.Drawing.Point(107, 125);
+            this.dtpExDividend.Location = new System.Drawing.Point(107, 130);
             this.dtpExDividend.Name = "dtpExDividend";
             this.dtpExDividend.Size = new System.Drawing.Size(210, 20);
-            this.dtpExDividend.TabIndex = 23;
+            this.dtpExDividend.TabIndex = 9;
             // 
             // txtDripCost
             // 
             this.txtDripCost.Location = new System.Drawing.Point(277, 99);
             this.txtDripCost.Name = "txtDripCost";
             this.txtDripCost.Size = new System.Drawing.Size(40, 20);
-            this.txtDripCost.TabIndex = 24;
+            this.txtDripCost.TabIndex = 7;
             // 
             // label2
             // 
@@ -438,11 +442,29 @@
             this.label3.TabIndex = 26;
             this.label3.Text = "Share:";
             // 
+            // txtDripNotes
+            // 
+            this.txtDripNotes.Location = new System.Drawing.Point(399, 100);
+            this.txtDripNotes.Multiline = true;
+            this.txtDripNotes.Name = "txtDripNotes";
+            this.txtDripNotes.Size = new System.Drawing.Size(199, 58);
+            this.txtDripNotes.TabIndex = 8;
+            // 
+            // lblDripNotes
+            // 
+            this.lblDripNotes.AutoSize = true;
+            this.lblDripNotes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDripNotes.Location = new System.Drawing.Point(333, 141);
+            this.lblDripNotes.Name = "lblDripNotes";
+            this.lblDripNotes.Size = new System.Drawing.Size(65, 13);
+            this.lblDripNotes.TabIndex = 27;
+            this.lblDripNotes.Text = "Drip Note:";
+            // 
             // Dividends
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(980, 181);
+            this.ClientSize = new System.Drawing.Size(980, 210);
             this.Controls.Add(this.gpSharesOptions);
             this.Controls.Add(this.gpDividendInfo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -495,5 +517,7 @@
         private System.Windows.Forms.TextBox txtDripCost;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtDripNotes;
+        private System.Windows.Forms.Label lblDripNotes;
     }
 }

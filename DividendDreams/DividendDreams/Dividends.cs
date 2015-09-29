@@ -27,16 +27,23 @@ namespace DividendDreams
             {
                 return;
             }
+            PleaseWait pw = new PleaseWait();
+            pw.Show();
+            Application.DoEvents();
             if (Edit)
             {
-                DividendStocks.UpdateDividendStock(ID, txtSymbol.Text, txtStockName.Text, ddlIndustry.Text, txtAnnualDividend.Text, txtDividendPercent.Text, ddlCapSize.Text, txtDripCostInitial.Text, txtDripCost.Text, chkdrip.Checked == true ? "true" : "false", dtpExDividend.Value);
+                DividendStocks.UpdateDividendStock(ID, txtSymbol.Text, txtStockName.Text, ddlIndustry.Text, txtAnnualDividend.Text, txtDividendPercent.Text, 
+                    ddlCapSize.Text, txtDripCostInitial.Text, txtDripCost.Text, chkdrip.Checked == true ? "true" : "false", dtpExDividend.Value, txtDripNotes.Text);
                 Program.MainMenu.LoadDividendStocks();
+                pw.Close();
                 this.Close();
             }
             else
             {
-                DividendStocks.NewDividendStock(txtSymbol.Text, txtStockName.Text, ddlIndustry.Text, txtSharePrice.Text, txtAnnualDividend.Text, txtNumberOfShares.Text, txtDividendPercent.Text, ddlCapSize.Text, txtDripCost.Text, txtDripCostInitial.Text, chkdrip.Checked == true ? "true" : "false", dtpExDividend.Value);
+                DividendStocks.NewDividendStock(txtSymbol.Text, txtStockName.Text, ddlIndustry.Text, txtSharePrice.Text, txtAnnualDividend.Text, txtNumberOfShares.Text, 
+                    txtDividendPercent.Text, ddlCapSize.Text, txtDripCost.Text, txtDripCostInitial.Text, chkdrip.Checked == true ? "true" : "false", dtpExDividend.Value, txtDripNotes.Text);
                 Program.MainMenu.LoadDividendStocks();
+                pw.Close();
                 this.Close();
             }
         }
@@ -68,6 +75,7 @@ namespace DividendDreams
             ddlCapSize.SelectedIndex = ddlCapSize.FindString(dt.Rows[0]["capsize"].ToString());
             txtDripCostInitial.Text = dt.Rows[0]["dripinitialcost"].ToString();
             txtDripCost.Text = dt.Rows[0]["dripcost"].ToString();
+            txtDripNotes.Text = dt.Rows[0]["dripnotes"].ToString();
             chkdrip.Checked = dt.Rows[0]["drip"].ToString() == "true" ? true : false;
             if (dt.Rows[0]["exdividend"] != DBNull.Value)
             {

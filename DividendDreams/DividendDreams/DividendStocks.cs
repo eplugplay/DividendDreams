@@ -44,7 +44,7 @@ namespace DividendDreams
                     cnn.Open();
                     using (var cmd = cnn.CreateCommand())
                     {
-                        cmd.CommandText = "SELECT ds.symbol, ds.stockname, ds.industry, ds.capsize, ds.anndividend, dp.numberofshares, ds.dividendpercent, ds.stockactive, dp.purchaseprice, dp.purchaseaction, ds.dripcost, ds.dripinitialcost, ds.drip, ds.exdividend FROM dividendstocks ds join dividendprice dp on ds.id = dp.dividendstockid WHERE ds.id=@id";
+                        cmd.CommandText = "SELECT ds.symbol, ds.stockname, ds.industry, ds.capsize, ds.anndividend, dp.numberofshares, ds.dividendpercent, ds.stockactive, dp.purchaseprice, dp.purchaseaction, ds.dripcost, ds.dripinitialcost, ds.drip, ds.exdividend, ds.dripnotes FROM dividendstocks ds join dividendprice dp on ds.id = dp.dividendstockid WHERE ds.id=@id";
                         cmd.Parameters.AddWithValue("id", id);
                         MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                         da.Fill(dt);
@@ -55,7 +55,7 @@ namespace DividendDreams
                     {
                         using (var cmd = cnn.CreateCommand())
                         {
-                            cmd.CommandText = "SELECT ds.symbol, ds.stockname, ds.industry, ds.capsize, ds.anndividend, ds.dividendpercent, ds.stockactive, ds.dripcost, ds.dripinitialcost, ds.drip, ds.exdividend FROM dividendstocks ds WHERE ds.id=@id";
+                            cmd.CommandText = "SELECT ds.symbol, ds.stockname, ds.industry, ds.capsize, ds.anndividend, ds.dividendpercent, ds.stockactive, ds.dripcost, ds.dripinitialcost, ds.drip, ds.exdividend, ds.dripnotes FROM dividendstocks ds WHERE ds.id=@id";
                             cmd.Parameters.AddWithValue("id", id);
                             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                             da.Fill(dt);
@@ -402,7 +402,7 @@ namespace DividendDreams
         }
 
         public static void NewDividendStock(string symbol, string stockname, string industry, string boughtshareprice, string anndividend, string numberofshares, 
-                                            string dividendpercent, string capsize, string dripcost, string dripinitialcost, string drip, DateTime exdividend)
+                                            string dividendpercent, string capsize, string dripcost, string dripinitialcost, string drip, DateTime exdividend, string dripnotes)
         {
             try
             {
@@ -411,8 +411,8 @@ namespace DividendDreams
                     cnn.Open();
                     using (var cmd = cnn.CreateCommand())
                     {
-                        cmd.CommandText = @"INSERT INTO dividendstocks (symbol, stockname, industry, anndividend, dividendpercent, capsize, dripinitialcost, dripcost, drip, exdividend, stockactive) 
-                                        VALUES (@symbol, @stockname, @industry, @anndividend, @dividendpercent, @capsize, @dripinitialcost, @dripcost, @drip, @exdividend, 'true')";
+                        cmd.CommandText = @"INSERT INTO dividendstocks (symbol, stockname, industry, anndividend, dividendpercent, capsize, dripinitialcost, dripcost, drip, exdividend, dripnotes, stockactive) 
+                                        VALUES (@symbol, @stockname, @industry, @anndividend, @dividendpercent, @capsize, @dripinitialcost, @dripcost, @drip, @exdividend, dripnotes, 'true')";
                         cmd.Parameters.AddWithValue("symbol", symbol);
                         cmd.Parameters.AddWithValue("stockname", stockname);
                         cmd.Parameters.AddWithValue("industry", industry);
@@ -424,6 +424,7 @@ namespace DividendDreams
                         cmd.Parameters.AddWithValue("dripinitialcost", dripinitialcost);
                         cmd.Parameters.AddWithValue("dripcost", dripcost);
                         cmd.Parameters.AddWithValue("exdividend", exdividend);
+                        cmd.Parameters.AddWithValue("dripnotes", dripnotes);
                         cmd.Parameters.AddWithValue("drip", drip);
                         cmd.ExecuteNonQuery();
                     }
@@ -435,7 +436,8 @@ namespace DividendDreams
             }
         }
 
-        public static void UpdateDividendStock(string id, string symbol, string stockname, string industry, string anndividend, string dividendpercent, string capsize, string dripinitialcost, string dripcost, string drip, DateTime exdividend)
+        public static void UpdateDividendStock(string id, string symbol, string stockname, string industry, string anndividend, string dividendpercent, string capsize,
+                                                string dripinitialcost, string dripcost, string drip, DateTime exdividend, string dripnotes)
         {
             try
             {
@@ -445,7 +447,7 @@ namespace DividendDreams
                     using (var cmd = cnn.CreateCommand())
                     {
                         cmd.CommandText = @"UPDATE dividendstocks SET symbol=@symbol, stockname=@stockname, industry=@industry, anndividend=@anndividend, dividendpercent=@dividendpercent, 
-                                            capsize=@capsize, dripcost=@dripcost, dripinitialcost=@dripinitialcost, drip=@drip, exdividend=@exdividend WHERE id=@id";
+                                            capsize=@capsize, dripcost=@dripcost, dripinitialcost=@dripinitialcost, drip=@drip, exdividend=@exdividend, dripnotes=@dripnotes WHERE id=@id";
                         cmd.Parameters.AddWithValue("symbol", symbol);
                         cmd.Parameters.AddWithValue("stockname", stockname);
                         cmd.Parameters.AddWithValue("industry", industry);
@@ -456,6 +458,7 @@ namespace DividendDreams
                         cmd.Parameters.AddWithValue("dripcost", dripcost);
                         cmd.Parameters.AddWithValue("drip", drip);
                         cmd.Parameters.AddWithValue("exdividend", exdividend);
+                        cmd.Parameters.AddWithValue("dripnotes", dripnotes);
                         cmd.Parameters.AddWithValue("id", id);
                         cmd.ExecuteNonQuery();
                     }
