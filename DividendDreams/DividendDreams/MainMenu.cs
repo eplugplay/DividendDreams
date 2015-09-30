@@ -24,6 +24,9 @@ namespace DividendDreams
 
         public void OpenDividends(bool edit, string id)
         {
+            PleaseWait pw = new PleaseWait();
+            pw.Show();
+            Application.DoEvents();
             if (_Dividends == null || _Dividends.IsDisposed)
             {
                 _Dividends = new Dividends(edit, id);
@@ -40,6 +43,7 @@ namespace DividendDreams
                     _Dividends.BringToFront();
                 }
             }
+            pw.Close();
         }
 
         public void CalculateResults()
@@ -121,6 +125,9 @@ namespace DividendDreams
 
         public void AddRemoveDividends(ListBox lb, string stockActive)
         {
+            PleaseWait pw = new PleaseWait();
+            pw.Show();
+            Application.DoEvents();
             if (lb.SelectedItems.Count > 1)
             {
                 foreach (DataRowView drv in lb.SelectedItems)
@@ -133,6 +140,7 @@ namespace DividendDreams
                 DividendStocks.UpdateDividendStock(lb.SelectedValue.ToString(), stockActive);
             }
             LoadDividendStocks();
+            pw.Close();
         }
 
         private void lbCurrentDividends_MouseDoubleClick(object sender, MouseEventArgs e)
