@@ -52,7 +52,7 @@
             this.MaximizeBox = false;
             this.Name = "PleaseWait";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "PleaseWait";
+            this.Text = "Please Wait";
             this.ResumeLayout(false);
             this.PerformLayout();
 
