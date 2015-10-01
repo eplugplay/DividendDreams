@@ -420,7 +420,7 @@ namespace DividendDreams
                     using (var cmd = cnn.CreateCommand())
                     {
                         cmd.CommandText = @"INSERT INTO dividendstocks (symbol, stockname, industry, anndividend, dividendpercent, capsize, dripinitialcost, dripcost, drip, exdividend, dripnotes, stockactive) 
-                                        VALUES (@symbol, @stockname, @industry, @anndividend, @dividendpercent, @capsize, @dripinitialcost, @dripcost, @drip, @exdividend, dripnotes, 'true')";
+                                        VALUES (@symbol, @stockname, @industry, @anndividend, @dividendpercent, @capsize, @dripinitialcost, @dripcost, @drip, @exdividend, dripnotes, 'false')";
                         cmd.Parameters.AddWithValue("symbol", symbol);
                         cmd.Parameters.AddWithValue("stockname", stockname);
                         cmd.Parameters.AddWithValue("industry", industry);
