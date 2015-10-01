@@ -75,9 +75,9 @@
             this.lblPurchaseDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPurchaseDate.Location = new System.Drawing.Point(20, 22);
             this.lblPurchaseDate.Name = "lblPurchaseDate";
-            this.lblPurchaseDate.Size = new System.Drawing.Size(67, 13);
+            this.lblPurchaseDate.Size = new System.Drawing.Size(81, 13);
             this.lblPurchaseDate.TabIndex = 24;
-            this.lblPurchaseDate.Text = "Ex-Dividend:";
+            this.lblPurchaseDate.Text = "Purchase Date:";
             // 
             // btnGetPrice
             // 
