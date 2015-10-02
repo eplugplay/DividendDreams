@@ -79,7 +79,7 @@ namespace DividendDreams
             DividendTotalPercentage = DividendTotalPercentage / dividendCount;
             QuarterDiv = (YearDiv / 4);
             MonthlyDiv = (YearDiv / 12);
-            MessageBox.Show("Portfolio Value: $" + Math.Round(DividendStockValue, 2) + "\n\n" + "Annual Dividend: $" + Math.Round(YearDiv, 2) + "\n\n" + "Quarterly Dividend: $" + Math.Round(QuarterDiv, 2) + "\n\n" + "Monthly Dividend: $" + Math.Round(MonthlyDiv, 2) + "\n\n" + "Total Dividend: " + Math.Round(DividendTotalPercentage, 2) + "%");
+            MessageBox.Show("Portfolio Value: $" + Math.Round(DividendStockValue, 2) + "\n\nAnnual Dividend: $" + Math.Round(YearDiv, 2) + "\n\n" + "Quarterly Dividend: $" + Math.Round(QuarterDiv, 2) + "\n\nMonthly Dividend: $" + Math.Round(MonthlyDiv, 2) + "\n\nTotal Dividend: " + Math.Round(DividendTotalPercentage, 2) + "%");
         }
 
         public void LoadCurrentDividends()
@@ -167,7 +167,7 @@ namespace DividendDreams
             bool drip = false;
             DividendStocks.GetDividendPrice(lb.SelectedValue.ToString(), out TotalDividendPrice, out QuarterlyDividendPrice, out MonthlyDividendPrice, out OriginalDripCost, out AutoDripCost, out drip);
             string dripMsg = drip == true ? "\n\n Drip Cost: $" + Math.Round(OriginalDripCost, 2) : "";
-            MessageBox.Show("Yearly: $" + Math.Round(TotalDividendPrice, 2).ToString() + "\n\n Quarterly: $" + Math.Round(QuarterlyDividendPrice, 2) + "\n\n Monthly: $" + Math.Round(MonthlyDividendPrice, 2) + dripMsg);
+            MessageBox.Show("Yearly: $" + Math.Round(TotalDividendPrice, 2).ToString() + "\n\nQuarterly: $" + Math.Round(QuarterlyDividendPrice, 2) + "\n\nMonthly: $" + Math.Round(MonthlyDividendPrice, 2) + dripMsg);
         }
 
         public void GetSharePrice(ListBox lb)

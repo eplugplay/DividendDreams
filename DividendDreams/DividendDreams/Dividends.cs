@@ -200,7 +200,7 @@ namespace DividendDreams
                     : Convert.ToDecimal(txtAnnualDividend.Text) * Convert.ToDecimal(txtNumberOfShares.Text);
                 decimal QuarterlyDividendPrice = TotalDividendPrice / 3;
                 decimal MonthlyDividendPrice = TotalDividendPrice / 12;
-                MessageBox.Show("Yearly: $" + Math.Round(TotalDividendPrice, 2).ToString() + "\n\n Quarterly: $" + Math.Round(QuarterlyDividendPrice, 2) + "\n\n Monthly: $" + Math.Round(MonthlyDividendPrice, 2));
+                MessageBox.Show("Yearly: $" + Math.Round(TotalDividendPrice, 2).ToString() + "\n\nQuarterly: $" + Math.Round(QuarterlyDividendPrice, 2) + "\n\nMonthly: $" + Math.Round(MonthlyDividendPrice, 2));
             }
         }
 
