@@ -91,7 +91,7 @@ namespace DividendDreams
             DividendTotalPercentage = DividendTotalPercentage / TotalDividendCount;
             QuarterDiv = (YearDiv / 4);
             MonthlyDiv = (YearDiv / 12);
-            MessageBox.Show("Portfolio Value (Stocks Only Value): $" + Math.Round(TotalDividendStockValue, 2) + "\n\nTotal Transaction Fee: $" + Math.Round(TransactionFee, 2) + "\n\nGrand Total Spent: $" + Math.Round(GrandTotalSpent, 2) + "\n\nAnnual Dividend: $" + Math.Round(YearDiv, 2) + "\n\n" + "Quarterly Dividend: $" + Math.Round(QuarterDiv, 2) + "\n\nMonthly Dividend: $" + Math.Round(MonthlyDiv, 2) + "\n\nTotal Dividend: " + Math.Round(DividendTotalPercentage, 2) + "%");
+            MessageBox.Show("Portfolio Value: $" + Math.Round(TotalDividendStockValue, 2) + "\n\nTotal Transaction Fee: $" + Math.Round(TransactionFee, 2) + "\n\nGrand Total Spent: $" + Math.Round(GrandTotalSpent, 2) + "\n\nAnnual Dividend: $" + Math.Round(YearDiv, 2) + "\n\n" + "Quarterly Dividend: $" + Math.Round(QuarterDiv, 2) + "\n\nMonthly Dividend: $" + Math.Round(MonthlyDiv, 2) + "\n\nTotal Dividend: " + Math.Round(DividendTotalPercentage, 2) + "%");
         }
 
         public void LoadCurrentDividends()
