@@ -393,11 +393,13 @@ namespace DividendDreams
 
         private void lbCurrentDividends_MouseClick(object sender, MouseEventArgs e)
         {
+            lbAllDividends.ClearSelected();
             CurrentDiv = true;
         }
 
         private void lbAllDividends_MouseClick(object sender, MouseEventArgs e)
         {
+            lbCurrentDividends.ClearSelected();
             CurrentDiv = false;
         }
 
