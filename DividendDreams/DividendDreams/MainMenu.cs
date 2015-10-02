@@ -251,7 +251,7 @@ namespace DividendDreams
 
         private void btnGetSharePrice_Click(object sender, EventArgs e)
         {
-            if (lbCurrentDividends.SelectedIndex != -1 && lbAllDividends.SelectedIndex != -1)
+            if (lbCurrentDividends.SelectedIndex != -1)
             {
                 GetSharePrice(lbCurrentDividends);
             }
@@ -259,7 +259,7 @@ namespace DividendDreams
 
         private void btnDividendPrice_Click(object sender, EventArgs e)
         {
-            if (lbCurrentDividends.SelectedIndex != -1 && lbAllDividends.SelectedIndex != -1)
+            if (lbCurrentDividends.SelectedIndex != -1)
             {
                 GetDividendPrice(lbCurrentDividends);
             }
