@@ -44,7 +44,7 @@ namespace DividendDreams
             {
                 DividendStocks.NewDividendStock(txtSymbol.Text, txtStockName.Text, ddlIndustry.Text, txtSharePrice.Text, txtAnnualDividend.Text, txtNumberOfShares.Text, 
                     txtDividendPercent.Text, ddlCapSize.Text, txtDripCost.Text, txtDripCostInitial.Text, chkdrip.Checked == true ? "true" : "false", dtpExDividend.Value, txtDripNotes.Text);
-                ReloadMainDividends();
+                Program.MainMenu.LoadAllDividends();
                 pw.Close();
                 this.Close();
             }
