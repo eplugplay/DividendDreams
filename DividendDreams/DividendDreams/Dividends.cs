@@ -14,10 +14,12 @@ namespace DividendDreams
         static public Shares _Shares;
         public bool Edit { get; set; }
         public string ID { get; set; }
-        public Dividends(bool edit, string id)
+        bool CurrentDiv {get;set;}
+        public Dividends(bool edit, string id, bool currentDiv)
         {
             Edit = edit;
             ID = id;
+            CurrentDiv = currentDiv;
             InitializeComponent();
         }
 
@@ -34,7 +36,7 @@ namespace DividendDreams
             {
                 DividendStocks.UpdateDividendStock(ID, txtSymbol.Text, txtStockName.Text, ddlIndustry.Text, txtAnnualDividend.Text, txtDividendPercent.Text, 
                     ddlCapSize.Text, txtDripCostInitial.Text, txtDripCost.Text, chkdrip.Checked == true ? "true" : "false", dtpExDividend.Value, txtDripNotes.Text);
-                Program.MainMenu.LoadDividendStocks();
+                ReloadMainDividends();
                 pw.Close();
                 this.Close();
             }
@@ -42,9 +44,21 @@ namespace DividendDreams
             {
                 DividendStocks.NewDividendStock(txtSymbol.Text, txtStockName.Text, ddlIndustry.Text, txtSharePrice.Text, txtAnnualDividend.Text, txtNumberOfShares.Text, 
                     txtDividendPercent.Text, ddlCapSize.Text, txtDripCost.Text, txtDripCostInitial.Text, chkdrip.Checked == true ? "true" : "false", dtpExDividend.Value, txtDripNotes.Text);
-                Program.MainMenu.LoadDividendStocks();
+                ReloadMainDividends();
                 pw.Close();
                 this.Close();
+            }
+        }
+
+        public void ReloadMainDividends()
+        {
+            if (CurrentDiv)
+            {
+                Program.MainMenu.LoadCurrentDividends();
+            }
+            else
+            {
+                Program.MainMenu.LoadAllDividends();
             }
         }
 
@@ -195,7 +209,7 @@ namespace DividendDreams
         {
             if (_Shares == null || _Shares.IsDisposed)
             {
-                _Shares = new Shares(edit, ID, ddlSharePurchaseDate.SelectedValue == null ? "" : ddlSharePurchaseDate.SelectedValue.ToString());
+                _Shares = new Shares(edit, ID, ddlSharePurchaseDate.SelectedValue == null ? "" : ddlSharePurchaseDate.SelectedValue.ToString(), CurrentDiv);
                 _Shares.Show();
             }
             else

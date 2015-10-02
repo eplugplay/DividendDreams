@@ -14,11 +14,13 @@ namespace DividendDreams
         public bool Edit { get; set; }
         public string ID { get; set; }
         public string DividendPriceID { get; set; }
-        public Shares(bool edit, string id, string dividendPriceID)
+        public bool CurrentDiv { get; set; }
+        public Shares(bool edit, string id, string dividendPriceID, bool currentDiv)
         {
             ID = id;
             Edit = edit;
             DividendPriceID = dividendPriceID;
+            CurrentDiv = currentDiv;
             InitializeComponent();
         }
 
@@ -85,9 +87,21 @@ namespace DividendDreams
                 DividendStocks.NewShare(txtPurchasePrice.Text, txtNumberOfShares.Text, ddlAction.Text, ID, dtpPurchaseDate.Value);
             }
             MainMenu._Dividends.LoadDividendStock();
-            Program.MainMenu.LoadCurrentDividends();
+            LoadAllMainDividends();
             pw.Close();
             this.Close();
+        }
+
+        public void LoadAllMainDividends()
+        {
+            if (CurrentDiv)
+            {
+                Program.MainMenu.LoadCurrentDividends();
+            }
+            else
+            {
+                Program.MainMenu.LoadAllDividends();
+            }
         }
 
         public void GetSharePrice()

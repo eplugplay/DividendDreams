@@ -12,6 +12,7 @@ namespace DividendDreams
     public partial class MainMenu : Form
     {
         public static Dividends _Dividends;
+        public bool CurrentDiv { get; set; }
         public MainMenu()
         {
             InitializeComponent();
@@ -29,7 +30,7 @@ namespace DividendDreams
             Application.DoEvents();
             if (_Dividends == null || _Dividends.IsDisposed)
             {
-                _Dividends = new Dividends(edit, id);
+                _Dividends = new Dividends(edit, id, CurrentDiv);
                 _Dividends.Show();
             }
             else
@@ -99,11 +100,6 @@ namespace DividendDreams
         {
             ddlIndustry.SelectedIndex = 0;
             ddlIndustryAll.SelectedIndex = 0;
-            LoadDividendStocks();
-        }
-
-        public void LoadDividendStocks()
-        {
             LoadAllDividends();
             LoadCurrentDividends();
         }
@@ -139,7 +135,8 @@ namespace DividendDreams
             {
                 DividendStocks.UpdateDividendStock(lb.SelectedValue.ToString(), stockActive);
             }
-            LoadDividendStocks();
+            LoadAllDividends();
+            LoadCurrentDividends();
             pw.Close();
         }
 
@@ -303,6 +300,16 @@ namespace DividendDreams
             {
                 lbAllDividends.ClearSelected();
             }
+        }
+
+        private void lbCurrentDividends_MouseClick(object sender, MouseEventArgs e)
+        {
+            CurrentDiv = true;
+        }
+
+        private void lbAllDividends_MouseClick(object sender, MouseEventArgs e)
+        {
+            CurrentDiv = false;
         }
     }
 }

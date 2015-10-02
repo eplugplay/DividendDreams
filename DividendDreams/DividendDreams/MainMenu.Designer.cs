@@ -96,6 +96,7 @@
             this.lbAllDividends.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.lbAllDividends.Size = new System.Drawing.Size(736, 289);
             this.lbAllDividends.TabIndex = 1;
+            this.lbAllDividends.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lbAllDividends_MouseClick);
             this.lbAllDividends.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbAllDividends_MouseDoubleClick);
             // 
             // lbCurrentDividends
@@ -110,6 +111,7 @@
             this.lbCurrentDividends.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.lbCurrentDividends.Size = new System.Drawing.Size(736, 289);
             this.lbCurrentDividends.TabIndex = 2;
+            this.lbCurrentDividends.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lbCurrentDividends_MouseClick);
             this.lbCurrentDividends.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbCurrentDividends_MouseDoubleClick);
             // 
             // gpDividendStocks
