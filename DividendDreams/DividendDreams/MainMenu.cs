@@ -51,11 +51,10 @@ namespace DividendDreams
 
         public void CalculateResults()
         {
-            decimal SoldCash = 0;
             decimal TransactionCount = 0;
             decimal TotalDividendCount = 0;
             decimal TotalDividendStockValue = 0;
-            decimal TotalBoughtPrice = 0;
+            //decimal TotalBoughtPrice = 0;
             decimal YearDiv = 0;
             decimal QuarterDiv = 0;
             decimal MonthlyDiv = 0;
@@ -75,25 +74,24 @@ namespace DividendDreams
                 {
                     TransactionCount++;
                     YearDiv += (ShareNum * AnnDiv);
-                    TotalBoughtPrice += (ShareNum * Purchaseprice);
+                    //TotalBoughtPrice += (ShareNum * Purchaseprice);
                     TotalDividendStockValue += (ShareNum * Purchaseprice);
                 }
                 else
                 {
                     TransactionCount++;
                     YearDiv -= (ShareNum * AnnDiv);
-                    SoldCash += (ShareNum * Purchaseprice) - TransactionFee;
                     TotalDividendStockValue -= (ShareNum * Purchaseprice);
                 }
                 TotalDividendCount++;
                 DividendTotalPercentage += Convert.ToDecimal(dt.Rows[i]["dividendpercent"]);
             }
             TransactionFee = TransactionFee * TransactionCount;
-            decimal GrandTotalSpent = (TotalBoughtPrice + TransactionFee) - SoldCash;
+            decimal GrandTotalSpent = TotalDividendStockValue + TransactionFee;
             DividendTotalPercentage = DividendTotalPercentage / TotalDividendCount;
             QuarterDiv = (YearDiv / 4);
             MonthlyDiv = (YearDiv / 12);
-            MessageBox.Show("Portfolio Value (Stocks Only Value): $" + Math.Round(TotalDividendStockValue, 2) + "\n\nCash: $" + Math.Round(SoldCash, 2) + "\n\nTotal Transaction Fee: $" + Math.Round(TransactionFee, 2) + "\n\nGrand Total Worth: $" + Math.Round(GrandTotalSpent, 2) + "\n\nAnnual Dividend: $" + Math.Round(YearDiv, 2) + "\n\n" + "Quarterly Dividend: $" + Math.Round(QuarterDiv, 2) + "\n\nMonthly Dividend: $" + Math.Round(MonthlyDiv, 2) + "\n\nTotal Dividend: " + Math.Round(DividendTotalPercentage, 2) + "%");
+            MessageBox.Show("Portfolio Value (Stocks Only Value): $" + Math.Round(TotalDividendStockValue, 2) + "\n\nTotal Transaction Fee: $" + Math.Round(TransactionFee, 2) + "\n\nGrand Total Spent: $" + Math.Round(GrandTotalSpent, 2) + "\n\nAnnual Dividend: $" + Math.Round(YearDiv, 2) + "\n\n" + "Quarterly Dividend: $" + Math.Round(QuarterDiv, 2) + "\n\nMonthly Dividend: $" + Math.Round(MonthlyDiv, 2) + "\n\nTotal Dividend: " + Math.Round(DividendTotalPercentage, 2) + "%");
         }
 
         public void LoadCurrentDividends()
