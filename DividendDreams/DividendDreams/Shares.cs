@@ -88,8 +88,23 @@ namespace DividendDreams
             }
             MainMenu._Dividends.LoadDividendStock();
             LoadAllMainDividends();
+            SelectCurrentStock();
             pw.Close();
             this.Close();
+        }
+
+        public void SelectCurrentStock()
+        {
+            if (CurrentDiv)
+            {
+                Program.MainMenu.lbCurrentDividends.ClearSelected();
+                Program.MainMenu.lbCurrentDividends.SelectedValue = Convert.ToInt32(ID);
+            }
+            else
+            {
+                Program.MainMenu.lbAllDividends.ClearSelected();
+                Program.MainMenu.lbAllDividends.SelectedValue = Convert.ToInt32(ID);
+            }
         }
 
         public void LoadAllMainDividends()

@@ -37,14 +37,16 @@ namespace DividendDreams
                 DividendStocks.UpdateDividendStock(ID, txtSymbol.Text, txtStockName.Text, ddlIndustry.Text, txtAnnualDividend.Text, txtDividendPercent.Text, 
                     ddlCapSize.Text, txtDripCostInitial.Text, txtDripCost.Text, chkdrip.Checked == true ? "true" : "false", dtpExDividend.Value, txtDripNotes.Text);
                 ReloadMainDividends();
+                Program.MainMenu.lbAllDividends.SelectedValue = Convert.ToInt32(ID);
                 pw.Close();
                 this.Close();
             }
             else
             {
-                DividendStocks.NewDividendStock(txtSymbol.Text, txtStockName.Text, ddlIndustry.Text, txtSharePrice.Text, txtAnnualDividend.Text, txtNumberOfShares.Text, 
+                ID = DividendStocks.NewDividendStock(txtSymbol.Text, txtStockName.Text, ddlIndustry.Text, txtSharePrice.Text, txtAnnualDividend.Text, txtNumberOfShares.Text, 
                     txtDividendPercent.Text, ddlCapSize.Text, txtDripCost.Text, txtDripCostInitial.Text, chkdrip.Checked == true ? "true" : "false", dtpExDividend.Value, txtDripNotes.Text);
                 Program.MainMenu.LoadAllDividends();
+                Program.MainMenu.lbAllDividends.SelectedValue = Convert.ToInt32(ID);
                 pw.Close();
                 this.Close();
             }
@@ -251,7 +253,7 @@ namespace DividendDreams
                     DividendStocks.DeleteShare(ddlSharePurchaseDate.SelectedValue.ToString());
                     LoadPurchaseDates();
                     LoadPurchaseData();
-                    Program.MainMenu.LoadCurrentDividends();
+                    ReloadMainDividends();
                     pw.Close();
                 }
             }

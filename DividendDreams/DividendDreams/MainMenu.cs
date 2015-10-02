@@ -13,6 +13,8 @@ namespace DividendDreams
     {
         public static Dividends _Dividends;
         public bool CurrentDiv { get; set; }
+        public int ID { get; set; }
+        public List<int> lstID = new List<int>();
         public MainMenu()
         {
             InitializeComponent();
@@ -84,16 +86,22 @@ namespace DividendDreams
 
         public void LoadCurrentDividends()
         {
+            lbCurrentDividends.SelectedIndexChanged -= lbCurrentDividends_SelectedIndexChanged;
             int totalDividends = 0;
             DividendStocks.LoadDividends(lbCurrentDividends, "true", out totalDividends);
             lblTotalPortfolioDividends.Text = totalDividends.ToString();
+            lbCurrentDividends.ClearSelected();
+            lbCurrentDividends.SelectedIndexChanged += lbCurrentDividends_SelectedIndexChanged;
         }
 
         public void LoadAllDividends()
         {
+            lbAllDividends.SelectedIndexChanged -= lbAllDividends_SelectedIndexChanged;
             int totalDividends = 0;
             DividendStocks.LoadDividends(lbAllDividends, "false", out totalDividends);
             lblTotalAllDividends.Text = totalDividends.ToString();
+            lbAllDividends.ClearSelected();
+            lbAllDividends.SelectedIndexChanged += lbAllDividends_SelectedIndexChanged;
         }
 
         private void MainMenu_Load(object sender, EventArgs e)
@@ -124,11 +132,13 @@ namespace DividendDreams
             PleaseWait pw = new PleaseWait();
             pw.Show();
             Application.DoEvents();
+            lstID.Clear();
             if (lb.SelectedItems.Count > 1)
             {
                 foreach (DataRowView drv in lb.SelectedItems)
                 {
                     DividendStocks.UpdateDividendStock(drv.Row["id"].ToString(), stockActive);
+                    lstID.Add(Convert.ToInt32(drv.Row["id"]));
                 }
             }
             else
@@ -137,7 +147,69 @@ namespace DividendDreams
             }
             LoadAllDividends();
             LoadCurrentDividends();
+            SelectStocks();
             pw.Close();
+        }
+
+        public List<int> SaveListBoxItems(ListBox lb)
+        {
+            List<int> toReturn = new List<int>();
+            foreach (DataRowView drv in lb.Items)
+            {
+                toReturn.Add(Convert.ToInt32(drv.Row["id"]));
+            }
+            return toReturn;
+        }
+
+        public void SelectMultiple(ListBox lb)
+        {
+            List<int> lst = SaveListBoxItems(lb);
+            for (int a = 0; a < lstID.Count; a++)
+            {
+                for (int b = 0; b < lst.Count; b++)
+                {
+                    if (lstID[a] == lst[b])
+                    {
+                        lb.SetSelected(b, true);
+                    }
+                }
+            }
+        }
+
+        public void SelectStocks()
+        {
+            if (!CurrentDiv)
+            {
+                CurrentDiv = true;
+                lbAllDividends.ClearSelected();
+                lbCurrentDividends.SelectedIndexChanged -= lbCurrentDividends_SelectedIndexChanged;
+                lbCurrentDividends.ClearSelected();
+                if (lbCurrentDividends.SelectedItems.Count == 1)
+                {
+                    lbCurrentDividends.SelectedValue = Convert.ToInt32(ID);
+                }
+                else
+                {
+                    SelectMultiple(lbCurrentDividends);
+                }
+                lbCurrentDividends.SelectedIndexChanged += lbCurrentDividends_SelectedIndexChanged;
+            }
+            else
+            {
+                CurrentDiv = false;
+                lbCurrentDividends.ClearSelected();
+                lbAllDividends.SelectedIndexChanged -= lbAllDividends_SelectedIndexChanged;
+                lbAllDividends.ClearSelected();
+                if (lbAllDividends.SelectedItems.Count == 1)
+                {
+                    lbAllDividends.SelectedValue = Convert.ToInt32(ID);
+                }
+                else
+                {
+                    SelectMultiple(lbAllDividends);
+                }
+                lbAllDividends.SelectedIndexChanged += lbAllDividends_SelectedIndexChanged;
+            }
         }
 
         private void lbCurrentDividends_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -179,12 +251,18 @@ namespace DividendDreams
 
         private void btnGetSharePrice_Click(object sender, EventArgs e)
         {
-            GetSharePrice(lbCurrentDividends);
+            if (lbCurrentDividends.SelectedIndex != -1 && lbAllDividends.SelectedIndex != -1)
+            {
+                GetSharePrice(lbCurrentDividends);
+            }
         }
 
         private void btnDividendPrice_Click(object sender, EventArgs e)
         {
-            GetDividendPrice(lbCurrentDividends);
+            if (lbCurrentDividends.SelectedIndex != -1 && lbAllDividends.SelectedIndex != -1)
+            {
+                GetDividendPrice(lbCurrentDividends);
+            }
         }
 
         private void btnHighlight_Click(object sender, EventArgs e)
@@ -310,6 +388,22 @@ namespace DividendDreams
         private void lbAllDividends_MouseClick(object sender, MouseEventArgs e)
         {
             CurrentDiv = false;
+        }
+
+        private void lbAllDividends_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lbAllDividends.SelectedIndex != -1)
+            {
+                ID = Convert.ToInt32(lbAllDividends.SelectedValue);
+            }
+        }
+
+        private void lbCurrentDividends_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lbCurrentDividends.SelectedIndex != -1)
+            {
+                ID = Convert.ToInt32(lbCurrentDividends.SelectedValue);
+            }
         }
     }
 }

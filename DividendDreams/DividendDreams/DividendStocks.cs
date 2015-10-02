@@ -409,9 +409,10 @@ namespace DividendDreams
             }
         }
 
-        public static void NewDividendStock(string symbol, string stockname, string industry, string boughtshareprice, string anndividend, string numberofshares, 
+        public static string NewDividendStock(string symbol, string stockname, string industry, string boughtshareprice, string anndividend, string numberofshares, 
                                             string dividendpercent, string capsize, string dripcost, string dripinitialcost, string drip, DateTime exdividend, string dripnotes)
         {
+            string ID = "0";
             try
             {
                 using (MySqlConnection cnn = new MySqlConnection(ConfigurationManager.ConnectionStrings["cnn"].ToString()))
@@ -420,7 +421,7 @@ namespace DividendDreams
                     using (var cmd = cnn.CreateCommand())
                     {
                         cmd.CommandText = @"INSERT INTO dividendstocks (symbol, stockname, industry, anndividend, dividendpercent, capsize, dripinitialcost, dripcost, drip, exdividend, dripnotes, stockactive) 
-                                        VALUES (@symbol, @stockname, @industry, @anndividend, @dividendpercent, @capsize, @dripinitialcost, @dripcost, @drip, @exdividend, dripnotes, 'false')";
+                                        VALUES (@symbol, @stockname, @industry, @anndividend, @dividendpercent, @capsize, @dripinitialcost, @dripcost, @drip, @exdividend, dripnotes, 'false'); SELECT LAST_INSERT_ID();";
                         cmd.Parameters.AddWithValue("symbol", symbol);
                         cmd.Parameters.AddWithValue("stockname", stockname);
                         cmd.Parameters.AddWithValue("industry", industry);
@@ -434,7 +435,7 @@ namespace DividendDreams
                         cmd.Parameters.AddWithValue("exdividend", exdividend);
                         cmd.Parameters.AddWithValue("dripnotes", dripnotes);
                         cmd.Parameters.AddWithValue("drip", drip);
-                        cmd.ExecuteNonQuery();
+                        ID = cmd.ExecuteScalar().ToString();
                     }
                 }
             }
@@ -442,6 +443,7 @@ namespace DividendDreams
             {
 
             }
+            return ID;
         }
 
         public static void UpdateDividendStock(string id, string symbol, string stockname, string industry, string anndividend, string dividendpercent, string capsize,
