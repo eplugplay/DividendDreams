@@ -51,37 +51,49 @@ namespace DividendDreams
 
         public void CalculateResults()
         {
-            decimal dividendCount = 0;
-            decimal DividendStockValue = 0;
+            decimal SoldCash = 0;
+            decimal TransactionCount = 0;
+            decimal TotalDividendCount = 0;
+            decimal TotalDividendStockValue = 0;
+            decimal TotalBoughtPrice = 0;
             decimal YearDiv = 0;
             decimal QuarterDiv = 0;
             decimal MonthlyDiv = 0;
             decimal DividendTotalPercentage = 0;
             decimal TransactionFee = (decimal)9.99;
             DataTable dt = DividendStocks.GetCurrentDividends();
+            decimal ShareNum = 0;
+            decimal AnnDiv = 0;
+            decimal Purchaseprice = 0;
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 string id = dt.Rows[i]["id"].ToString();
-                decimal ShareNum = Convert.ToDecimal(dt.Rows[i]["numberofshares"]);
-                decimal AnnDiv = Convert.ToDecimal(dt.Rows[i]["annDividend"]);
-                decimal purchaseprice = Convert.ToDecimal(dt.Rows[i]["purchaseprice"]);
+                ShareNum = Convert.ToDecimal(dt.Rows[i]["numberofshares"]);
+                AnnDiv = Convert.ToDecimal(dt.Rows[i]["annDividend"]);
+                Purchaseprice = Convert.ToDecimal(dt.Rows[i]["purchaseprice"]);
                 if (dt.Rows[i]["purchaseaction"].ToString() == "bought")
                 {
+                    TransactionCount++;
                     YearDiv += (ShareNum * AnnDiv);
-                    DividendStockValue += (ShareNum * purchaseprice) + TransactionFee;
+                    TotalBoughtPrice += (ShareNum * Purchaseprice);
+                    TotalDividendStockValue += (ShareNum * Purchaseprice);
                 }
                 else
                 {
+                    TransactionCount++;
                     YearDiv -= (ShareNum * AnnDiv);
-                    DividendStockValue -= (ShareNum * purchaseprice + TransactionFee) + TransactionFee;
+                    SoldCash += (ShareNum * Purchaseprice) - TransactionFee;
+                    TotalDividendStockValue -= (ShareNum * Purchaseprice);
                 }
-                dividendCount++;
+                TotalDividendCount++;
                 DividendTotalPercentage += Convert.ToDecimal(dt.Rows[i]["dividendpercent"]);
             }
-            DividendTotalPercentage = DividendTotalPercentage / dividendCount;
+            TransactionFee = TransactionFee * TransactionCount;
+            decimal GrandTotalSpent = (TotalBoughtPrice + TransactionFee) - SoldCash;
+            DividendTotalPercentage = DividendTotalPercentage / TotalDividendCount;
             QuarterDiv = (YearDiv / 4);
             MonthlyDiv = (YearDiv / 12);
-            MessageBox.Show("Portfolio Value: $" + Math.Round(DividendStockValue, 2) + "\n\nAnnual Dividend: $" + Math.Round(YearDiv, 2) + "\n\n" + "Quarterly Dividend: $" + Math.Round(QuarterDiv, 2) + "\n\nMonthly Dividend: $" + Math.Round(MonthlyDiv, 2) + "\n\nTotal Dividend: " + Math.Round(DividendTotalPercentage, 2) + "%");
+            MessageBox.Show("Portfolio Value (Stocks Only Value): $" + Math.Round(TotalDividendStockValue, 2) + "\n\nCash: $" + Math.Round(SoldCash, 2) + "\n\nTotal Transaction Fee: $" + Math.Round(TransactionFee, 2) + "\n\nGrand Total Worth: $" + Math.Round(GrandTotalSpent, 2) + "\n\nAnnual Dividend: $" + Math.Round(YearDiv, 2) + "\n\n" + "Quarterly Dividend: $" + Math.Round(QuarterDiv, 2) + "\n\nMonthly Dividend: $" + Math.Round(MonthlyDiv, 2) + "\n\nTotal Dividend: " + Math.Round(DividendTotalPercentage, 2) + "%");
         }
 
         public void LoadCurrentDividends()
@@ -133,7 +145,8 @@ namespace DividendDreams
             pw.Show();
             Application.DoEvents();
             lstID.Clear();
-            if (lb.SelectedItems.Count > 1)
+            int selectedItemsCount = lb.SelectedItems.Count;
+            if (selectedItemsCount > 1)
             {
                 foreach (DataRowView drv in lb.SelectedItems)
                 {
@@ -147,7 +160,7 @@ namespace DividendDreams
             }
             LoadAllDividends();
             LoadCurrentDividends();
-            SelectStocks();
+            SelectStocks(selectedItemsCount);
             pw.Close();
         }
 
@@ -176,7 +189,7 @@ namespace DividendDreams
             }
         }
 
-        public void SelectStocks()
+        public void SelectStocks(int selectedItemsCount)
         {
             if (!CurrentDiv)
             {
@@ -184,7 +197,7 @@ namespace DividendDreams
                 lbAllDividends.ClearSelected();
                 lbCurrentDividends.SelectedIndexChanged -= lbCurrentDividends_SelectedIndexChanged;
                 lbCurrentDividends.ClearSelected();
-                if (lbCurrentDividends.SelectedItems.Count == 1)
+                if (selectedItemsCount == 1)
                 {
                     lbCurrentDividends.SelectedValue = Convert.ToInt32(ID);
                 }
@@ -200,7 +213,7 @@ namespace DividendDreams
                 lbCurrentDividends.ClearSelected();
                 lbAllDividends.SelectedIndexChanged -= lbAllDividends_SelectedIndexChanged;
                 lbAllDividends.ClearSelected();
-                if (lbAllDividends.SelectedItems.Count == 1)
+                if (selectedItemsCount == 1)
                 {
                     lbAllDividends.SelectedValue = Convert.ToInt32(ID);
                 }

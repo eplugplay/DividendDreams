@@ -98,13 +98,13 @@ namespace DividendDreams
                         {
                             numShares = Convert.ToInt32(dt.Rows[i]["numberofshares"]);
                             price = Convert.ToDecimal(dt.Rows[i]["purchaseprice"]);
-                            totalPrice += ((decimal)numShares * price) + transactionPrice;
+                            totalPrice += ((decimal)numShares * price);
                         }
                         else
                         {
                             numShares = Convert.ToInt32(dt.Rows[i]["numberofshares"]);
                             price = Convert.ToDecimal(dt.Rows[i]["purchaseprice"]);
-                            totalPrice -= ((decimal)numShares * price - transactionPrice) + transactionPrice;
+                            totalPrice -= ((decimal)numShares * price);
                         }
                     }
                 }
