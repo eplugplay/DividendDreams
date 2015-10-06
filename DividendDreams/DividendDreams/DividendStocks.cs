@@ -559,7 +559,7 @@ namespace DividendDreams
                 cnn.Open();
                 using (var cmd = cnn.CreateCommand())
                 {
-                    cmd.CommandText = "SELECT nextpurchase FROM dividendstocks WHERE id=@id";
+                    cmd.CommandText = "SELECT nextpurchase FROM dividendstocks WHERE id=@id order by symbol";
                     cmd.Parameters.AddWithValue("id", id);
                     try
                     {
