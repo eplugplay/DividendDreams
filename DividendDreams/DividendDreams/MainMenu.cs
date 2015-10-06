@@ -15,6 +15,7 @@ namespace DividendDreams
         public bool CurrentDiv { get; set; }
         public int ID { get; set; }
         public List<int> lstID = new List<int>();
+        public bool NextPurchase { get; set; }
         public MainMenu()
         {
             InitializeComponent();
@@ -321,6 +322,30 @@ namespace DividendDreams
             }
         }
 
+
+        private void btnNextPurchase_Click(object sender, EventArgs e)
+        {
+            HighlightAllNextToBuy(lbAllDividends);
+        }
+
+        public void HighlightAllNextToBuy(ListBox lb)
+        {
+            lb.ClearSelected();
+            chkNextBuy.Checked = true;
+            DataTable dt = DividendStocks.GetAllNextToBuy(ID);
+            for (int a = 0; a < dt.Rows.Count; a++)
+            {
+                for (int i = 0; i < lb.Items.Count; i++)
+                {
+                    DataRowView drv = lb.Items[i] as DataRowView;
+                    if (drv["id"].Equals(dt.Rows[a]["id"]))
+                    {
+                        lb.SelectedIndices.Add(i);
+                    }
+                }
+            }
+        }
+
         public void ShowIndustryPercentages(ListBox lb, Label lbl)
         {
             decimal portfolioCnt = Convert.ToDecimal(lbl.Text);
@@ -408,6 +433,8 @@ namespace DividendDreams
             if (lbAllDividends.SelectedIndex != -1)
             {
                 ID = Convert.ToInt32(lbAllDividends.SelectedValue);
+                chkNextBuy.Checked = DividendStocks.LoadNextPurchase(ID) == 1 ? true : false;
+                NextPurchase = false;
             }
         }
 
@@ -417,6 +444,25 @@ namespace DividendDreams
             {
                 ID = Convert.ToInt32(lbCurrentDividends.SelectedValue);
             }
+        }
+
+        private void chkNextBuy_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkNextBuy.Checked)
+            {
+                if (!NextPurchase)
+                {
+                    DividendStocks.SaveNextPurchase(ID, 1);
+                }
+            }
+            else
+            {
+                if (!NextPurchase)
+                {
+                    DividendStocks.SaveNextPurchase(ID, 0);
+                }
+            }
+            NextPurchase = true;
         }
     }
 }

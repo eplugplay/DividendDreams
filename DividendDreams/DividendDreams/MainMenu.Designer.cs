@@ -34,6 +34,8 @@
             this.lbAllDividends = new System.Windows.Forms.ListBox();
             this.lbCurrentDividends = new System.Windows.Forms.ListBox();
             this.gpDividendStocks = new System.Windows.Forms.GroupBox();
+            this.btnNextPurchase = new System.Windows.Forms.Button();
+            this.chkNextBuy = new System.Windows.Forms.CheckBox();
             this.lblSearchAllSymbol = new System.Windows.Forms.Label();
             this.txtSearchAllSymbol = new System.Windows.Forms.TextBox();
             this.lblSearchSymbol = new System.Windows.Forms.Label();
@@ -119,6 +121,8 @@
             // gpDividendStocks
             // 
             this.gpDividendStocks.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.gpDividendStocks.Controls.Add(this.btnNextPurchase);
+            this.gpDividendStocks.Controls.Add(this.chkNextBuy);
             this.gpDividendStocks.Controls.Add(this.lblSearchAllSymbol);
             this.gpDividendStocks.Controls.Add(this.txtSearchAllSymbol);
             this.gpDividendStocks.Controls.Add(this.lblSearchSymbol);
@@ -148,6 +152,28 @@
             this.gpDividendStocks.TabIndex = 3;
             this.gpDividendStocks.TabStop = false;
             this.gpDividendStocks.Text = "Dividend Stocks";
+            // 
+            // btnNextPurchase
+            // 
+            this.btnNextPurchase.Location = new System.Drawing.Point(313, 15);
+            this.btnNextPurchase.Name = "btnNextPurchase";
+            this.btnNextPurchase.Size = new System.Drawing.Size(139, 23);
+            this.btnNextPurchase.TabIndex = 34;
+            this.btnNextPurchase.TabStop = false;
+            this.btnNextPurchase.Text = "Highlight Next Purchases";
+            this.btnNextPurchase.UseVisualStyleBackColor = true;
+            this.btnNextPurchase.Click += new System.EventHandler(this.btnNextPurchase_Click);
+            // 
+            // chkNextBuy
+            // 
+            this.chkNextBuy.AutoSize = true;
+            this.chkNextBuy.Location = new System.Drawing.Point(200, 19);
+            this.chkNextBuy.Name = "chkNextBuy";
+            this.chkNextBuy.Size = new System.Drawing.Size(107, 17);
+            this.chkNextBuy.TabIndex = 33;
+            this.chkNextBuy.Text = "Next to purchase";
+            this.chkNextBuy.UseVisualStyleBackColor = true;
+            this.chkNextBuy.CheckedChanged += new System.EventHandler(this.chkNextBuy_CheckedChanged);
             // 
             // lblSearchAllSymbol
             // 
@@ -436,6 +462,8 @@
         private System.Windows.Forms.Label lblSearchAllSymbol;
         private System.Windows.Forms.TextBox txtSearchAllSymbol;
         private System.Windows.Forms.Label lblSearchSymbol;
+        private System.Windows.Forms.CheckBox chkNextBuy;
+        private System.Windows.Forms.Button btnNextPurchase;
     }
 }
 

@@ -550,5 +550,77 @@ namespace DividendDreams
 
             }
         }
+
+        public static int LoadNextPurchase(int id)
+        {
+            int nextPurchase = 0;
+            using (MySqlConnection cnn = new MySqlConnection(ConfigurationManager.ConnectionStrings["cnn"].ToString()))
+            {
+                cnn.Open();
+                using (var cmd = cnn.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT nextpurchase FROM dividendstocks WHERE id=@id";
+                    cmd.Parameters.AddWithValue("id", id);
+                    try
+                    {
+                        using (var rdr = cmd.ExecuteReader())
+                        {
+                            rdr.Read();
+                            nextPurchase = Convert.ToInt32(rdr["nextpurchase"]);
+                        }
+                    }
+                    catch (Exception e)
+                    {
+
+                    }
+                }
+            }
+            return nextPurchase;
+        }
+
+        public static void SaveNextPurchase(int id, int nextPurchase)
+        {
+            try
+            {
+                using (MySqlConnection cnn = new MySqlConnection(ConfigurationManager.ConnectionStrings["cnn"].ToString()))
+                {
+                    cnn.Open();
+                    using (var cmd = cnn.CreateCommand())
+                    {
+                        cmd.CommandText = "UPDATE dividendstocks SET nextpurchase=@nextpurchase WHERE id=@id";
+                        cmd.Parameters.AddWithValue("id", id);
+                        cmd.Parameters.AddWithValue("nextpurchase", nextPurchase);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        public static DataTable GetAllNextToBuy(int id)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (MySqlConnection cnn = new MySqlConnection(ConfigurationManager.ConnectionStrings["cnn"].ToString()))
+                {
+                    cnn.Open();
+                    using (var cmd = cnn.CreateCommand())
+                    {
+                        cmd.CommandText = "SELECT * FROM dividendstocks WHERE nextpurchase='1'";
+                        MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                        da.Fill(dt);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+            return dt;
+        }
     }
 }
