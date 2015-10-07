@@ -333,18 +333,21 @@ namespace DividendDreams
             chkNextBuy.CheckedChanged -= chkNextBuy_CheckedChanged;
             chkNextBuy.Checked = true;
             chkNextBuy.CheckedChanged += chkNextBuy_CheckedChanged;
+            int cnt = 0;
             DataTable dt = DividendStocks.GetAllNextToBuy(ID);
-            for (int a = 0; a < dt.Rows.Count; a++)
+            for (int i = 0; i < lb.Items.Count; i++)
             {
-                for (int i = 0; i < lb.Items.Count; i++)
+                for (int a = 0; a < dt.Rows.Count; a++)
                 {
                     DataRowView drv = lb.Items[i] as DataRowView;
                     if (drv["id"].Equals(dt.Rows[a]["id"]))
                     {
+                        cnt++;
                         lb.SelectedIndices.Add(i);
                     }
                 }
             }
+            MessageBox.Show(string.Format("{0} results.", cnt));
         }
 
         public void ShowIndustryPercentages(ListBox lb, Label lbl)
