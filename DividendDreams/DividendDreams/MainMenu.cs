@@ -295,9 +295,11 @@ namespace DividendDreams
                     lb.SelectedIndices.Add(i);
                 }
             }
+            HighlightActive = false;
             if (!selectedOne)
             {
                 MessageBox.Show("Not Found");
+                tb.Clear();
             }
         }
 
@@ -415,6 +417,7 @@ namespace DividendDreams
 
         private void txtSearchAllSymbol_TextChanged(object sender, EventArgs e)
         {
+            HighlightActive = true;
             if (txtSearchAllSymbol.Text != "")
             {
                 SearchSymbol(txtSearchAllSymbol, lbAllDividends);
