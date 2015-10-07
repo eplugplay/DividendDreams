@@ -15,6 +15,7 @@ namespace DividendDreams
         public bool CurrentDiv { get; set; }
         public int ID { get; set; }
         public List<int> lstID = new List<int>();
+        public bool HighlightActive { get; set; }
         public MainMenu()
         {
             InitializeComponent();
@@ -315,6 +316,7 @@ namespace DividendDreams
                 }
             }
             percentage = (count / percentage) * 100;
+            HighlightActive = false;
             if (showMsg)
             {
                 MessageBox.Show(ddl.Text + ": " + Math.Round(percentage, 2) + "%");
@@ -324,6 +326,7 @@ namespace DividendDreams
 
         private void btnNextPurchase_Click(object sender, EventArgs e)
         {
+            HighlightActive = true;
             HighlightAllNextToBuy(lbAllDividends);
         }
 
@@ -347,6 +350,7 @@ namespace DividendDreams
                     }
                 }
             }
+            HighlightActive = false;
             MessageBox.Show(string.Format("{0} results.", cnt));
         }
 
@@ -383,6 +387,7 @@ namespace DividendDreams
 
         private void btnHighlightAll_Click(object sender, EventArgs e)
         {
+            HighlightActive = true;
             Highlight(lbAllDividends, ddlIndustryAll, lblTotalAllDividends, false);
         }
 
@@ -437,7 +442,10 @@ namespace DividendDreams
             if (lbAllDividends.SelectedIndex != -1)
             {
                 ID = Convert.ToInt32(lbAllDividends.SelectedValue);
-                LoadNextToBuy();
+                if (!HighlightActive)
+                {
+                    LoadNextToBuy();
+                }
             }
         }
 
