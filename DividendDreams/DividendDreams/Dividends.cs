@@ -35,7 +35,7 @@ namespace DividendDreams
             if (Edit)
             {
                 DividendStocks.UpdateDividendStock(ID, txtSymbol.Text, txtStockName.Text, ddlIndustry.Text, txtAnnualDividend.Text, txtDividendPercent.Text, 
-                    ddlCapSize.Text, txtDripCostInitial.Text, txtDripCost.Text, chkdrip.Checked == true ? "true" : "false", dtpExDividend.Value, txtDripNotes.Text);
+                    ddlCapSize.Text, txtDripCostInitial.Text, txtDripCost.Text, chkdrip.Checked == true ? "true" : "false", dtpExDividend.Value, txtDripNotes.Text, dtpPayDate.Value);
                 ReloadMainDividends();
                 Program.MainMenu.lbAllDividends.SelectedValue = Convert.ToInt32(ID);
                 pw.Close();
@@ -44,7 +44,7 @@ namespace DividendDreams
             else
             {
                 ID = DividendStocks.NewDividendStock(txtSymbol.Text, txtStockName.Text, ddlIndustry.Text, txtSharePrice.Text, txtAnnualDividend.Text, txtNumberOfShares.Text, 
-                    txtDividendPercent.Text, ddlCapSize.Text, txtDripCost.Text, txtDripCostInitial.Text, chkdrip.Checked == true ? "true" : "false", dtpExDividend.Value, txtDripNotes.Text);
+                    txtDividendPercent.Text, ddlCapSize.Text, txtDripCost.Text, txtDripCostInitial.Text, chkdrip.Checked == true ? "true" : "false", dtpExDividend.Value, txtDripNotes.Text, dtpPayDate.Value);
                 Program.MainMenu.LoadAllDividends();
                 Program.MainMenu.lbAllDividends.SelectedValue = Convert.ToInt32(ID);
                 pw.Close();
@@ -97,6 +97,10 @@ namespace DividendDreams
             if (dt.Rows[0]["exdividend"] != DBNull.Value)
             {
                 dtpExDividend.Value = Convert.ToDateTime(dt.Rows[0]["exdividend"]);
+            }
+            if (dt.Rows[0]["paydate"] != DBNull.Value)
+            {
+                dtpPayDate.Value = Convert.ToDateTime(dt.Rows[0]["paydate"]);
             }
             // load purchase dates
             LoadPurchaseDates();

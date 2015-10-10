@@ -44,7 +44,7 @@ namespace DividendDreams
                     cnn.Open();
                     using (var cmd = cnn.CreateCommand())
                     {
-                        cmd.CommandText = "SELECT ds.symbol, ds.stockname, ds.industry, ds.capsize, ds.anndividend, dp.numberofshares, ds.dividendpercent, ds.stockactive, dp.purchaseprice, dp.purchaseaction, ds.dripcost, ds.dripinitialcost, ds.drip, ds.exdividend, ds.dripnotes FROM dividendstocks ds join dividendprice dp on ds.id = dp.dividendstockid WHERE ds.id=@id";
+                        cmd.CommandText = "SELECT ds.symbol, ds.stockname, ds.industry, ds.capsize, ds.anndividend, dp.numberofshares, ds.dividendpercent, ds.stockactive, dp.purchaseprice, dp.purchaseaction, ds.dripcost, ds.dripinitialcost, ds.drip, ds.exdividend, ds.dripnotes, ds.paydate FROM dividendstocks ds join dividendprice dp on ds.id = dp.dividendstockid WHERE ds.id=@id";
                         cmd.Parameters.AddWithValue("id", id);
                         MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                         da.Fill(dt);
@@ -55,7 +55,7 @@ namespace DividendDreams
                     {
                         using (var cmd = cnn.CreateCommand())
                         {
-                            cmd.CommandText = "SELECT ds.symbol, ds.stockname, ds.industry, ds.capsize, ds.anndividend, ds.dividendpercent, ds.stockactive, ds.dripcost, ds.dripinitialcost, ds.drip, ds.exdividend, ds.dripnotes FROM dividendstocks ds WHERE ds.id=@id";
+                            cmd.CommandText = "SELECT ds.symbol, ds.stockname, ds.industry, ds.capsize, ds.anndividend, ds.dividendpercent, ds.stockactive, ds.dripcost, ds.dripinitialcost, ds.drip, ds.exdividend, ds.dripnotes, ds.paydate FROM dividendstocks ds WHERE ds.id=@id";
                             cmd.Parameters.AddWithValue("id", id);
                             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                             da.Fill(dt);
@@ -300,7 +300,7 @@ namespace DividendDreams
                     cnn.Open();
                     using (var cmd = cnn.CreateCommand())
                     {
-                        cmd.CommandText = "SELECT id, symbol, stockname, industry, ROUND(anndividend, 2) as anndividend, ROUND(dividendpercent, 2) as dividendpercent, exdividend FROM dividendstocks WHERE stockactive=@stockactive order by id";
+                        cmd.CommandText = "SELECT id, symbol, stockname, industry, ROUND(anndividend, 2) as anndividend, ROUND(dividendpercent, 2) as dividendpercent, exdividend, paydate FROM dividendstocks WHERE stockactive=@stockactive order by id";
                         //cmd.CommandText = "SELECT ds.id, dp.purchaseprice, ds.symbol, ds.stockname, ds.industry, dp.numberofshares, ROUND(ds.anndividend, 2) as anndividend, ROUND(ds.dividendpercent, 2) as dividendpercent FROM dividendstocks ds JOIN dividendprice dp on ds.id = dp.dividendstockid WHERE ds.stockactive=@stockactive AND dp.purchaseaction='bought' order by ds.id";
                         cmd.Parameters.AddWithValue("stockactive", stockactive);
                         MySqlDataAdapter da = new MySqlDataAdapter(cmd);
@@ -315,9 +315,10 @@ namespace DividendDreams
                     for (int i = 0; i < dtTemp.Rows.Count; i++)
                     {
                         string exDiv = dtTemp.Rows[i]["exdividend"].ToString() == "" ? ")" : ")  -  " + dtTemp.Rows[i]["exdividend"].ToString();
+                        string payDiv = dtTemp.Rows[i]["paydate"].ToString() == "" ? "" : "  -  " + dtTemp.Rows[i]["paydate"].ToString();
                         DataRow dr = dtDividends.NewRow();
                         dr["id"] = Convert.ToInt32(dtTemp.Rows[i]["id"]);
-                        dr["symbolName"] = dtTemp.Rows[i]["symbol"].ToString() + "  -  (" + dtTemp.Rows[i]["stockname"].ToString() + ")  -  " + dtTemp.Rows[i]["industry"].ToString() + "  -  " + dtTemp.Rows[i]["numberofshares"].ToString() + " Shares  -  $" + dtTemp.Rows[i]["anndividend"].ToString() + "  -  (" + dtTemp.Rows[i]["dividendpercent"].ToString() + "%" + exDiv;
+                        dr["symbolName"] = dtTemp.Rows[i]["symbol"].ToString() + "  -  (" + dtTemp.Rows[i]["stockname"].ToString() + ")  -  " + dtTemp.Rows[i]["industry"].ToString() + "  -  " + dtTemp.Rows[i]["numberofshares"].ToString() + " Shares  -  $" + dtTemp.Rows[i]["anndividend"].ToString() + "  -  (" + dtTemp.Rows[i]["dividendpercent"].ToString() + "%" + exDiv + payDiv;
                         dtDividends.Rows.Add(dr);
                         totalDividends++;
                     }
@@ -343,6 +344,7 @@ namespace DividendDreams
             dtFinal.Columns.Add("anndividend", typeof(string));
             dtFinal.Columns.Add("dividendpercent", typeof(string));
             dtFinal.Columns.Add("exdividend", typeof(string));
+            dtFinal.Columns.Add("paydate", typeof(string));
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 DataRow dr = dtFinal.NewRow();
@@ -354,6 +356,7 @@ namespace DividendDreams
                 dr["anndividend"] = Convert.ToDecimal(dt.Rows[i]["anndividend"]);
                 dr["dividendpercent"] = Convert.ToDecimal(dt.Rows[i]["dividendpercent"]);
                 dr["exdividend"] = dt.Rows[i]["exdividend"] == DBNull.Value ? "" : Convert.ToDateTime(dt.Rows[i]["exdividend"]).ToString("MM/dd/yyyy");
+                dr["paydate"] = dt.Rows[i]["paydate"] == DBNull.Value ? "" : Convert.ToDateTime(dt.Rows[i]["paydate"]).ToString("MM/dd/yyyy");
                 //dr["symbolName"] = dt.Rows[i]["symbol"].ToString() + "  -  (" + dt.Rows[i]["stockname"].ToString() + ")  -  " + dt.Rows[i]["industry"].ToString() + "  -  " + dt.Rows[i]["numberofshares"].ToString() + " Shares  -  $" + dt.Rows[i]["anndividend"].ToString() + "  -  (" + dt.Rows[i]["dividendpercent"].ToString() + "%)";
                 dtFinal.Rows.Add(dr);
             }
@@ -410,7 +413,7 @@ namespace DividendDreams
         }
 
         public static string NewDividendStock(string symbol, string stockname, string industry, string boughtshareprice, string anndividend, string numberofshares, 
-                                            string dividendpercent, string capsize, string dripcost, string dripinitialcost, string drip, DateTime exdividend, string dripnotes)
+                                            string dividendpercent, string capsize, string dripcost, string dripinitialcost, string drip, DateTime exdividend, string dripnotes, DateTime paydate)
         {
             string ID = "0";
             try
@@ -420,8 +423,8 @@ namespace DividendDreams
                     cnn.Open();
                     using (var cmd = cnn.CreateCommand())
                     {
-                        cmd.CommandText = @"INSERT INTO dividendstocks (symbol, stockname, industry, anndividend, dividendpercent, capsize, dripinitialcost, dripcost, drip, exdividend, dripnotes, stockactive) 
-                                        VALUES (@symbol, @stockname, @industry, @anndividend, @dividendpercent, @capsize, @dripinitialcost, @dripcost, @drip, @exdividend, dripnotes, 'false'); SELECT LAST_INSERT_ID();";
+                        cmd.CommandText = @"INSERT INTO dividendstocks (symbol, stockname, industry, anndividend, dividendpercent, capsize, dripinitialcost, dripcost, drip, exdividend, dripnotes, stockactive, paydate) 
+                                        VALUES (@symbol, @stockname, @industry, @anndividend, @dividendpercent, @capsize, @dripinitialcost, @dripcost, @drip, @exdividend, dripnotes, 'false', paydate); SELECT LAST_INSERT_ID();";
                         cmd.Parameters.AddWithValue("symbol", symbol);
                         cmd.Parameters.AddWithValue("stockname", stockname);
                         cmd.Parameters.AddWithValue("industry", industry);
@@ -435,6 +438,7 @@ namespace DividendDreams
                         cmd.Parameters.AddWithValue("exdividend", exdividend);
                         cmd.Parameters.AddWithValue("dripnotes", dripnotes);
                         cmd.Parameters.AddWithValue("drip", drip);
+                        cmd.Parameters.AddWithValue("paydate", paydate);
                         ID = cmd.ExecuteScalar().ToString();
                     }
                 }
@@ -447,7 +451,7 @@ namespace DividendDreams
         }
 
         public static void UpdateDividendStock(string id, string symbol, string stockname, string industry, string anndividend, string dividendpercent, string capsize,
-                                                string dripinitialcost, string dripcost, string drip, DateTime exdividend, string dripnotes)
+                                                string dripinitialcost, string dripcost, string drip, DateTime exdividend, string dripnotes, DateTime paydate)
         {
             try
             {
@@ -457,7 +461,7 @@ namespace DividendDreams
                     using (var cmd = cnn.CreateCommand())
                     {
                         cmd.CommandText = @"UPDATE dividendstocks SET symbol=@symbol, stockname=@stockname, industry=@industry, anndividend=@anndividend, dividendpercent=@dividendpercent, 
-                                            capsize=@capsize, dripcost=@dripcost, dripinitialcost=@dripinitialcost, drip=@drip, exdividend=@exdividend, dripnotes=@dripnotes WHERE id=@id";
+                                            capsize=@capsize, dripcost=@dripcost, dripinitialcost=@dripinitialcost, drip=@drip, exdividend=@exdividend, dripnotes=@dripnotes, paydate=@paydate WHERE id=@id";
                         cmd.Parameters.AddWithValue("symbol", symbol);
                         cmd.Parameters.AddWithValue("stockname", stockname);
                         cmd.Parameters.AddWithValue("industry", industry);
@@ -469,6 +473,7 @@ namespace DividendDreams
                         cmd.Parameters.AddWithValue("drip", drip);
                         cmd.Parameters.AddWithValue("exdividend", exdividend);
                         cmd.Parameters.AddWithValue("dripnotes", dripnotes);
+                        cmd.Parameters.AddWithValue("paydate", paydate);
                         cmd.Parameters.AddWithValue("id", id);
                         cmd.ExecuteNonQuery();
                     }
