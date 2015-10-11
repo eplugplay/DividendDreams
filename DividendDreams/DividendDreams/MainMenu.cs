@@ -492,7 +492,6 @@ namespace DividendDreams
             lb.ClearSelected();
             decimal totalDiv = 0;
             decimal quarterlyDiv = 0;
-            decimal monthlyDiv = 0;
             int cnt = 0;
             string monthYear = "";
             string dtpMonthYear = "";
@@ -517,10 +516,9 @@ namespace DividendDreams
             }
             HighlightActive = false;
             quarterlyDiv = totalDiv / 4;
-            monthlyDiv = totalDiv / 12;
             if (cnt != 0)
             {
-                MessageBox.Show(string.Format("Date: {0} \n\n" + "Total Dividend: ${1} \n\n" + "Quarterly: ${2}\n\n" + "Monthly: ${3}\n\n" + "{4} results.", monthYear, Math.Round(totalDiv, 2), Math.Round(quarterlyDiv, 2), Math.Round(monthlyDiv, 2), cnt));
+                MessageBox.Show(string.Format("{0} results\n\n" + "Date: {1} \n\n" + "This Month: ${2}\n\n" + "This Year: ${3}", cnt, dtpMonthYear,  Math.Round(quarterlyDiv, 2), Math.Round(totalDiv, 2)));
             }
             else
             {
