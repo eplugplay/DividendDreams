@@ -57,6 +57,9 @@
             this.btnCalculate = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.btnPayDate = new System.Windows.Forms.Button();
+            this.lblPayDate = new System.Windows.Forms.Label();
+            this.dtpPayDate = new System.Windows.Forms.DateTimePicker();
             this.menuStrip1.SuspendLayout();
             this.gpDividendStocks.SuspendLayout();
             this.SuspendLayout();
@@ -121,6 +124,9 @@
             // gpDividendStocks
             // 
             this.gpDividendStocks.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.gpDividendStocks.Controls.Add(this.dtpPayDate);
+            this.gpDividendStocks.Controls.Add(this.btnPayDate);
+            this.gpDividendStocks.Controls.Add(this.lblPayDate);
             this.gpDividendStocks.Controls.Add(this.btnNextPurchase);
             this.gpDividendStocks.Controls.Add(this.chkNextBuy);
             this.gpDividendStocks.Controls.Add(this.lblSearchAllSymbol);
@@ -353,7 +359,7 @@
             // 
             this.lblTotalPortfolioDividends.AutoSize = true;
             this.lblTotalPortfolioDividends.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalPortfolioDividends.Location = new System.Drawing.Point(962, 23);
+            this.lblTotalPortfolioDividends.Location = new System.Drawing.Point(862, 21);
             this.lblTotalPortfolioDividends.Name = "lblTotalPortfolioDividends";
             this.lblTotalPortfolioDividends.Size = new System.Drawing.Size(14, 13);
             this.lblTotalPortfolioDividends.TabIndex = 8;
@@ -373,7 +379,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(902, 23);
+            this.label1.Location = new System.Drawing.Point(802, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(58, 13);
             this.label1.TabIndex = 6;
@@ -408,6 +414,35 @@
             this.btnAdd.Text = "→";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnPayDate
+            // 
+            this.btnPayDate.Location = new System.Drawing.Point(1045, 330);
+            this.btnPayDate.Name = "btnPayDate";
+            this.btnPayDate.Size = new System.Drawing.Size(57, 23);
+            this.btnPayDate.TabIndex = 37;
+            this.btnPayDate.TabStop = false;
+            this.btnPayDate.Text = "Highlight";
+            this.btnPayDate.UseVisualStyleBackColor = true;
+            this.btnPayDate.Click += new System.EventHandler(this.btnPayDate_Click);
+            // 
+            // lblPayDate
+            // 
+            this.lblPayDate.AutoSize = true;
+            this.lblPayDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPayDate.Location = new System.Drawing.Point(802, 337);
+            this.lblPayDate.Name = "lblPayDate";
+            this.lblPayDate.Size = new System.Drawing.Size(63, 13);
+            this.lblPayDate.TabIndex = 36;
+            this.lblPayDate.Text = "Pay Date:";
+            // 
+            // dtpPayDate
+            // 
+            this.dtpPayDate.CalendarMonthBackground = System.Drawing.Color.AliceBlue;
+            this.dtpPayDate.Location = new System.Drawing.Point(871, 333);
+            this.dtpPayDate.Name = "dtpPayDate";
+            this.dtpPayDate.Size = new System.Drawing.Size(168, 20);
+            this.dtpPayDate.TabIndex = 38;
             // 
             // MainMenu
             // 
@@ -464,6 +499,9 @@
         private System.Windows.Forms.Label lblSearchSymbol;
         private System.Windows.Forms.CheckBox chkNextBuy;
         private System.Windows.Forms.Button btnNextPurchase;
+        private System.Windows.Forms.Button btnPayDate;
+        private System.Windows.Forms.Label lblPayDate;
+        private System.Windows.Forms.DateTimePicker dtpPayDate;
     }
 }
 

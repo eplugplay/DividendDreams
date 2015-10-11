@@ -119,6 +119,9 @@ namespace DividendDreams
         {
             ddlIndustry.SelectedIndex = 0;
             ddlIndustryAll.SelectedIndex = 0;
+            dtpPayDate.Format = DateTimePickerFormat.Custom;
+            dtpPayDate.CustomFormat = "MM/yyyy";
+            dtpPayDate.ShowUpDown = true;
             LoadAllDividends();
             LoadCurrentDividends();
         }
@@ -477,6 +480,65 @@ namespace DividendDreams
             {
                 DividendStocks.SaveNextPurchase(ID, 0);
             }
+        }
+
+        private void btnPayDate_Click(object sender, EventArgs e)
+        {
+            HighlightPayDate(lbCurrentDividends);
+        }
+
+        public void HighlightPayDate(ListBox lb)
+        {
+            lb.ClearSelected();
+            decimal totalDiv = 0;
+            decimal quarterlyDiv = 0;
+            decimal monthlyDiv = 0;
+            int cnt = 0;
+            string monthYear = "";
+            string dtpMonthYear = "";
+            DataTable dt = DividendStocks.GetCurrentDividends();
+            for (int i = 0; i < lb.Items.Count; i++)
+            {
+                DataRowView drv = lb.Items[i] as DataRowView;
+                string[] date = drv["symbolName"].ToString().Split('*');
+                if (date.Length == 2)
+                {
+                    monthYear = date[1].ToString();
+                    date = monthYear.Split('/');
+                    monthYear = date[0].Trim() + "/" + date[2];
+                    dtpMonthYear = dtpPayDate.Value.ToString("MM/yyyy");
+                    if (monthYear == dtpMonthYear)
+                    {
+                        cnt++;
+                        lb.SelectedIndices.Add(i);
+                        totalDiv += GetDiv(Convert.ToInt32(drv["id"]), dt);
+                    }
+                }
+            }
+            HighlightActive = false;
+            quarterlyDiv = totalDiv / 4;
+            monthlyDiv = totalDiv / 12;
+            if (cnt != 0)
+            {
+                MessageBox.Show(string.Format("Date: {0} \n\n" + "Total Dividend: ${1} \n\n" + "Quarterly: ${2}\n\n" + "Monthly: ${3}\n\n" + "{4} results.", monthYear, Math.Round(totalDiv, 2), Math.Round(quarterlyDiv, 2), Math.Round(monthlyDiv, 2), cnt));
+            }
+            else
+            {
+                MessageBox.Show(string.Format("No Results for {0}", dtpMonthYear));
+            }
+        }
+
+        public decimal GetDiv(int id, DataTable dt)
+        {
+            decimal div = 0;
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                if (Convert.ToInt32(dt.Rows[i]["id"]) == id)
+                {
+                    div = Convert.ToDecimal(dt.Rows[i]["anndividend"]) * Convert.ToDecimal(dt.Rows[i]["numberofshares"]);
+                }
+            }
+            return div;
         }
     }
 }

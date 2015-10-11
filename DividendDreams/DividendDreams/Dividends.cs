@@ -204,7 +204,7 @@ namespace DividendDreams
                 }
                 decimal TotalDividendPrice = chkdrip.Checked == true ? (Convert.ToDecimal(txtAnnualDividend.Text) * Convert.ToDecimal(txtNumberOfShares.Text) - AutoDripCost) 
                     : Convert.ToDecimal(txtAnnualDividend.Text) * Convert.ToDecimal(txtNumberOfShares.Text);
-                decimal QuarterlyDividendPrice = TotalDividendPrice / 3;
+                decimal QuarterlyDividendPrice = TotalDividendPrice / 4;
                 decimal MonthlyDividendPrice = TotalDividendPrice / 12;
                 MessageBox.Show("Yearly: $" + Math.Round(TotalDividendPrice, 2).ToString() + "\n\nQuarterly: $" + Math.Round(QuarterlyDividendPrice, 2) + "\n\nMonthly: $" + Math.Round(MonthlyDividendPrice, 2));
             }

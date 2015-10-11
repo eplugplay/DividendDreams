@@ -160,7 +160,7 @@ namespace DividendDreams
                         totalDividendPrice -= (dripCost * (decimal)numShares) + dripinitial;
                     }
                 }
-                quarterlyDividendPrice = totalDividendPrice / 3;
+                quarterlyDividendPrice = totalDividendPrice / 4;
                 monthlyDividendPrice = totalDividendPrice / 12;
             }
             catch (Exception e)
@@ -315,7 +315,7 @@ namespace DividendDreams
                     for (int i = 0; i < dtTemp.Rows.Count; i++)
                     {
                         string exDiv = dtTemp.Rows[i]["exdividend"].ToString() == "" ? ")" : ")  -  " + dtTemp.Rows[i]["exdividend"].ToString();
-                        string payDiv = dtTemp.Rows[i]["paydate"].ToString() == "" ? "" : "  -  " + dtTemp.Rows[i]["paydate"].ToString();
+                        string payDiv = dtTemp.Rows[i]["paydate"].ToString() == "" ? "" : "  -  *" + dtTemp.Rows[i]["paydate"].ToString();
                         DataRow dr = dtDividends.NewRow();
                         dr["id"] = Convert.ToInt32(dtTemp.Rows[i]["id"]);
                         dr["symbolName"] = dtTemp.Rows[i]["symbol"].ToString() + "  -  (" + dtTemp.Rows[i]["stockname"].ToString() + ")  -  " + dtTemp.Rows[i]["industry"].ToString() + "  -  " + dtTemp.Rows[i]["numberofshares"].ToString() + " Shares  -  $" + dtTemp.Rows[i]["anndividend"].ToString() + "  -  (" + dtTemp.Rows[i]["dividendpercent"].ToString() + "%" + exDiv + payDiv;
@@ -627,5 +627,26 @@ namespace DividendDreams
             }
             return dt;
         }
+
+        //public static void Get(string id)
+        //{
+        //    try
+        //    {
+        //        using (MySqlConnection cnn = new MySqlConnection(ConfigurationManager.ConnectionStrings["cnn"].ToString()))
+        //        {
+        //            cnn.Open();
+        //            using (var cmd = cnn.CreateCommand())
+        //            {
+        //                cmd.CommandText = "DELETE FROM dividendprice WHERE id=@id";
+        //                cmd.Parameters.AddWithValue("id", id);
+        //                cmd.ExecuteNonQuery();
+        //            }
+        //        }
+        //    }
+        //    catch (Exception e)
+        //    {
+
+        //    }
+        //}
     }
 }
