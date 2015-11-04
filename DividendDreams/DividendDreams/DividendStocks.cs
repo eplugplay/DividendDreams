@@ -314,11 +314,11 @@ namespace DividendDreams
                     dtTemp = drv.ToTable();
                     for (int i = 0; i < dtTemp.Rows.Count; i++)
                     {
-                        string exDiv = dtTemp.Rows[i]["exdividend"].ToString() == "" ? ")" : ")  -  " + dtTemp.Rows[i]["exdividend"].ToString();
-                        string payDiv = dtTemp.Rows[i]["paydate"].ToString() == "" ? "" : "  -  *" + dtTemp.Rows[i]["paydate"].ToString();
+                        string exDiv = dtTemp.Rows[i]["exdividend"].ToString() == "" ? ")" : ")  -  " + YahooFinance.GetValues(dtTemp.Rows[i]["symbol"].ToString(), "q");
+                        string payDiv = dtTemp.Rows[i]["paydate"].ToString() == "" ? "" : "  -  *" + YahooFinance.GetValues(dtTemp.Rows[i]["symbol"].ToString(), "r1");
                         DataRow dr = dtDividends.NewRow();
                         dr["id"] = Convert.ToInt32(dtTemp.Rows[i]["id"]);
-                        dr["symbolName"] = dtTemp.Rows[i]["symbol"].ToString() + "  -  (" + dtTemp.Rows[i]["stockname"].ToString() + ")  -  " + dtTemp.Rows[i]["industry"].ToString() + "  -  " + dtTemp.Rows[i]["numberofshares"].ToString() + " Shares  -  $" + dtTemp.Rows[i]["anndividend"].ToString() + "  -  (" + dtTemp.Rows[i]["dividendpercent"].ToString() + "%" + exDiv + payDiv;
+                        dr["symbolName"] = dtTemp.Rows[i]["symbol"].ToString() + "  -  (" + dtTemp.Rows[i]["stockname"].ToString() + ")  -  " + dtTemp.Rows[i]["industry"].ToString() + "  -  " + dtTemp.Rows[i]["numberofshares"].ToString() + " Shares  -  $" + YahooFinance.GetValues(dtTemp.Rows[i]["symbol"].ToString(), "d") + "  -  (" + YahooFinance.GetValues(dtTemp.Rows[i]["symbol"].ToString(), "y") + "%" + exDiv + payDiv;
                         dtDividends.Rows.Add(dr);
                         totalDividends++;
                     }
