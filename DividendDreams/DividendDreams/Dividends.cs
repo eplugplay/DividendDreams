@@ -90,9 +90,8 @@ namespace DividendDreams
             txtSymbol.Text = dt.Rows[0]["symbol"].ToString();
             txtStockName.Text = dt.Rows[0]["stockname"].ToString();
             ddlIndustry.SelectedIndex = ddlIndustry.FindString(dt.Rows[0]["industry"].ToString());
-            //txtAnnualDividend.Text = dt.Rows[0]["anndividend"].ToString();
             txtAnnualDividend.Text = YahooFinance.GetValues(Symbol, "d");
-            txtDividendPercent.Text = dt.Rows[0]["dividendpercent"].ToString();
+            txtDividendPercent.Text = YahooFinance.GetValues(Symbol, "y");
             ddlCapSize.SelectedIndex = ddlCapSize.FindString(dt.Rows[0]["capsize"].ToString());
             txtDripCostInitial.Text = dt.Rows[0]["dripinitialcost"].ToString();
             txtDripCost.Text = dt.Rows[0]["dripcost"].ToString();
@@ -100,13 +99,11 @@ namespace DividendDreams
             chkdrip.Checked = dt.Rows[0]["drip"].ToString() == "true" ? true : false;
             if (dt.Rows[0]["exdividend"] != DBNull.Value)
             {
-                //DateTime datetime = Convert.ToDateTime(YahooFinance.GetValues(Symbol, "q"));
-                //dtpExDividend.Value = Convert.ToDateTime(YahooFinance.GetValues(Symbol, "q"));
-                //dtpExDividend.Value = Convert.ToDateTime(dt.Rows[0]["exdividend"]);
+                dtpExDividend.Value = Convert.ToDateTime(YahooFinance.GetValues(Symbol, "q"));
             }
             if (dt.Rows[0]["paydate"] != DBNull.Value)
             {
-                dtpPayDate.Value = Convert.ToDateTime(dt.Rows[0]["paydate"]);
+                dtpPayDate.Value = Convert.ToDateTime(YahooFinance.GetValues(Symbol, "r1"));
             }
             // load purchase dates
             LoadPurchaseDates();
