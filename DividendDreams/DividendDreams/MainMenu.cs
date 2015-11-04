@@ -16,6 +16,7 @@ namespace DividendDreams
         public int ID { get; set; }
         public List<int> lstID = new List<int>();
         public bool HighlightActive { get; set; }
+        public string Symbol { get; set; }
         public MainMenu()
         {
             InitializeComponent();
@@ -23,17 +24,17 @@ namespace DividendDreams
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenDividends(false, "");
+            OpenDividends(false, "", "");
         }
 
-        public void OpenDividends(bool edit, string id)
+        public void OpenDividends(bool edit, string id, string symbol)
         {
             PleaseWait pw = new PleaseWait();
             pw.Show();
             Application.DoEvents();
             if (_Dividends == null || _Dividends.IsDisposed)
             {
-                _Dividends = new Dividends(edit, id, CurrentDiv);
+                _Dividends = new Dividends(edit, id, CurrentDiv, symbol);
                 _Dividends.Show();
             }
             else
@@ -231,7 +232,7 @@ namespace DividendDreams
         {
             if (lbCurrentDividends.SelectedIndex != -1)
             {
-                OpenDividends(true, lbCurrentDividends.SelectedValue.ToString());
+                OpenDividends(true, lbCurrentDividends.SelectedValue.ToString(), Symbol);
             }
         }
 
@@ -240,8 +241,15 @@ namespace DividendDreams
         {
             if (lbAllDividends.SelectedIndex != -1)
             {
-                OpenDividends(true, lbAllDividends.SelectedValue.ToString());
+                OpenDividends(true, lbAllDividends.SelectedValue.ToString(), Symbol);
             }
+        }
+
+        public string GetStockSymbol(ListBox lb)
+        {
+            string symbol = lbCurrentDividends.Text;
+            string[] split = symbol.Split('-');
+            return symbol = split[0].Trim();
         }
 
         public void GetDividendPrice(ListBox lb)
@@ -433,12 +441,14 @@ namespace DividendDreams
 
         private void lbCurrentDividends_MouseClick(object sender, MouseEventArgs e)
         {
+            Symbol = GetStockSymbol(lbCurrentDividends);
             lbAllDividends.ClearSelected();
             CurrentDiv = true;
         }
 
         private void lbAllDividends_MouseClick(object sender, MouseEventArgs e)
         {
+            Symbol = GetStockSymbol(lbAllDividends);
             lbCurrentDividends.ClearSelected();
             CurrentDiv = false;
         }

@@ -34,6 +34,9 @@
             this.lbAllDividends = new System.Windows.Forms.ListBox();
             this.lbCurrentDividends = new System.Windows.Forms.ListBox();
             this.gpDividendStocks = new System.Windows.Forms.GroupBox();
+            this.dtpPayDate = new System.Windows.Forms.DateTimePicker();
+            this.btnPayDate = new System.Windows.Forms.Button();
+            this.lblPayDate = new System.Windows.Forms.Label();
             this.btnNextPurchase = new System.Windows.Forms.Button();
             this.chkNextBuy = new System.Windows.Forms.CheckBox();
             this.lblSearchAllSymbol = new System.Windows.Forms.Label();
@@ -57,9 +60,6 @@
             this.btnCalculate = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.btnPayDate = new System.Windows.Forms.Button();
-            this.lblPayDate = new System.Windows.Forms.Label();
-            this.dtpPayDate = new System.Windows.Forms.DateTimePicker();
             this.menuStrip1.SuspendLayout();
             this.gpDividendStocks.SuspendLayout();
             this.SuspendLayout();
@@ -118,7 +118,7 @@
             this.lbCurrentDividends.Size = new System.Drawing.Size(736, 289);
             this.lbCurrentDividends.TabIndex = 2;
             this.lbCurrentDividends.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lbCurrentDividends_MouseClick);
-            this.lbCurrentDividends.SelectedIndexChanged += new System.EventHandler(this.lbCurrentDividends_SelectedIndexChanged);
+            this.lbCurrentDividends.SelectedIndexChanged += new System.EventHandler(this.chkNextBuy_CheckedChanged);
             this.lbCurrentDividends.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbCurrentDividends_MouseDoubleClick);
             // 
             // gpDividendStocks
@@ -158,6 +158,35 @@
             this.gpDividendStocks.TabIndex = 3;
             this.gpDividendStocks.TabStop = false;
             this.gpDividendStocks.Text = "Dividend Stocks";
+            // 
+            // dtpPayDate
+            // 
+            this.dtpPayDate.CalendarMonthBackground = System.Drawing.Color.AliceBlue;
+            this.dtpPayDate.Location = new System.Drawing.Point(871, 333);
+            this.dtpPayDate.Name = "dtpPayDate";
+            this.dtpPayDate.Size = new System.Drawing.Size(168, 20);
+            this.dtpPayDate.TabIndex = 38;
+            // 
+            // btnPayDate
+            // 
+            this.btnPayDate.Location = new System.Drawing.Point(1045, 330);
+            this.btnPayDate.Name = "btnPayDate";
+            this.btnPayDate.Size = new System.Drawing.Size(57, 23);
+            this.btnPayDate.TabIndex = 37;
+            this.btnPayDate.TabStop = false;
+            this.btnPayDate.Text = "Highlight";
+            this.btnPayDate.UseVisualStyleBackColor = true;
+            this.btnPayDate.Click += new System.EventHandler(this.btnPayDate_Click);
+            // 
+            // lblPayDate
+            // 
+            this.lblPayDate.AutoSize = true;
+            this.lblPayDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPayDate.Location = new System.Drawing.Point(802, 337);
+            this.lblPayDate.Name = "lblPayDate";
+            this.lblPayDate.Size = new System.Drawing.Size(63, 13);
+            this.lblPayDate.TabIndex = 36;
+            this.lblPayDate.Text = "Pay Date:";
             // 
             // btnNextPurchase
             // 
@@ -414,35 +443,6 @@
             this.btnAdd.Text = "→";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // btnPayDate
-            // 
-            this.btnPayDate.Location = new System.Drawing.Point(1045, 330);
-            this.btnPayDate.Name = "btnPayDate";
-            this.btnPayDate.Size = new System.Drawing.Size(57, 23);
-            this.btnPayDate.TabIndex = 37;
-            this.btnPayDate.TabStop = false;
-            this.btnPayDate.Text = "Highlight";
-            this.btnPayDate.UseVisualStyleBackColor = true;
-            this.btnPayDate.Click += new System.EventHandler(this.btnPayDate_Click);
-            // 
-            // lblPayDate
-            // 
-            this.lblPayDate.AutoSize = true;
-            this.lblPayDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPayDate.Location = new System.Drawing.Point(802, 337);
-            this.lblPayDate.Name = "lblPayDate";
-            this.lblPayDate.Size = new System.Drawing.Size(63, 13);
-            this.lblPayDate.TabIndex = 36;
-            this.lblPayDate.Text = "Pay Date:";
-            // 
-            // dtpPayDate
-            // 
-            this.dtpPayDate.CalendarMonthBackground = System.Drawing.Color.AliceBlue;
-            this.dtpPayDate.Location = new System.Drawing.Point(871, 333);
-            this.dtpPayDate.Name = "dtpPayDate";
-            this.dtpPayDate.Size = new System.Drawing.Size(168, 20);
-            this.dtpPayDate.TabIndex = 38;
             // 
             // MainMenu
             // 
