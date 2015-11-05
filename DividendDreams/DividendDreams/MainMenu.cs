@@ -103,6 +103,10 @@ namespace DividendDreams
                 {
                     DividendTotalPercentage += (decimal).09;
                 }
+                if (dt.Rows[i]["symbol"].ToString() == "GDX")
+                {
+                    DividendTotalPercentage += (decimal).80;
+                }
                 MarketTotalPrice += (Convert.ToDecimal(dt.Rows[i]["numberofshares"]) * Convert.ToDecimal(CurrentStockPrice[i]));
                 //StatusVal += val;
                 //if (StatusVal < 88)
