@@ -334,7 +334,7 @@ namespace DividendDreams
             }
         }
 
-        public static string NewDividendStock(string symbol, string stockname, string industry, string boughtshareprice, string numberofshares)
+        public static string NewDividendStock(string symbol, string stockname, string industry)
         {
             string ID = "0";
             try
@@ -344,12 +344,10 @@ namespace DividendDreams
                     cnn.Open();
                     using (var cmd = cnn.CreateCommand())
                     {
-                        cmd.CommandText = @"INSERT INTO dividendstocks (symbol, stockname, industry stockactive) VALUES (@symbol, @stockname, @industry 'false'); SELECT LAST_INSERT_ID();";
+                        cmd.CommandText = @"INSERT INTO dividendstocks (symbol, stockname, industry, stockactive) VALUES (@symbol, @stockname, @industry, 'false'); SELECT LAST_INSERT_ID();";
                         cmd.Parameters.AddWithValue("symbol", symbol);
                         cmd.Parameters.AddWithValue("stockname", stockname);
                         cmd.Parameters.AddWithValue("industry", industry);
-                        cmd.Parameters.AddWithValue("boughtshareprice", boughtshareprice);
-                        cmd.Parameters.AddWithValue("numberofshares", numberofshares);
                         ID = cmd.ExecuteScalar().ToString();
                     }
                 }

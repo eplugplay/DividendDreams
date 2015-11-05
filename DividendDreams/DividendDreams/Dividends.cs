@@ -45,7 +45,7 @@ namespace DividendDreams
             }
             else
             {
-                ID = DividendStocks.NewDividendStock(txtSymbol.Text, txtStockName.Text, ddlIndustry.Text, txtSharePrice.Text, txtNumberOfShares.Text);
+                ID = DividendStocks.NewDividendStock(txtSymbol.Text, txtStockName.Text, ddlIndustry.Text);
                 Program.MainMenu.LoadAllDividends();
                 Program.MainMenu.lbAllDividends.SelectedValue = Convert.ToInt32(ID);
                 pw.Close();
@@ -76,9 +76,25 @@ namespace DividendDreams
             }
             else
             {
+                HideTextBoxes();
                 gpSharesOptions.Enabled = false;
                 btnSave.Text = "Save";
             }
+        }
+
+        public void HideTextBoxes()
+        {
+            txtAnnualDividend.Enabled = false;
+            txtMarketCap.Enabled = false;
+            txtDividendPercent.Enabled = false;
+            txtExDividend.Enabled = false;
+            txtPERatio.Enabled = false;
+            txtPayDate.Enabled = false;
+            txtOpenPrice.Enabled = false;
+            txt52WeekHigh.Enabled = false;
+            txt52WeekLow.Enabled = false;
+            txtCurrentPrice.Enabled = false;
+            txtDayRange.Enabled = false;
         }
 
         public void LoadDividendStock()
@@ -116,12 +132,16 @@ namespace DividendDreams
                 btnNewShares.Enabled = false;
                 btnDeleteShares.Enabled = true;
                 btnEditShares.Enabled = true;
+                btnGetSharePrice.Enabled = true;
+                btnDividendPrice.Enabled = true;
             }
             else
             {
                 btnNewShares.Enabled = true;
                 btnDeleteShares.Enabled = false;
                 btnEditShares.Enabled = false;
+                btnGetSharePrice.Enabled = false;
+                btnDividendPrice.Enabled = false;
             }
             ddlSharePurchaseDate.SelectedIndexChanged += ddlSharePurchaseDate_SelectedIndexChanged;
         }
@@ -159,21 +179,6 @@ namespace DividendDreams
             if (ddlIndustry.SelectedIndex == -1)
             {
                 MessageBox.Show("Please select Industry.");
-                return false;
-            }
-            if (txtAnnualDividend.Text == "")
-            {
-                MessageBox.Show("Please enter annual dividend.");
-                return false;
-            }
-            try
-            {
-                decimal.Parse(txtAnnualDividend.Text);
-            }
-            catch
-            {
-                MessageBox.Show("Please enter numbers only.");
-                txtAnnualDividend.Focus();
                 return false;
             }
             return true;
