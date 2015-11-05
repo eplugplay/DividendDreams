@@ -94,10 +94,7 @@ namespace DividendDreams
                 Purchaseprice = Convert.ToDecimal(dt.Rows[i]["purchaseprice"]);
                 YearDiv += (Convert.ToDecimal(dt.Rows[i]["numberofshares"]) * Convert.ToDecimal(AnnualDiv[i]));
                 TotalDividendStockValue += (Convert.ToDecimal(dt.Rows[i]["numberofshares"]) * Purchaseprice);
-                if (DivYield[i] != "N/A")
-                {
-                    TotalDividendCount++;
-                }
+                TotalDividendCount++;
                 DividendTotalPercentage += DivYield[i] == "N/A" ? 0 : Convert.ToDecimal(DivYield[i]);
                 if (dt.Rows[i]["symbol"].ToString() == "SIL")
                 {
@@ -105,6 +102,7 @@ namespace DividendDreams
                 }
                 if (dt.Rows[i]["symbol"].ToString() == "GDX")
                 {
+                    DividendTotalPercentage -= Convert.ToDecimal(DivYield[i]);
                     DividendTotalPercentage += (decimal).80;
                 }
                 MarketTotalPrice += (Convert.ToDecimal(dt.Rows[i]["numberofshares"]) * Convert.ToDecimal(CurrentStockPrice[i]));
