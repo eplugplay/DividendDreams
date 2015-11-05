@@ -276,10 +276,8 @@ namespace DividendDreams
                     drv.Sort = "symbol asc";
                     dtTemp = drv.ToTable();
                     string Symbols = Uti.GetMultiSymbols(dtTemp);
-                    string PayDiv = YahooFinance.GetValues(Symbols, "r1", true);
-                    string[] PayDivSplit = Uti.SplitStockData(PayDiv);
-                    string ExDiv = YahooFinance.GetValues(Symbols, "q", true);
-                    string[] ExDivSplit = Uti.SplitStockData(ExDiv);
+                    string[] PayDivSplit = Uti.SplitStockData(YahooFinance.GetValues(Symbols, "r1", true));
+                    string[] ExDivSplit = Uti.SplitStockData(YahooFinance.GetValues(Symbols, "q", true));
                     for (int i = 0; i < dtTemp.Rows.Count; i++)
                     {
                         DataRow dr = dtDividends.NewRow();

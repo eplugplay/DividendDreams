@@ -60,6 +60,9 @@
             this.btnCalculate = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.pbStatus = new System.Windows.Forms.ProgressBar();
+            this.lblStatus = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.gpDividendStocks.SuspendLayout();
             this.SuspendLayout();
@@ -169,7 +172,7 @@
             // 
             // btnPayDate
             // 
-            this.btnPayDate.Location = new System.Drawing.Point(1045, 330);
+            this.btnPayDate.Location = new System.Drawing.Point(1045, 332);
             this.btnPayDate.Name = "btnPayDate";
             this.btnPayDate.Size = new System.Drawing.Size(57, 23);
             this.btnPayDate.TabIndex = 37;
@@ -444,13 +447,40 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            // 
+            // pbStatus
+            // 
+            this.pbStatus.Location = new System.Drawing.Point(752, 1);
+            this.pbStatus.Name = "pbStatus";
+            this.pbStatus.Size = new System.Drawing.Size(100, 23);
+            this.pbStatus.TabIndex = 39;
+            this.pbStatus.Visible = false;
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.BackColor = System.Drawing.Color.White;
+            this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatus.Location = new System.Drawing.Point(663, 6);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(83, 13);
+            this.lblStatus.TabIndex = 40;
+            this.lblStatus.Text = "Please Wait..";
+            this.lblStatus.Visible = false;
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
             this.ClientSize = new System.Drawing.Size(1571, 406);
+            this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.gpDividendStocks);
+            this.Controls.Add(this.pbStatus);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MainMenuStrip = this.menuStrip1;
@@ -502,6 +532,9 @@
         private System.Windows.Forms.Button btnPayDate;
         private System.Windows.Forms.Label lblPayDate;
         private System.Windows.Forms.DateTimePicker dtpPayDate;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Label lblStatus;
+        private System.Windows.Forms.ProgressBar pbStatus;
     }
 }
 

@@ -6,6 +6,8 @@ using MySql.Data.MySqlClient;
 using System.Configuration;
 using System.Data;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
+using System.ComponentModel;
 
 namespace DividendDreams
 {
@@ -45,6 +47,21 @@ namespace DividendDreams
                 Symbols += lstSymbols[i] + "+"; 
             }
             return Symbols = Symbols.Substring(0, Symbols.Length - 1);
+        }
+    }
+
+    public static class ISynchronizeInvokeExtensions
+    {
+        public static void InvokeEx<T>(this T @this, Action<T> action) where T : ISynchronizeInvoke
+        {
+            if (@this.InvokeRequired)
+            {
+                @this.Invoke(action, new object[] { @this });
+            }
+            else
+            {
+                action(@this);
+            }
         }
     }
 }
