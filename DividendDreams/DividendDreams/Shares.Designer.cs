@@ -42,6 +42,7 @@
             // 
             // gpShares
             // 
+            this.gpShares.BackColor = System.Drawing.Color.MidnightBlue;
             this.gpShares.Controls.Add(this.dtpPurchaseDate);
             this.gpShares.Controls.Add(this.lblPurchaseDate);
             this.gpShares.Controls.Add(this.btnGetPrice);
@@ -50,6 +51,7 @@
             this.gpShares.Controls.Add(this.label1);
             this.gpShares.Controls.Add(this.txtNumberOfShares);
             this.gpShares.Controls.Add(this.lblSymbol);
+            this.gpShares.ForeColor = System.Drawing.Color.White;
             this.gpShares.Location = new System.Drawing.Point(12, 12);
             this.gpShares.Name = "gpShares";
             this.gpShares.Size = new System.Drawing.Size(421, 107);
@@ -77,6 +79,7 @@
             // 
             // btnGetPrice
             // 
+            this.btnGetPrice.ForeColor = System.Drawing.Color.Black;
             this.btnGetPrice.Location = new System.Drawing.Point(359, 43);
             this.btnGetPrice.Name = "btnGetPrice";
             this.btnGetPrice.Size = new System.Drawing.Size(56, 23);
@@ -88,6 +91,7 @@
             // 
             // btnSave
             // 
+            this.btnSave.ForeColor = System.Drawing.Color.Black;
             this.btnSave.Location = new System.Drawing.Point(359, 69);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(56, 23);
@@ -135,7 +139,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.BackColor = System.Drawing.Color.MidnightBlue;
             this.ClientSize = new System.Drawing.Size(443, 126);
             this.Controls.Add(this.gpShares);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;

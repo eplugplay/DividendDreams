@@ -359,7 +359,7 @@ namespace DividendDreams
             HighlightActive = false;
             if (showMsg)
             {
-                MessageBox.Show("Total: " + count + "\n\n" + ddl.Text + ": " + Math.Round(percentage, 2) + "%");
+                MessageBox.Show(count + " " + ddl.Text + ": " + Math.Round(percentage, 2) + "%");
             }
         }
 
