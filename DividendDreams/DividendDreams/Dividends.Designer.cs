@@ -43,19 +43,10 @@
             this.txtDividendPercent = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.gpDividendInfo = new System.Windows.Forms.GroupBox();
-            this.lblDripNotes = new System.Windows.Forms.Label();
-            this.txtDripNotes = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtDripCost = new System.Windows.Forms.TextBox();
-            this.dtpExDividend = new System.Windows.Forms.DateTimePicker();
+            this.lblPayDate = new System.Windows.Forms.Label();
             this.lblExDividend = new System.Windows.Forms.Label();
-            this.chkdrip = new System.Windows.Forms.CheckBox();
-            this.lblDripCost = new System.Windows.Forms.Label();
-            this.txtDripCostInitial = new System.Windows.Forms.TextBox();
             this.ddlIndustry = new System.Windows.Forms.ComboBox();
-            this.ddlCapSize = new System.Windows.Forms.ComboBox();
-            this.lblCapSize = new System.Windows.Forms.Label();
+            this.lblMarketCap = new System.Windows.Forms.Label();
             this.btnDividendPrice = new System.Windows.Forms.Button();
             this.btnGetSharePrice = new System.Windows.Forms.Button();
             this.ddlSharePurchaseDate = new System.Windows.Forms.ComboBox();
@@ -64,8 +55,21 @@
             this.btnEditShares = new System.Windows.Forms.Button();
             this.btnDeleteShares = new System.Windows.Forms.Button();
             this.gpSharesOptions = new System.Windows.Forms.GroupBox();
-            this.dtpPayDate = new System.Windows.Forms.DateTimePicker();
-            this.lblPayDate = new System.Windows.Forms.Label();
+            this.lblPERatio = new System.Windows.Forms.Label();
+            this.txtPERatio = new System.Windows.Forms.TextBox();
+            this.lbl52WeekMiddle = new System.Windows.Forms.Label();
+            this.txt52WeekHigh = new System.Windows.Forms.TextBox();
+            this.lbl52WeekRange = new System.Windows.Forms.Label();
+            this.txt52WeekLow = new System.Windows.Forms.TextBox();
+            this.lblDaysRange = new System.Windows.Forms.Label();
+            this.txtDayRange = new System.Windows.Forms.TextBox();
+            this.txtMarketCap = new System.Windows.Forms.TextBox();
+            this.lblOpenPrice = new System.Windows.Forms.Label();
+            this.txtOpenPrice = new System.Windows.Forms.TextBox();
+            this.txtExDividend = new System.Windows.Forms.TextBox();
+            this.txtPayDate = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtCurrentPrice = new System.Windows.Forms.TextBox();
             this.gpDividendInfo.SuspendLayout();
             this.gpSharesOptions.SuspendLayout();
             this.SuspendLayout();
@@ -73,7 +77,7 @@
             // txtSymbol
             // 
             this.txtSymbol.BackColor = System.Drawing.Color.AliceBlue;
-            this.txtSymbol.Location = new System.Drawing.Point(107, 21);
+            this.txtSymbol.Location = new System.Drawing.Point(123, 21);
             this.txtSymbol.Name = "txtSymbol";
             this.txtSymbol.Size = new System.Drawing.Size(210, 20);
             this.txtSymbol.TabIndex = 0;
@@ -82,7 +86,7 @@
             // 
             this.lblSymbol.AutoSize = true;
             this.lblSymbol.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSymbol.Location = new System.Drawing.Point(19, 24);
+            this.lblSymbol.Location = new System.Drawing.Point(58, 27);
             this.lblSymbol.Name = "lblSymbol";
             this.lblSymbol.Size = new System.Drawing.Size(51, 13);
             this.lblSymbol.TabIndex = 1;
@@ -92,7 +96,7 @@
             // 
             this.lblStockName.AutoSize = true;
             this.lblStockName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStockName.Location = new System.Drawing.Point(324, 24);
+            this.lblStockName.Location = new System.Drawing.Point(345, 27);
             this.lblStockName.Name = "lblStockName";
             this.lblStockName.Size = new System.Drawing.Size(80, 13);
             this.lblStockName.TabIndex = 3;
@@ -101,16 +105,16 @@
             // txtStockName
             // 
             this.txtStockName.BackColor = System.Drawing.Color.AliceBlue;
-            this.txtStockName.Location = new System.Drawing.Point(399, 21);
+            this.txtStockName.Location = new System.Drawing.Point(431, 24);
             this.txtStockName.Name = "txtStockName";
-            this.txtStockName.Size = new System.Drawing.Size(199, 20);
+            this.txtStockName.Size = new System.Drawing.Size(214, 20);
             this.txtStockName.TabIndex = 1;
             // 
             // lblSharePrice
             // 
             this.lblSharePrice.AutoSize = true;
             this.lblSharePrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSharePrice.Location = new System.Drawing.Point(13, 47);
+            this.lblSharePrice.Location = new System.Drawing.Point(15, 96);
             this.lblSharePrice.Name = "lblSharePrice";
             this.lblSharePrice.Size = new System.Drawing.Size(104, 13);
             this.lblSharePrice.TabIndex = 7;
@@ -118,7 +122,7 @@
             // 
             // txtSharePrice
             // 
-            this.txtSharePrice.Location = new System.Drawing.Point(125, 44);
+            this.txtSharePrice.Location = new System.Drawing.Point(127, 93);
             this.txtSharePrice.Name = "txtSharePrice";
             this.txtSharePrice.ReadOnly = true;
             this.txtSharePrice.Size = new System.Drawing.Size(210, 20);
@@ -129,7 +133,7 @@
             // 
             this.lblIndustry.AutoSize = true;
             this.lblIndustry.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIndustry.Location = new System.Drawing.Point(20, 50);
+            this.lblIndustry.Location = new System.Drawing.Point(53, 50);
             this.lblIndustry.Name = "lblIndustry";
             this.lblIndustry.Size = new System.Drawing.Size(56, 13);
             this.lblIndustry.TabIndex = 5;
@@ -139,7 +143,7 @@
             // 
             this.lblNumberShare.AutoSize = true;
             this.lblNumberShare.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumberShare.Location = new System.Drawing.Point(25, 72);
+            this.lblNumberShare.Location = new System.Drawing.Point(27, 121);
             this.lblNumberShare.Name = "lblNumberShare";
             this.lblNumberShare.Size = new System.Drawing.Size(77, 13);
             this.lblNumberShare.TabIndex = 11;
@@ -147,7 +151,7 @@
             // 
             // txtNumberOfShares
             // 
-            this.txtNumberOfShares.Location = new System.Drawing.Point(125, 69);
+            this.txtNumberOfShares.Location = new System.Drawing.Point(127, 118);
             this.txtNumberOfShares.Name = "txtNumberOfShares";
             this.txtNumberOfShares.ReadOnly = true;
             this.txtNumberOfShares.Size = new System.Drawing.Size(210, 20);
@@ -158,7 +162,7 @@
             // 
             this.lblAnnualDividend.AutoSize = true;
             this.lblAnnualDividend.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAnnualDividend.Location = new System.Drawing.Point(19, 76);
+            this.lblAnnualDividend.Location = new System.Drawing.Point(39, 76);
             this.lblAnnualDividend.Name = "lblAnnualDividend";
             this.lblAnnualDividend.Size = new System.Drawing.Size(70, 13);
             this.lblAnnualDividend.TabIndex = 9;
@@ -167,8 +171,9 @@
             // txtAnnualDividend
             // 
             this.txtAnnualDividend.BackColor = System.Drawing.Color.AliceBlue;
-            this.txtAnnualDividend.Location = new System.Drawing.Point(107, 73);
+            this.txtAnnualDividend.Location = new System.Drawing.Point(123, 73);
             this.txtAnnualDividend.Name = "txtAnnualDividend";
+            this.txtAnnualDividend.ReadOnly = true;
             this.txtAnnualDividend.Size = new System.Drawing.Size(210, 20);
             this.txtAnnualDividend.TabIndex = 4;
             // 
@@ -176,7 +181,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(324, 76);
+            this.label1.Location = new System.Drawing.Point(351, 78);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(74, 13);
             this.label1.TabIndex = 13;
@@ -185,14 +190,15 @@
             // txtDividendPercent
             // 
             this.txtDividendPercent.BackColor = System.Drawing.Color.AliceBlue;
-            this.txtDividendPercent.Location = new System.Drawing.Point(399, 73);
+            this.txtDividendPercent.Location = new System.Drawing.Point(431, 75);
             this.txtDividendPercent.Name = "txtDividendPercent";
-            this.txtDividendPercent.Size = new System.Drawing.Size(199, 20);
+            this.txtDividendPercent.ReadOnly = true;
+            this.txtDividendPercent.Size = new System.Drawing.Size(214, 20);
             this.txtDividendPercent.TabIndex = 5;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(528, 164);
+            this.btnSave.Location = new System.Drawing.Point(570, 180);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 14;
@@ -203,21 +209,25 @@
             // 
             // gpDividendInfo
             // 
-            this.gpDividendInfo.Controls.Add(this.dtpPayDate);
-            this.gpDividendInfo.Controls.Add(this.lblPayDate);
-            this.gpDividendInfo.Controls.Add(this.lblDripNotes);
-            this.gpDividendInfo.Controls.Add(this.txtDripNotes);
-            this.gpDividendInfo.Controls.Add(this.label3);
             this.gpDividendInfo.Controls.Add(this.label2);
-            this.gpDividendInfo.Controls.Add(this.txtDripCost);
-            this.gpDividendInfo.Controls.Add(this.dtpExDividend);
+            this.gpDividendInfo.Controls.Add(this.txtCurrentPrice);
+            this.gpDividendInfo.Controls.Add(this.txtExDividend);
+            this.gpDividendInfo.Controls.Add(this.txtPayDate);
+            this.gpDividendInfo.Controls.Add(this.lblOpenPrice);
+            this.gpDividendInfo.Controls.Add(this.txtOpenPrice);
+            this.gpDividendInfo.Controls.Add(this.txtMarketCap);
+            this.gpDividendInfo.Controls.Add(this.lblDaysRange);
+            this.gpDividendInfo.Controls.Add(this.txtDayRange);
+            this.gpDividendInfo.Controls.Add(this.lbl52WeekMiddle);
+            this.gpDividendInfo.Controls.Add(this.txt52WeekHigh);
+            this.gpDividendInfo.Controls.Add(this.lbl52WeekRange);
+            this.gpDividendInfo.Controls.Add(this.txt52WeekLow);
+            this.gpDividendInfo.Controls.Add(this.lblPERatio);
+            this.gpDividendInfo.Controls.Add(this.txtPERatio);
+            this.gpDividendInfo.Controls.Add(this.lblPayDate);
             this.gpDividendInfo.Controls.Add(this.lblExDividend);
-            this.gpDividendInfo.Controls.Add(this.chkdrip);
-            this.gpDividendInfo.Controls.Add(this.lblDripCost);
-            this.gpDividendInfo.Controls.Add(this.txtDripCostInitial);
             this.gpDividendInfo.Controls.Add(this.ddlIndustry);
-            this.gpDividendInfo.Controls.Add(this.ddlCapSize);
-            this.gpDividendInfo.Controls.Add(this.lblCapSize);
+            this.gpDividendInfo.Controls.Add(this.lblMarketCap);
             this.gpDividendInfo.Controls.Add(this.btnSave);
             this.gpDividendInfo.Controls.Add(this.txtSymbol);
             this.gpDividendInfo.Controls.Add(this.label1);
@@ -230,104 +240,30 @@
             this.gpDividendInfo.Controls.Add(this.txtAnnualDividend);
             this.gpDividendInfo.Location = new System.Drawing.Point(5, 5);
             this.gpDividendInfo.Name = "gpDividendInfo";
-            this.gpDividendInfo.Size = new System.Drawing.Size(609, 193);
+            this.gpDividendInfo.Size = new System.Drawing.Size(660, 211);
             this.gpDividendInfo.TabIndex = 15;
             this.gpDividendInfo.TabStop = false;
             this.gpDividendInfo.Text = "Shares Info:";
             // 
-            // lblDripNotes
+            // lblPayDate
             // 
-            this.lblDripNotes.AutoSize = true;
-            this.lblDripNotes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDripNotes.Location = new System.Drawing.Point(333, 141);
-            this.lblDripNotes.Name = "lblDripNotes";
-            this.lblDripNotes.Size = new System.Drawing.Size(65, 13);
-            this.lblDripNotes.TabIndex = 27;
-            this.lblDripNotes.Text = "Drip Note:";
-            // 
-            // txtDripNotes
-            // 
-            this.txtDripNotes.BackColor = System.Drawing.Color.AliceBlue;
-            this.txtDripNotes.Location = new System.Drawing.Point(399, 100);
-            this.txtDripNotes.Multiline = true;
-            this.txtDripNotes.Name = "txtDripNotes";
-            this.txtDripNotes.Size = new System.Drawing.Size(199, 58);
-            this.txtDripNotes.TabIndex = 9;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(227, 103);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(44, 13);
-            this.label3.TabIndex = 26;
-            this.label3.Text = "Share:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(116, 102);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 13);
-            this.label2.TabIndex = 25;
-            this.label2.Text = "Initial:";
-            // 
-            // txtDripCost
-            // 
-            this.txtDripCost.BackColor = System.Drawing.Color.AliceBlue;
-            this.txtDripCost.Location = new System.Drawing.Point(277, 99);
-            this.txtDripCost.Name = "txtDripCost";
-            this.txtDripCost.Size = new System.Drawing.Size(40, 20);
-            this.txtDripCost.TabIndex = 7;
-            // 
-            // dtpExDividend
-            // 
-            this.dtpExDividend.CalendarMonthBackground = System.Drawing.Color.AliceBlue;
-            this.dtpExDividend.Location = new System.Drawing.Point(107, 130);
-            this.dtpExDividend.Name = "dtpExDividend";
-            this.dtpExDividend.Size = new System.Drawing.Size(210, 20);
-            this.dtpExDividend.TabIndex = 10;
+            this.lblPayDate.AutoSize = true;
+            this.lblPayDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPayDate.Location = new System.Drawing.Point(47, 131);
+            this.lblPayDate.Name = "lblPayDate";
+            this.lblPayDate.Size = new System.Drawing.Size(63, 13);
+            this.lblPayDate.TabIndex = 29;
+            this.lblPayDate.Text = "Pay Date:";
             // 
             // lblExDividend
             // 
             this.lblExDividend.AutoSize = true;
             this.lblExDividend.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblExDividend.Location = new System.Drawing.Point(19, 133);
+            this.lblExDividend.Location = new System.Drawing.Point(30, 105);
             this.lblExDividend.Name = "lblExDividend";
             this.lblExDividend.Size = new System.Drawing.Size(79, 13);
             this.lblExDividend.TabIndex = 22;
             this.lblExDividend.Text = "Ex-Dividend:";
-            // 
-            // chkdrip
-            // 
-            this.chkdrip.AutoSize = true;
-            this.chkdrip.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkdrip.Location = new System.Drawing.Point(327, 102);
-            this.chkdrip.Name = "chkdrip";
-            this.chkdrip.Size = new System.Drawing.Size(49, 17);
-            this.chkdrip.TabIndex = 8;
-            this.chkdrip.Text = "Drip";
-            this.chkdrip.UseVisualStyleBackColor = true;
-            // 
-            // lblDripCost
-            // 
-            this.lblDripCost.AutoSize = true;
-            this.lblDripCost.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDripCost.Location = new System.Drawing.Point(19, 102);
-            this.lblDripCost.Name = "lblDripCost";
-            this.lblDripCost.Size = new System.Drawing.Size(63, 13);
-            this.lblDripCost.TabIndex = 19;
-            this.lblDripCost.Text = "Drip Cost:";
-            // 
-            // txtDripCostInitial
-            // 
-            this.txtDripCostInitial.BackColor = System.Drawing.Color.AliceBlue;
-            this.txtDripCostInitial.Location = new System.Drawing.Point(164, 99);
-            this.txtDripCostInitial.Name = "txtDripCostInitial";
-            this.txtDripCostInitial.Size = new System.Drawing.Size(40, 20);
-            this.txtDripCostInitial.TabIndex = 6;
             // 
             // ddlIndustry
             // 
@@ -347,40 +283,24 @@
             "Utilities",
             "Equity Precious Metals",
             "Other"});
-            this.ddlIndustry.Location = new System.Drawing.Point(107, 47);
+            this.ddlIndustry.Location = new System.Drawing.Point(123, 47);
             this.ddlIndustry.Name = "ddlIndustry";
             this.ddlIndustry.Size = new System.Drawing.Size(210, 21);
             this.ddlIndustry.TabIndex = 2;
             // 
-            // ddlCapSize
+            // lblMarketCap
             // 
-            this.ddlCapSize.BackColor = System.Drawing.Color.AliceBlue;
-            this.ddlCapSize.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ddlCapSize.FormattingEnabled = true;
-            this.ddlCapSize.Items.AddRange(new object[] {
-            "Small Cap",
-            "Mid Cap",
-            "Large Cap",
-            "ETF",
-            "ETN"});
-            this.ddlCapSize.Location = new System.Drawing.Point(399, 47);
-            this.ddlCapSize.Name = "ddlCapSize";
-            this.ddlCapSize.Size = new System.Drawing.Size(199, 21);
-            this.ddlCapSize.TabIndex = 3;
-            // 
-            // lblCapSize
-            // 
-            this.lblCapSize.AutoSize = true;
-            this.lblCapSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCapSize.Location = new System.Drawing.Point(324, 50);
-            this.lblCapSize.Name = "lblCapSize";
-            this.lblCapSize.Size = new System.Drawing.Size(61, 13);
-            this.lblCapSize.TabIndex = 17;
-            this.lblCapSize.Text = "Cap Size:";
+            this.lblMarketCap.AutoSize = true;
+            this.lblMarketCap.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMarketCap.Location = new System.Drawing.Point(349, 53);
+            this.lblMarketCap.Name = "lblMarketCap";
+            this.lblMarketCap.Size = new System.Drawing.Size(76, 13);
+            this.lblMarketCap.TabIndex = 17;
+            this.lblMarketCap.Text = "Market Cap:";
             // 
             // btnDividendPrice
             // 
-            this.btnDividendPrice.Location = new System.Drawing.Point(226, 124);
+            this.btnDividendPrice.Location = new System.Drawing.Point(228, 33);
             this.btnDividendPrice.Name = "btnDividendPrice";
             this.btnDividendPrice.Size = new System.Drawing.Size(109, 23);
             this.btnDividendPrice.TabIndex = 18;
@@ -391,7 +311,7 @@
             // 
             // btnGetSharePrice
             // 
-            this.btnGetSharePrice.Location = new System.Drawing.Point(145, 124);
+            this.btnGetSharePrice.Location = new System.Drawing.Point(147, 33);
             this.btnGetSharePrice.Name = "btnGetSharePrice";
             this.btnGetSharePrice.Size = new System.Drawing.Size(75, 23);
             this.btnGetSharePrice.TabIndex = 15;
@@ -405,7 +325,7 @@
             this.ddlSharePurchaseDate.BackColor = System.Drawing.Color.AliceBlue;
             this.ddlSharePurchaseDate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlSharePurchaseDate.FormattingEnabled = true;
-            this.ddlSharePurchaseDate.Location = new System.Drawing.Point(125, 17);
+            this.ddlSharePurchaseDate.Location = new System.Drawing.Point(127, 66);
             this.ddlSharePurchaseDate.Name = "ddlSharePurchaseDate";
             this.ddlSharePurchaseDate.Size = new System.Drawing.Size(210, 21);
             this.ddlSharePurchaseDate.TabIndex = 6;
@@ -416,15 +336,15 @@
             // 
             this.lblSharePurchaseDate.AutoSize = true;
             this.lblSharePurchaseDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSharePurchaseDate.Location = new System.Drawing.Point(13, 20);
+            this.lblSharePurchaseDate.Location = new System.Drawing.Point(15, 69);
             this.lblSharePurchaseDate.Name = "lblSharePurchaseDate";
-            this.lblSharePurchaseDate.Size = new System.Drawing.Size(95, 13);
+            this.lblSharePurchaseDate.Size = new System.Drawing.Size(92, 13);
             this.lblSharePurchaseDate.TabIndex = 20;
-            this.lblSharePurchaseDate.Text = "Purchase Date:";
+            this.lblSharePurchaseDate.Text = "First Purchase:";
             // 
             // btnNewShares
             // 
-            this.btnNewShares.Location = new System.Drawing.Point(85, 95);
+            this.btnNewShares.Location = new System.Drawing.Point(87, 173);
             this.btnNewShares.Name = "btnNewShares";
             this.btnNewShares.Size = new System.Drawing.Size(75, 23);
             this.btnNewShares.TabIndex = 21;
@@ -435,7 +355,7 @@
             // 
             // btnEditShares
             // 
-            this.btnEditShares.Location = new System.Drawing.Point(166, 95);
+            this.btnEditShares.Location = new System.Drawing.Point(168, 173);
             this.btnEditShares.Name = "btnEditShares";
             this.btnEditShares.Size = new System.Drawing.Size(75, 23);
             this.btnEditShares.TabIndex = 22;
@@ -446,7 +366,7 @@
             // 
             // btnDeleteShares
             // 
-            this.btnDeleteShares.Location = new System.Drawing.Point(247, 95);
+            this.btnDeleteShares.Location = new System.Drawing.Point(249, 173);
             this.btnDeleteShares.Name = "btnDeleteShares";
             this.btnDeleteShares.Size = new System.Drawing.Size(88, 23);
             this.btnDeleteShares.TabIndex = 23;
@@ -468,37 +388,160 @@
             this.gpSharesOptions.Controls.Add(this.lblNumberShare);
             this.gpSharesOptions.Controls.Add(this.lblSharePurchaseDate);
             this.gpSharesOptions.Controls.Add(this.lblSharePrice);
-            this.gpSharesOptions.Location = new System.Drawing.Point(620, 12);
+            this.gpSharesOptions.Location = new System.Drawing.Point(671, 12);
             this.gpSharesOptions.Name = "gpSharesOptions";
-            this.gpSharesOptions.Size = new System.Drawing.Size(353, 157);
+            this.gpSharesOptions.Size = new System.Drawing.Size(343, 204);
             this.gpSharesOptions.TabIndex = 21;
             this.gpSharesOptions.TabStop = false;
             this.gpSharesOptions.Text = "Shares Options:";
             // 
-            // dtpPayDate
+            // lblPERatio
             // 
-            this.dtpPayDate.CalendarMonthBackground = System.Drawing.Color.AliceBlue;
-            this.dtpPayDate.Location = new System.Drawing.Point(107, 156);
-            this.dtpPayDate.Name = "dtpPayDate";
-            this.dtpPayDate.Size = new System.Drawing.Size(210, 20);
-            this.dtpPayDate.TabIndex = 28;
+            this.lblPERatio.AutoSize = true;
+            this.lblPERatio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPERatio.Location = new System.Drawing.Point(358, 104);
+            this.lblPERatio.Name = "lblPERatio";
+            this.lblPERatio.Size = new System.Drawing.Size(67, 13);
+            this.lblPERatio.TabIndex = 31;
+            this.lblPERatio.Text = "P/E Ratio:";
             // 
-            // lblPayDate
+            // txtPERatio
             // 
-            this.lblPayDate.AutoSize = true;
-            this.lblPayDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPayDate.Location = new System.Drawing.Point(19, 159);
-            this.lblPayDate.Name = "lblPayDate";
-            this.lblPayDate.Size = new System.Drawing.Size(63, 13);
-            this.lblPayDate.TabIndex = 29;
-            this.lblPayDate.Text = "Pay Date:";
+            this.txtPERatio.BackColor = System.Drawing.Color.AliceBlue;
+            this.txtPERatio.Location = new System.Drawing.Point(431, 101);
+            this.txtPERatio.Name = "txtPERatio";
+            this.txtPERatio.ReadOnly = true;
+            this.txtPERatio.Size = new System.Drawing.Size(214, 20);
+            this.txtPERatio.TabIndex = 30;
+            // 
+            // lbl52WeekMiddle
+            // 
+            this.lbl52WeekMiddle.AutoSize = true;
+            this.lbl52WeekMiddle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl52WeekMiddle.Location = new System.Drawing.Point(224, 153);
+            this.lbl52WeekMiddle.Name = "lbl52WeekMiddle";
+            this.lbl52WeekMiddle.Size = new System.Drawing.Size(11, 13);
+            this.lbl52WeekMiddle.TabIndex = 37;
+            this.lbl52WeekMiddle.Text = "-";
+            // 
+            // txt52WeekHigh
+            // 
+            this.txt52WeekHigh.BackColor = System.Drawing.Color.AliceBlue;
+            this.txt52WeekHigh.Location = new System.Drawing.Point(241, 151);
+            this.txt52WeekHigh.Name = "txt52WeekHigh";
+            this.txt52WeekHigh.ReadOnly = true;
+            this.txt52WeekHigh.Size = new System.Drawing.Size(90, 20);
+            this.txt52WeekHigh.TabIndex = 36;
+            // 
+            // lbl52WeekRange
+            // 
+            this.lbl52WeekRange.AutoSize = true;
+            this.lbl52WeekRange.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl52WeekRange.Location = new System.Drawing.Point(7, 154);
+            this.lbl52WeekRange.Name = "lbl52WeekRange";
+            this.lbl52WeekRange.Size = new System.Drawing.Size(103, 13);
+            this.lbl52WeekRange.TabIndex = 35;
+            this.lbl52WeekRange.Text = "52 Week Range:";
+            // 
+            // txt52WeekLow
+            // 
+            this.txt52WeekLow.BackColor = System.Drawing.Color.AliceBlue;
+            this.txt52WeekLow.Location = new System.Drawing.Point(121, 151);
+            this.txt52WeekLow.Name = "txt52WeekLow";
+            this.txt52WeekLow.ReadOnly = true;
+            this.txt52WeekLow.Size = new System.Drawing.Size(97, 20);
+            this.txt52WeekLow.TabIndex = 34;
+            // 
+            // lblDaysRange
+            // 
+            this.lblDaysRange.AutoSize = true;
+            this.lblDaysRange.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDaysRange.Location = new System.Drawing.Point(30, 178);
+            this.lblDaysRange.Name = "lblDaysRange";
+            this.lblDaysRange.Size = new System.Drawing.Size(80, 13);
+            this.lblDaysRange.TabIndex = 39;
+            this.lblDaysRange.Text = "Days Range:";
+            // 
+            // txtDayRange
+            // 
+            this.txtDayRange.BackColor = System.Drawing.Color.AliceBlue;
+            this.txtDayRange.Location = new System.Drawing.Point(121, 175);
+            this.txtDayRange.Name = "txtDayRange";
+            this.txtDayRange.ReadOnly = true;
+            this.txtDayRange.Size = new System.Drawing.Size(210, 20);
+            this.txtDayRange.TabIndex = 38;
+            // 
+            // txtMarketCap
+            // 
+            this.txtMarketCap.BackColor = System.Drawing.Color.AliceBlue;
+            this.txtMarketCap.Location = new System.Drawing.Point(431, 50);
+            this.txtMarketCap.Name = "txtMarketCap";
+            this.txtMarketCap.ReadOnly = true;
+            this.txtMarketCap.Size = new System.Drawing.Size(214, 20);
+            this.txtMarketCap.TabIndex = 3;
+            // 
+            // lblOpenPrice
+            // 
+            this.lblOpenPrice.AutoSize = true;
+            this.lblOpenPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOpenPrice.Location = new System.Drawing.Point(351, 131);
+            this.lblOpenPrice.Name = "lblOpenPrice";
+            this.lblOpenPrice.Size = new System.Drawing.Size(74, 13);
+            this.lblOpenPrice.TabIndex = 46;
+            this.lblOpenPrice.Text = "Open Price:";
+            // 
+            // txtOpenPrice
+            // 
+            this.txtOpenPrice.BackColor = System.Drawing.Color.AliceBlue;
+            this.txtOpenPrice.Location = new System.Drawing.Point(431, 128);
+            this.txtOpenPrice.Name = "txtOpenPrice";
+            this.txtOpenPrice.ReadOnly = true;
+            this.txtOpenPrice.Size = new System.Drawing.Size(214, 20);
+            this.txtOpenPrice.TabIndex = 45;
+            // 
+            // txtExDividend
+            // 
+            this.txtExDividend.BackColor = System.Drawing.Color.AliceBlue;
+            this.txtExDividend.Location = new System.Drawing.Point(123, 99);
+            this.txtExDividend.Name = "txtExDividend";
+            this.txtExDividend.ReadOnly = true;
+            this.txtExDividend.Size = new System.Drawing.Size(210, 20);
+            this.txtExDividend.TabIndex = 6;
+            // 
+            // txtPayDate
+            // 
+            this.txtPayDate.BackColor = System.Drawing.Color.AliceBlue;
+            this.txtPayDate.Location = new System.Drawing.Point(121, 125);
+            this.txtPayDate.Name = "txtPayDate";
+            this.txtPayDate.ReadOnly = true;
+            this.txtPayDate.Size = new System.Drawing.Size(210, 20);
+            this.txtPayDate.TabIndex = 48;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(340, 159);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(85, 13);
+            this.label2.TabIndex = 50;
+            this.label2.Text = "Current Price:";
+            // 
+            // txtCurrentPrice
+            // 
+            this.txtCurrentPrice.BackColor = System.Drawing.Color.AliceBlue;
+            this.txtCurrentPrice.Location = new System.Drawing.Point(431, 154);
+            this.txtCurrentPrice.Name = "txtCurrentPrice";
+            this.txtCurrentPrice.ReadOnly = true;
+            this.txtCurrentPrice.Size = new System.Drawing.Size(214, 20);
+            this.txtCurrentPrice.TabIndex = 49;
             // 
             // Dividends
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.ClientSize = new System.Drawing.Size(980, 210);
+            this.ClientSize = new System.Drawing.Size(1026, 224);
             this.Controls.Add(this.gpSharesOptions);
             this.Controls.Add(this.gpDividendInfo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -533,8 +576,7 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.GroupBox gpDividendInfo;
         private System.Windows.Forms.Button btnGetSharePrice;
-        private System.Windows.Forms.Label lblCapSize;
-        private System.Windows.Forms.ComboBox ddlCapSize;
+        private System.Windows.Forms.Label lblMarketCap;
         private System.Windows.Forms.Button btnDividendPrice;
         private System.Windows.Forms.Label lblSharePurchaseDate;
         private System.Windows.Forms.ComboBox ddlSharePurchaseDate;
@@ -543,17 +585,22 @@
         private System.Windows.Forms.Button btnDeleteShares;
         private System.Windows.Forms.GroupBox gpSharesOptions;
         private System.Windows.Forms.ComboBox ddlIndustry;
-        private System.Windows.Forms.Label lblDripCost;
-        private System.Windows.Forms.TextBox txtDripCostInitial;
-        private System.Windows.Forms.CheckBox chkdrip;
-        private System.Windows.Forms.DateTimePicker dtpExDividend;
         private System.Windows.Forms.Label lblExDividend;
-        private System.Windows.Forms.TextBox txtDripCost;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtDripNotes;
-        private System.Windows.Forms.Label lblDripNotes;
-        private System.Windows.Forms.DateTimePicker dtpPayDate;
         private System.Windows.Forms.Label lblPayDate;
+        private System.Windows.Forms.Label lblPERatio;
+        private System.Windows.Forms.TextBox txtPERatio;
+        private System.Windows.Forms.Label lbl52WeekMiddle;
+        private System.Windows.Forms.TextBox txt52WeekHigh;
+        private System.Windows.Forms.Label lbl52WeekRange;
+        private System.Windows.Forms.TextBox txt52WeekLow;
+        private System.Windows.Forms.Label lblDaysRange;
+        private System.Windows.Forms.TextBox txtDayRange;
+        private System.Windows.Forms.TextBox txtMarketCap;
+        private System.Windows.Forms.Label lblOpenPrice;
+        private System.Windows.Forms.TextBox txtOpenPrice;
+        private System.Windows.Forms.TextBox txtExDividend;
+        private System.Windows.Forms.TextBox txtPayDate;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtCurrentPrice;
     }
 }

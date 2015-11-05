@@ -26,7 +26,6 @@ namespace DividendDreams
 
         private void Shares_Load(object sender, EventArgs e)
         {
-            ddlAction.SelectedIndex = 0;
             if (Edit)
             {
                 LoadSharesInfo();
@@ -39,7 +38,6 @@ namespace DividendDreams
             DataTable dt = DividendStocks.GetSharePriceInfo(DividendPriceID);
             txtPurchasePrice.Text = dt.Rows[0]["purchaseprice"].ToString();
             txtNumberOfShares.Text = dt.Rows[0]["numberofshares"].ToString();
-            ddlAction.SelectedIndex = ddlAction.FindString(dt.Rows[0]["purchaseaction"].ToString());
             dtpPurchaseDate.Value = Convert.ToDateTime(dt.Rows[0]["purchasedate"]);
         }
 
@@ -52,7 +50,7 @@ namespace DividendDreams
             }
             try
             {
-                int.Parse(txtNumberOfShares.Text);
+                decimal.Parse(txtNumberOfShares.Text);
             }
             catch
             {
@@ -80,11 +78,11 @@ namespace DividendDreams
             Application.DoEvents();
             if (Edit)
             {
-                DividendStocks.UpdateShare(txtPurchasePrice.Text, txtNumberOfShares.Text, ddlAction.Text, DividendPriceID, dtpPurchaseDate.Value);
+                DividendStocks.UpdateShare(Convert.ToDecimal(txtPurchasePrice.Text), Convert.ToDecimal(txtNumberOfShares.Text), DividendPriceID, dtpPurchaseDate.Value);
             }
             else
             {
-                DividendStocks.NewShare(txtPurchasePrice.Text, txtNumberOfShares.Text, ddlAction.Text, ID, dtpPurchaseDate.Value);
+                DividendStocks.NewShare(Convert.ToDecimal(txtPurchasePrice.Text), Convert.ToDecimal(txtNumberOfShares.Text), ID, dtpPurchaseDate.Value);
             }
             MainMenu._Dividends.LoadDividendStock();
             LoadAllMainDividends();
@@ -121,18 +119,8 @@ namespace DividendDreams
 
         public void GetSharePrice()
         {
-            decimal transactionPrice = (decimal)9.99;
             decimal TotalSharePrice = 0;
-            if (ddlAction.Text.ToLower().Contains("bought"))
-            {
-                TotalSharePrice = (Convert.ToDecimal(txtNumberOfShares.Text) * Convert.ToDecimal(txtPurchasePrice.Text)) + transactionPrice;
-            }
-            else
-            {
-                TotalSharePrice = (Convert.ToDecimal(txtNumberOfShares.Text) * Convert.ToDecimal(txtPurchasePrice.Text)) - transactionPrice;
-            }
-            //decimal transactionPrice = (decimal)9.99;
-            //decimal TotalSharePrice = (Convert.ToDecimal(txtNumberOfShares.Text) * Convert.ToDecimal(txtPurchasePrice.Text)) + transactionPrice;
+            TotalSharePrice = Convert.ToDecimal(txtNumberOfShares.Text) * Convert.ToDecimal(txtPurchasePrice.Text);
             MessageBox.Show("$" + Math.Round(TotalSharePrice, 2).ToString());
         }
 

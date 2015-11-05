@@ -37,8 +37,7 @@ namespace DividendDreams
             Application.DoEvents();
             if (Edit)
             {
-                DividendStocks.UpdateDividendStock(ID, txtSymbol.Text, txtStockName.Text, ddlIndustry.Text, txtAnnualDividend.Text, txtDividendPercent.Text, 
-                    ddlCapSize.Text, txtDripCostInitial.Text, txtDripCost.Text, chkdrip.Checked == true ? "true" : "false", dtpExDividend.Value, txtDripNotes.Text, dtpPayDate.Value);
+                DividendStocks.UpdateDividendStock(ID, txtSymbol.Text, txtStockName.Text, ddlIndustry.Text);
                 ReloadMainDividends();
                 Program.MainMenu.lbAllDividends.SelectedValue = Convert.ToInt32(ID);
                 pw.Close();
@@ -46,8 +45,7 @@ namespace DividendDreams
             }
             else
             {
-                ID = DividendStocks.NewDividendStock(txtSymbol.Text, txtStockName.Text, ddlIndustry.Text, txtSharePrice.Text, txtAnnualDividend.Text, txtNumberOfShares.Text, 
-                    txtDividendPercent.Text, ddlCapSize.Text, txtDripCost.Text, txtDripCostInitial.Text, chkdrip.Checked == true ? "true" : "false", dtpExDividend.Value, txtDripNotes.Text, dtpPayDate.Value);
+                ID = DividendStocks.NewDividendStock(txtSymbol.Text, txtStockName.Text, ddlIndustry.Text, txtSharePrice.Text, txtNumberOfShares.Text);
                 Program.MainMenu.LoadAllDividends();
                 Program.MainMenu.lbAllDividends.SelectedValue = Convert.ToInt32(ID);
                 pw.Close();
@@ -69,7 +67,6 @@ namespace DividendDreams
 
         private void Dividends_Load(object sender, EventArgs e)
         {
-            ddlCapSize.SelectedIndex = 0;
             ddlIndustry.SelectedIndex = 0;
             if (Edit)
             {
@@ -90,21 +87,17 @@ namespace DividendDreams
             txtSymbol.Text = dt.Rows[0]["symbol"].ToString();
             txtStockName.Text = dt.Rows[0]["stockname"].ToString();
             ddlIndustry.SelectedIndex = ddlIndustry.FindString(dt.Rows[0]["industry"].ToString());
-            txtAnnualDividend.Text = YahooFinance.GetValues(Symbol, "d");
-            txtDividendPercent.Text = YahooFinance.GetValues(Symbol, "y");
-            ddlCapSize.SelectedIndex = ddlCapSize.FindString(dt.Rows[0]["capsize"].ToString());
-            txtDripCostInitial.Text = dt.Rows[0]["dripinitialcost"].ToString();
-            txtDripCost.Text = dt.Rows[0]["dripcost"].ToString();
-            txtDripNotes.Text = dt.Rows[0]["dripnotes"].ToString();
-            chkdrip.Checked = dt.Rows[0]["drip"].ToString() == "true" ? true : false;
-            if (dt.Rows[0]["exdividend"] != DBNull.Value)
-            {
-                dtpExDividend.Value = Convert.ToDateTime(YahooFinance.GetValues(Symbol, "q"));
-            }
-            if (dt.Rows[0]["paydate"] != DBNull.Value)
-            {
-                dtpPayDate.Value = Convert.ToDateTime(YahooFinance.GetValues(Symbol, "r1"));
-            }
+            txtAnnualDividend.Text = YahooFinance.GetValues(Symbol, "d", false);
+            txtDividendPercent.Text = YahooFinance.GetValues(Symbol, "y", false);
+            txtMarketCap.Text = YahooFinance.GetValues(Symbol, "j1", false);
+            txtExDividend.Text = YahooFinance.GetValues(Symbol, "q", false);
+            txtPayDate.Text = YahooFinance.GetValues(Symbol, "r1", false);
+            txtPERatio.Text = YahooFinance.GetValues(Symbol, "r", false);
+            txtDayRange.Text = YahooFinance.GetValues(Symbol, "m", false);
+            txt52WeekLow.Text = YahooFinance.GetValues(Symbol, "j", false);
+            txt52WeekHigh.Text = YahooFinance.GetValues(Symbol, "k", false);
+            txtCurrentPrice.Text = YahooFinance.GetValues(Symbol, "a", false);
+            txtOpenPrice.Text = YahooFinance.GetValues(Symbol, "o", false);
             // load purchase dates
             LoadPurchaseDates();
             LoadPurchaseData();
@@ -118,6 +111,18 @@ namespace DividendDreams
             ddlSharePurchaseDate.DataSource = DividendStocks.GetDividendActionDate(ID);
             ddlSharePurchaseDate.DisplayMember = "purchasedate";
             ddlSharePurchaseDate.ValueMember = "id";
+            if (ddlSharePurchaseDate.Text != "")
+            {
+                btnNewShares.Enabled = false;
+                btnDeleteShares.Enabled = true;
+                btnEditShares.Enabled = true;
+            }
+            else
+            {
+                btnNewShares.Enabled = true;
+                btnDeleteShares.Enabled = false;
+                btnEditShares.Enabled = false;
+            }
             ddlSharePurchaseDate.SelectedIndexChanged += ddlSharePurchaseDate_SelectedIndexChanged;
         }
 
@@ -178,16 +183,8 @@ namespace DividendDreams
         {
             if (txtNumberOfShares.Text != "")
             {
-                decimal transactionPrice = (decimal)9.99;
                 decimal TotalSharePrice = 0;
-                if (ddlSharePurchaseDate.Text.ToLower().Contains("bought"))
-                {
-                    TotalSharePrice = (Convert.ToDecimal(txtNumberOfShares.Text) * Convert.ToDecimal(txtSharePrice.Text)) + transactionPrice;
-                }
-                else
-                {
-                    TotalSharePrice = (Convert.ToDecimal(txtNumberOfShares.Text) * Convert.ToDecimal(txtSharePrice.Text)) - transactionPrice;
-                }
+                TotalSharePrice = Convert.ToDecimal(txtNumberOfShares.Text) * Convert.ToDecimal(txtSharePrice.Text);
                 MessageBox.Show("$" + Math.Round(TotalSharePrice, 2).ToString());
             }
         }
@@ -196,17 +193,7 @@ namespace DividendDreams
         {
             if (txtNumberOfShares.Text != "")
             {
-                decimal AutoDripCost = 0;
-                try
-                {
-                    AutoDripCost = (Convert.ToDecimal(txtDripCost.Text) * Convert.ToDecimal(txtNumberOfShares.Text)) + Convert.ToDecimal(txtDripCostInitial.Text);
-                }
-                catch
-                {
-                    AutoDripCost = 0;
-                }
-                decimal TotalDividendPrice = chkdrip.Checked == true ? (Convert.ToDecimal(txtAnnualDividend.Text) * Convert.ToDecimal(txtNumberOfShares.Text) - AutoDripCost) 
-                    : Convert.ToDecimal(txtAnnualDividend.Text) * Convert.ToDecimal(txtNumberOfShares.Text);
+                decimal TotalDividendPrice = Convert.ToDecimal(txtAnnualDividend.Text) * Convert.ToDecimal(txtNumberOfShares.Text);
                 decimal QuarterlyDividendPrice = TotalDividendPrice / 4;
                 decimal MonthlyDividendPrice = TotalDividendPrice / 12;
                 MessageBox.Show("Yearly: $" + Math.Round(TotalDividendPrice, 2).ToString() + "\n\nQuarterly: $" + Math.Round(QuarterlyDividendPrice, 2) + "\n\nMonthly: $" + Math.Round(MonthlyDividendPrice, 2));

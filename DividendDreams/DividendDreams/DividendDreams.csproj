@@ -97,6 +97,7 @@
     <Compile Include="Shares.Designer.cs">
       <DependentUpon>Shares.cs</DependentUpon>
     </Compile>
+    <Compile Include="Uti.cs" />
     <Compile Include="YahooFinance.cs" />
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
