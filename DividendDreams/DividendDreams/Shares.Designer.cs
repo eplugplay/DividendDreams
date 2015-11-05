@@ -51,6 +51,7 @@
             this.gpShares.Controls.Add(this.label1);
             this.gpShares.Controls.Add(this.txtNumberOfShares);
             this.gpShares.Controls.Add(this.lblSymbol);
+            this.gpShares.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gpShares.ForeColor = System.Drawing.Color.White;
             this.gpShares.Location = new System.Drawing.Point(12, 12);
             this.gpShares.Name = "gpShares";
@@ -70,17 +71,17 @@
             // lblPurchaseDate
             // 
             this.lblPurchaseDate.AutoSize = true;
-            this.lblPurchaseDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPurchaseDate.Location = new System.Drawing.Point(20, 22);
+            this.lblPurchaseDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPurchaseDate.Location = new System.Drawing.Point(7, 25);
             this.lblPurchaseDate.Name = "lblPurchaseDate";
-            this.lblPurchaseDate.Size = new System.Drawing.Size(81, 13);
+            this.lblPurchaseDate.Size = new System.Drawing.Size(95, 13);
             this.lblPurchaseDate.TabIndex = 24;
             this.lblPurchaseDate.Text = "Purchase Date:";
             // 
             // btnGetPrice
             // 
             this.btnGetPrice.ForeColor = System.Drawing.Color.Black;
-            this.btnGetPrice.Location = new System.Drawing.Point(359, 43);
+            this.btnGetPrice.Location = new System.Drawing.Point(355, 44);
             this.btnGetPrice.Name = "btnGetPrice";
             this.btnGetPrice.Size = new System.Drawing.Size(56, 23);
             this.btnGetPrice.TabIndex = 20;
@@ -92,7 +93,7 @@
             // btnSave
             // 
             this.btnSave.ForeColor = System.Drawing.Color.Black;
-            this.btnSave.Location = new System.Drawing.Point(359, 69);
+            this.btnSave.Location = new System.Drawing.Point(355, 70);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(56, 23);
             this.btnSave.TabIndex = 6;
@@ -112,9 +113,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 48);
+            this.label1.Location = new System.Drawing.Point(7, 51);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 13);
+            this.label1.Size = new System.Drawing.Size(97, 13);
             this.label1.TabIndex = 5;
             this.label1.Text = "Purchase Price:";
             // 
@@ -129,9 +130,9 @@
             // lblSymbol
             // 
             this.lblSymbol.AutoSize = true;
-            this.lblSymbol.Location = new System.Drawing.Point(39, 74);
+            this.lblSymbol.Location = new System.Drawing.Point(26, 77);
             this.lblSymbol.Name = "lblSymbol";
-            this.lblSymbol.Size = new System.Drawing.Size(62, 13);
+            this.lblSymbol.Size = new System.Drawing.Size(73, 13);
             this.lblSymbol.TabIndex = 3;
             this.lblSymbol.Text = "# of Shares";
             // 

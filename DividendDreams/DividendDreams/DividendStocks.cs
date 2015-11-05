@@ -105,17 +105,12 @@ namespace DividendDreams
             }
         }
 
-        public static void GetDividendPrice(string symbol, string dividendstockid, out decimal totalDividendPrice, out decimal quarterlyDividendPrice, out decimal monthlyDividendPrice, out decimal originalDripCost, out decimal dripCost, out bool drip)
+        public static void GetDividendPrice(string symbol, string dividendstockid, out decimal totalDividendPrice, out decimal quarterlyDividendPrice, out decimal monthlyDividendPrice)
         {
             DataTable dt = new DataTable();
             totalDividendPrice = 0;
             quarterlyDividendPrice = 0;
             monthlyDividendPrice = 0;
-            drip = false;
-            decimal dripinitial = 0;
-            originalDripCost = GetDripCost(dividendstockid, out drip, out dripinitial);
-            dripCost = originalDripCost;
-
             int numShares = 0;
             decimal yield = 0;
             try
@@ -131,16 +126,11 @@ namespace DividendDreams
                         da.Fill(dt);
                     }
 
-
                     for (int i = 0; i < dt.Rows.Count; i++)
                     {
                         numShares = Convert.ToInt32(dt.Rows[i]["numberofshares"]);
-                        yield = Convert.ToDecimal(YahooFinance.GetValues(symbol, "y", false));
+                        yield = Convert.ToDecimal(YahooFinance.GetValues(symbol, "d", false));
                         totalDividendPrice += ((decimal)numShares * yield);
-                    }
-                    if (drip)
-                    {
-                        totalDividendPrice -= (dripCost * (decimal)numShares) + dripinitial;
                     }
                 }
                 quarterlyDividendPrice = totalDividendPrice / 4;
@@ -150,39 +140,6 @@ namespace DividendDreams
             {
 
             }
-        }
-
-        public static decimal GetDripCost(string id, out bool drip, out decimal dripinitial)
-        {
-            decimal dripCost = 0;
-            dripinitial = 0;
-            drip = false;
-            using (MySqlConnection cnn = new MySqlConnection(ConfigurationManager.ConnectionStrings["cnn"].ToString()))
-            {
-                cnn.Open();
-                using (var cmd = cnn.CreateCommand())
-                {
-                    cmd.CommandText = "SELECT dripinitialcost, dripcost, drip FROM dividendstocks WHERE id=@id";
-                    cmd.Parameters.AddWithValue("id", id);
-                    using (var rdr = cmd.ExecuteReader())
-                    {
-                        while (rdr.Read())
-                        {
-                            try
-                            {
-                                dripinitial = Convert.ToDecimal(rdr["dripinitialcost"].ToString());
-                                dripCost = Convert.ToDecimal(rdr["dripcost"]);
-                            }
-                            catch
-                            {
-
-                            }
-                            drip = rdr["drip"].ToString() == "true" ? true : false;
-                        }
-                    }
-                }
-            }
-            return dripCost;
         }
 
         public static DataTable GetSharePriceInfo(string id)

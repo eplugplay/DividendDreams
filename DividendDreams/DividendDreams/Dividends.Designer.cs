@@ -206,9 +206,9 @@
             // 
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.Black;
-            this.btnSave.Location = new System.Drawing.Point(570, 180);
+            this.btnSave.Location = new System.Drawing.Point(572, 180);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.Size = new System.Drawing.Size(73, 23);
             this.btnSave.TabIndex = 14;
             this.btnSave.TabStop = false;
             this.btnSave.Text = "Update";
@@ -314,9 +314,9 @@
             // 
             this.btnDividendPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDividendPrice.ForeColor = System.Drawing.Color.Black;
-            this.btnDividendPrice.Location = new System.Drawing.Point(228, 33);
+            this.btnDividendPrice.Location = new System.Drawing.Point(208, 33);
             this.btnDividendPrice.Name = "btnDividendPrice";
-            this.btnDividendPrice.Size = new System.Drawing.Size(109, 23);
+            this.btnDividendPrice.Size = new System.Drawing.Size(129, 23);
             this.btnDividendPrice.TabIndex = 18;
             this.btnDividendPrice.TabStop = false;
             this.btnDividendPrice.Text = "Get Dividend Price";
@@ -327,7 +327,7 @@
             // 
             this.btnGetSharePrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGetSharePrice.ForeColor = System.Drawing.Color.Black;
-            this.btnGetSharePrice.Location = new System.Drawing.Point(147, 33);
+            this.btnGetSharePrice.Location = new System.Drawing.Point(127, 33);
             this.btnGetSharePrice.Name = "btnGetSharePrice";
             this.btnGetSharePrice.Size = new System.Drawing.Size(75, 23);
             this.btnGetSharePrice.TabIndex = 15;
@@ -364,9 +364,9 @@
             // 
             this.btnNewShares.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNewShares.ForeColor = System.Drawing.Color.Black;
-            this.btnNewShares.Location = new System.Drawing.Point(87, 173);
+            this.btnNewShares.Location = new System.Drawing.Point(40, 173);
             this.btnNewShares.Name = "btnNewShares";
-            this.btnNewShares.Size = new System.Drawing.Size(75, 23);
+            this.btnNewShares.Size = new System.Drawing.Size(94, 23);
             this.btnNewShares.TabIndex = 21;
             this.btnNewShares.TabStop = false;
             this.btnNewShares.Text = "New Share";
@@ -377,9 +377,9 @@
             // 
             this.btnEditShares.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditShares.ForeColor = System.Drawing.Color.Black;
-            this.btnEditShares.Location = new System.Drawing.Point(168, 173);
+            this.btnEditShares.Location = new System.Drawing.Point(140, 173);
             this.btnEditShares.Name = "btnEditShares";
-            this.btnEditShares.Size = new System.Drawing.Size(75, 23);
+            this.btnEditShares.Size = new System.Drawing.Size(92, 23);
             this.btnEditShares.TabIndex = 22;
             this.btnEditShares.TabStop = false;
             this.btnEditShares.Text = "Edit Share";
@@ -390,9 +390,9 @@
             // 
             this.btnDeleteShares.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteShares.ForeColor = System.Drawing.Color.Black;
-            this.btnDeleteShares.Location = new System.Drawing.Point(249, 173);
+            this.btnDeleteShares.Location = new System.Drawing.Point(238, 173);
             this.btnDeleteShares.Name = "btnDeleteShares";
-            this.btnDeleteShares.Size = new System.Drawing.Size(88, 23);
+            this.btnDeleteShares.Size = new System.Drawing.Size(99, 23);
             this.btnDeleteShares.TabIndex = 23;
             this.btnDeleteShares.TabStop = false;
             this.btnDeleteShares.Text = "Delete Share";
