@@ -359,7 +359,7 @@ namespace DividendDreams
             HighlightActive = false;
             if (showMsg)
             {
-                MessageBox.Show(ddl.Text + ": " + Math.Round(percentage, 2) + "%");
+                MessageBox.Show("Total: " + count + "\n\n" + ddl.Text + ": " + Math.Round(percentage, 2) + "%");
             }
         }
 
@@ -399,7 +399,7 @@ namespace DividendDreams
             decimal portfolioCnt = Convert.ToDecimal(lbl.Text);
             decimal percentage = 0;
             List<string> lstIndustries = new List<string>() {"Consumer Discretionary", "Consumer Staples", "Energy", "Financials", "Health Care", "Industrials", "Information Technology", 
-                                                            "Materials", "Telecommunication Services", "Utilities" };
+                                                            "Materials", "Telecommunication Services", "Utilities", "Equity Precious Metals" };
             List<decimal> count = new List<decimal>();
             decimal cnt = 0;
             for (int i = 0; i < lstIndustries.Count; i++)
