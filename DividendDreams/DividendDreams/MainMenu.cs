@@ -578,7 +578,7 @@ namespace DividendDreams
             pw.Close();
             if (cnt != 0)
             {
-                MessageBox.Show(string.Format("{0} results\n\n" + "Date: {1} \n\n" + individualDivData + "This Month: ${2}\n\n", cnt, dtpMonthYear,  Math.Round(quarterlyDiv, 2)));
+                MessageBox.Show(string.Format("{0} results\n\n" + "{1} \n\n" + individualDivData + "Total: ${2}\n\n", cnt, "Dividends for " + dtpMonthYear + ":",  Math.Round(quarterlyDiv, 2)));
             }
             else
             {
