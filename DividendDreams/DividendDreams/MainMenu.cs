@@ -153,12 +153,19 @@ namespace DividendDreams
 
         private void btnCalculate_Click(object sender, EventArgs e)
         {
-            if (backgroundWorker1.IsBusy)
+            try
             {
-                MessageBox.Show("Please wait until data is processed.");
-                return;
+                if (backgroundWorker1.IsBusy)
+                {
+                    MessageBox.Show("Please wait until data is processed.");
+                    return;
+                }
+                backgroundWorker1.RunWorkerAsync();
             }
-            backgroundWorker1.RunWorkerAsync();
+            catch
+            {
+
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

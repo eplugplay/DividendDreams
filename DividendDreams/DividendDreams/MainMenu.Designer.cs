@@ -512,7 +512,7 @@
             this.MaximizeBox = false;
             this.Name = "MainMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Dividend Dreams";
+            this.Text = "Dividend Liberty";
             this.Load += new System.EventHandler(this.MainMenu_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

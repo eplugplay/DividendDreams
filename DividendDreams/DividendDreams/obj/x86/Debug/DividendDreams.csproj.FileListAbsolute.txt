@@ -32,6 +32,7 @@ C:\Users\Steve Yi\Documents\GitHub\DividendDreams\DividendDreams\DividendDreams\
 C:\Users\stevey\Documents\GitHub\DividendDreams\DividendDreams\DividendDreams\bin\Debug\DividendDreams.exe.config
 C:\Users\stevey\Documents\GitHub\DividendDreams\DividendDreams\DividendDreams\bin\Debug\DividendDreams.exe
 C:\Users\stevey\Documents\GitHub\DividendDreams\DividendDreams\DividendDreams\bin\Debug\DividendDreams.pdb
+C:\Users\stevey\Documents\GitHub\DividendDreams\DividendDreams\DividendDreams\obj\x86\Debug\DividendDreams.csprojResolveAssemblyReference.cache
 C:\Users\stevey\Documents\GitHub\DividendDreams\DividendDreams\DividendDreams\obj\x86\Debug\DividendDreams.MainMenu.resources
 C:\Users\stevey\Documents\GitHub\DividendDreams\DividendDreams\DividendDreams\obj\x86\Debug\DividendDreams.Dividends.resources
 C:\Users\stevey\Documents\GitHub\DividendDreams\DividendDreams\DividendDreams\obj\x86\Debug\DividendDreams.PleaseWait.resources
