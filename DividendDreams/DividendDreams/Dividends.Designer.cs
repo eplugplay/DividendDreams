@@ -43,6 +43,21 @@
             this.txtDividendPercent = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.gpDividendInfo = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtCurrentPrice = new System.Windows.Forms.TextBox();
+            this.txtExDividend = new System.Windows.Forms.TextBox();
+            this.txtPayDate = new System.Windows.Forms.TextBox();
+            this.lblOpenPrice = new System.Windows.Forms.Label();
+            this.txtOpenPrice = new System.Windows.Forms.TextBox();
+            this.txtMarketCap = new System.Windows.Forms.TextBox();
+            this.lblDaysRange = new System.Windows.Forms.Label();
+            this.txtDayRange = new System.Windows.Forms.TextBox();
+            this.lbl52WeekMiddle = new System.Windows.Forms.Label();
+            this.txt52WeekHigh = new System.Windows.Forms.TextBox();
+            this.lbl52WeekRange = new System.Windows.Forms.Label();
+            this.txt52WeekLow = new System.Windows.Forms.TextBox();
+            this.lblPERatio = new System.Windows.Forms.Label();
+            this.txtPERatio = new System.Windows.Forms.TextBox();
             this.lblPayDate = new System.Windows.Forms.Label();
             this.lblExDividend = new System.Windows.Forms.Label();
             this.ddlIndustry = new System.Windows.Forms.ComboBox();
@@ -55,21 +70,6 @@
             this.btnEditShares = new System.Windows.Forms.Button();
             this.btnDeleteShares = new System.Windows.Forms.Button();
             this.gpSharesOptions = new System.Windows.Forms.GroupBox();
-            this.lblPERatio = new System.Windows.Forms.Label();
-            this.txtPERatio = new System.Windows.Forms.TextBox();
-            this.lbl52WeekMiddle = new System.Windows.Forms.Label();
-            this.txt52WeekHigh = new System.Windows.Forms.TextBox();
-            this.lbl52WeekRange = new System.Windows.Forms.Label();
-            this.txt52WeekLow = new System.Windows.Forms.TextBox();
-            this.lblDaysRange = new System.Windows.Forms.Label();
-            this.txtDayRange = new System.Windows.Forms.TextBox();
-            this.txtMarketCap = new System.Windows.Forms.TextBox();
-            this.lblOpenPrice = new System.Windows.Forms.Label();
-            this.txtOpenPrice = new System.Windows.Forms.TextBox();
-            this.txtExDividend = new System.Windows.Forms.TextBox();
-            this.txtPayDate = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtCurrentPrice = new System.Windows.Forms.TextBox();
             this.gpDividendInfo.SuspendLayout();
             this.gpSharesOptions.SuspendLayout();
             this.SuspendLayout();
@@ -256,6 +256,155 @@
             this.gpDividendInfo.TabStop = false;
             this.gpDividendInfo.Text = "Shares Info:";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(340, 159);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(85, 13);
+            this.label2.TabIndex = 50;
+            this.label2.Text = "Current Price:";
+            // 
+            // txtCurrentPrice
+            // 
+            this.txtCurrentPrice.BackColor = System.Drawing.Color.AliceBlue;
+            this.txtCurrentPrice.ForeColor = System.Drawing.Color.Black;
+            this.txtCurrentPrice.Location = new System.Drawing.Point(431, 154);
+            this.txtCurrentPrice.Name = "txtCurrentPrice";
+            this.txtCurrentPrice.ReadOnly = true;
+            this.txtCurrentPrice.Size = new System.Drawing.Size(214, 20);
+            this.txtCurrentPrice.TabIndex = 49;
+            // 
+            // txtExDividend
+            // 
+            this.txtExDividend.BackColor = System.Drawing.Color.AliceBlue;
+            this.txtExDividend.ForeColor = System.Drawing.Color.Black;
+            this.txtExDividend.Location = new System.Drawing.Point(123, 99);
+            this.txtExDividend.Name = "txtExDividend";
+            this.txtExDividend.ReadOnly = true;
+            this.txtExDividend.Size = new System.Drawing.Size(210, 20);
+            this.txtExDividend.TabIndex = 6;
+            // 
+            // txtPayDate
+            // 
+            this.txtPayDate.BackColor = System.Drawing.Color.AliceBlue;
+            this.txtPayDate.ForeColor = System.Drawing.Color.Black;
+            this.txtPayDate.Location = new System.Drawing.Point(123, 125);
+            this.txtPayDate.Name = "txtPayDate";
+            this.txtPayDate.ReadOnly = true;
+            this.txtPayDate.Size = new System.Drawing.Size(208, 20);
+            this.txtPayDate.TabIndex = 48;
+            // 
+            // lblOpenPrice
+            // 
+            this.lblOpenPrice.AutoSize = true;
+            this.lblOpenPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOpenPrice.Location = new System.Drawing.Point(351, 131);
+            this.lblOpenPrice.Name = "lblOpenPrice";
+            this.lblOpenPrice.Size = new System.Drawing.Size(74, 13);
+            this.lblOpenPrice.TabIndex = 46;
+            this.lblOpenPrice.Text = "Open Price:";
+            // 
+            // txtOpenPrice
+            // 
+            this.txtOpenPrice.BackColor = System.Drawing.Color.AliceBlue;
+            this.txtOpenPrice.ForeColor = System.Drawing.Color.Black;
+            this.txtOpenPrice.Location = new System.Drawing.Point(431, 128);
+            this.txtOpenPrice.Name = "txtOpenPrice";
+            this.txtOpenPrice.ReadOnly = true;
+            this.txtOpenPrice.Size = new System.Drawing.Size(214, 20);
+            this.txtOpenPrice.TabIndex = 45;
+            // 
+            // txtMarketCap
+            // 
+            this.txtMarketCap.BackColor = System.Drawing.Color.AliceBlue;
+            this.txtMarketCap.ForeColor = System.Drawing.Color.Black;
+            this.txtMarketCap.Location = new System.Drawing.Point(431, 50);
+            this.txtMarketCap.Name = "txtMarketCap";
+            this.txtMarketCap.ReadOnly = true;
+            this.txtMarketCap.Size = new System.Drawing.Size(214, 20);
+            this.txtMarketCap.TabIndex = 3;
+            // 
+            // lblDaysRange
+            // 
+            this.lblDaysRange.AutoSize = true;
+            this.lblDaysRange.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDaysRange.Location = new System.Drawing.Point(30, 178);
+            this.lblDaysRange.Name = "lblDaysRange";
+            this.lblDaysRange.Size = new System.Drawing.Size(80, 13);
+            this.lblDaysRange.TabIndex = 39;
+            this.lblDaysRange.Text = "Days Range:";
+            // 
+            // txtDayRange
+            // 
+            this.txtDayRange.BackColor = System.Drawing.Color.AliceBlue;
+            this.txtDayRange.ForeColor = System.Drawing.Color.Black;
+            this.txtDayRange.Location = new System.Drawing.Point(123, 175);
+            this.txtDayRange.Name = "txtDayRange";
+            this.txtDayRange.ReadOnly = true;
+            this.txtDayRange.Size = new System.Drawing.Size(208, 20);
+            this.txtDayRange.TabIndex = 38;
+            // 
+            // lbl52WeekMiddle
+            // 
+            this.lbl52WeekMiddle.AutoSize = true;
+            this.lbl52WeekMiddle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl52WeekMiddle.Location = new System.Drawing.Point(224, 153);
+            this.lbl52WeekMiddle.Name = "lbl52WeekMiddle";
+            this.lbl52WeekMiddle.Size = new System.Drawing.Size(11, 13);
+            this.lbl52WeekMiddle.TabIndex = 37;
+            this.lbl52WeekMiddle.Text = "-";
+            // 
+            // txt52WeekHigh
+            // 
+            this.txt52WeekHigh.BackColor = System.Drawing.Color.AliceBlue;
+            this.txt52WeekHigh.ForeColor = System.Drawing.Color.Black;
+            this.txt52WeekHigh.Location = new System.Drawing.Point(241, 151);
+            this.txt52WeekHigh.Name = "txt52WeekHigh";
+            this.txt52WeekHigh.ReadOnly = true;
+            this.txt52WeekHigh.Size = new System.Drawing.Size(90, 20);
+            this.txt52WeekHigh.TabIndex = 36;
+            // 
+            // lbl52WeekRange
+            // 
+            this.lbl52WeekRange.AutoSize = true;
+            this.lbl52WeekRange.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl52WeekRange.Location = new System.Drawing.Point(7, 154);
+            this.lbl52WeekRange.Name = "lbl52WeekRange";
+            this.lbl52WeekRange.Size = new System.Drawing.Size(103, 13);
+            this.lbl52WeekRange.TabIndex = 35;
+            this.lbl52WeekRange.Text = "52 Week Range:";
+            // 
+            // txt52WeekLow
+            // 
+            this.txt52WeekLow.BackColor = System.Drawing.Color.AliceBlue;
+            this.txt52WeekLow.Location = new System.Drawing.Point(123, 151);
+            this.txt52WeekLow.Name = "txt52WeekLow";
+            this.txt52WeekLow.ReadOnly = true;
+            this.txt52WeekLow.Size = new System.Drawing.Size(95, 20);
+            this.txt52WeekLow.TabIndex = 34;
+            // 
+            // lblPERatio
+            // 
+            this.lblPERatio.AutoSize = true;
+            this.lblPERatio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPERatio.Location = new System.Drawing.Point(358, 104);
+            this.lblPERatio.Name = "lblPERatio";
+            this.lblPERatio.Size = new System.Drawing.Size(67, 13);
+            this.lblPERatio.TabIndex = 31;
+            this.lblPERatio.Text = "P/E Ratio:";
+            // 
+            // txtPERatio
+            // 
+            this.txtPERatio.BackColor = System.Drawing.Color.AliceBlue;
+            this.txtPERatio.ForeColor = System.Drawing.Color.Black;
+            this.txtPERatio.Location = new System.Drawing.Point(431, 101);
+            this.txtPERatio.Name = "txtPERatio";
+            this.txtPERatio.ReadOnly = true;
+            this.txtPERatio.Size = new System.Drawing.Size(214, 20);
+            this.txtPERatio.TabIndex = 30;
+            // 
             // lblPayDate
             // 
             this.lblPayDate.AutoSize = true;
@@ -421,155 +570,6 @@
             this.gpSharesOptions.TabIndex = 21;
             this.gpSharesOptions.TabStop = false;
             this.gpSharesOptions.Text = "Shares Options:";
-            // 
-            // lblPERatio
-            // 
-            this.lblPERatio.AutoSize = true;
-            this.lblPERatio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPERatio.Location = new System.Drawing.Point(358, 104);
-            this.lblPERatio.Name = "lblPERatio";
-            this.lblPERatio.Size = new System.Drawing.Size(67, 13);
-            this.lblPERatio.TabIndex = 31;
-            this.lblPERatio.Text = "P/E Ratio:";
-            // 
-            // txtPERatio
-            // 
-            this.txtPERatio.BackColor = System.Drawing.Color.AliceBlue;
-            this.txtPERatio.ForeColor = System.Drawing.Color.Black;
-            this.txtPERatio.Location = new System.Drawing.Point(431, 101);
-            this.txtPERatio.Name = "txtPERatio";
-            this.txtPERatio.ReadOnly = true;
-            this.txtPERatio.Size = new System.Drawing.Size(214, 20);
-            this.txtPERatio.TabIndex = 30;
-            // 
-            // lbl52WeekMiddle
-            // 
-            this.lbl52WeekMiddle.AutoSize = true;
-            this.lbl52WeekMiddle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl52WeekMiddle.Location = new System.Drawing.Point(224, 153);
-            this.lbl52WeekMiddle.Name = "lbl52WeekMiddle";
-            this.lbl52WeekMiddle.Size = new System.Drawing.Size(11, 13);
-            this.lbl52WeekMiddle.TabIndex = 37;
-            this.lbl52WeekMiddle.Text = "-";
-            // 
-            // txt52WeekHigh
-            // 
-            this.txt52WeekHigh.BackColor = System.Drawing.Color.AliceBlue;
-            this.txt52WeekHigh.ForeColor = System.Drawing.Color.Black;
-            this.txt52WeekHigh.Location = new System.Drawing.Point(241, 151);
-            this.txt52WeekHigh.Name = "txt52WeekHigh";
-            this.txt52WeekHigh.ReadOnly = true;
-            this.txt52WeekHigh.Size = new System.Drawing.Size(90, 20);
-            this.txt52WeekHigh.TabIndex = 36;
-            // 
-            // lbl52WeekRange
-            // 
-            this.lbl52WeekRange.AutoSize = true;
-            this.lbl52WeekRange.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl52WeekRange.Location = new System.Drawing.Point(7, 154);
-            this.lbl52WeekRange.Name = "lbl52WeekRange";
-            this.lbl52WeekRange.Size = new System.Drawing.Size(103, 13);
-            this.lbl52WeekRange.TabIndex = 35;
-            this.lbl52WeekRange.Text = "52 Week Range:";
-            // 
-            // txt52WeekLow
-            // 
-            this.txt52WeekLow.BackColor = System.Drawing.Color.AliceBlue;
-            this.txt52WeekLow.Location = new System.Drawing.Point(121, 151);
-            this.txt52WeekLow.Name = "txt52WeekLow";
-            this.txt52WeekLow.ReadOnly = true;
-            this.txt52WeekLow.Size = new System.Drawing.Size(97, 20);
-            this.txt52WeekLow.TabIndex = 34;
-            // 
-            // lblDaysRange
-            // 
-            this.lblDaysRange.AutoSize = true;
-            this.lblDaysRange.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDaysRange.Location = new System.Drawing.Point(30, 178);
-            this.lblDaysRange.Name = "lblDaysRange";
-            this.lblDaysRange.Size = new System.Drawing.Size(80, 13);
-            this.lblDaysRange.TabIndex = 39;
-            this.lblDaysRange.Text = "Days Range:";
-            // 
-            // txtDayRange
-            // 
-            this.txtDayRange.BackColor = System.Drawing.Color.AliceBlue;
-            this.txtDayRange.ForeColor = System.Drawing.Color.Black;
-            this.txtDayRange.Location = new System.Drawing.Point(121, 175);
-            this.txtDayRange.Name = "txtDayRange";
-            this.txtDayRange.ReadOnly = true;
-            this.txtDayRange.Size = new System.Drawing.Size(210, 20);
-            this.txtDayRange.TabIndex = 38;
-            // 
-            // txtMarketCap
-            // 
-            this.txtMarketCap.BackColor = System.Drawing.Color.AliceBlue;
-            this.txtMarketCap.ForeColor = System.Drawing.Color.Black;
-            this.txtMarketCap.Location = new System.Drawing.Point(431, 50);
-            this.txtMarketCap.Name = "txtMarketCap";
-            this.txtMarketCap.ReadOnly = true;
-            this.txtMarketCap.Size = new System.Drawing.Size(214, 20);
-            this.txtMarketCap.TabIndex = 3;
-            // 
-            // lblOpenPrice
-            // 
-            this.lblOpenPrice.AutoSize = true;
-            this.lblOpenPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOpenPrice.Location = new System.Drawing.Point(351, 131);
-            this.lblOpenPrice.Name = "lblOpenPrice";
-            this.lblOpenPrice.Size = new System.Drawing.Size(74, 13);
-            this.lblOpenPrice.TabIndex = 46;
-            this.lblOpenPrice.Text = "Open Price:";
-            // 
-            // txtOpenPrice
-            // 
-            this.txtOpenPrice.BackColor = System.Drawing.Color.AliceBlue;
-            this.txtOpenPrice.ForeColor = System.Drawing.Color.Black;
-            this.txtOpenPrice.Location = new System.Drawing.Point(431, 128);
-            this.txtOpenPrice.Name = "txtOpenPrice";
-            this.txtOpenPrice.ReadOnly = true;
-            this.txtOpenPrice.Size = new System.Drawing.Size(214, 20);
-            this.txtOpenPrice.TabIndex = 45;
-            // 
-            // txtExDividend
-            // 
-            this.txtExDividend.BackColor = System.Drawing.Color.AliceBlue;
-            this.txtExDividend.ForeColor = System.Drawing.Color.Black;
-            this.txtExDividend.Location = new System.Drawing.Point(123, 99);
-            this.txtExDividend.Name = "txtExDividend";
-            this.txtExDividend.ReadOnly = true;
-            this.txtExDividend.Size = new System.Drawing.Size(210, 20);
-            this.txtExDividend.TabIndex = 6;
-            // 
-            // txtPayDate
-            // 
-            this.txtPayDate.BackColor = System.Drawing.Color.AliceBlue;
-            this.txtPayDate.ForeColor = System.Drawing.Color.Black;
-            this.txtPayDate.Location = new System.Drawing.Point(121, 125);
-            this.txtPayDate.Name = "txtPayDate";
-            this.txtPayDate.ReadOnly = true;
-            this.txtPayDate.Size = new System.Drawing.Size(210, 20);
-            this.txtPayDate.TabIndex = 48;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(340, 159);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(85, 13);
-            this.label2.TabIndex = 50;
-            this.label2.Text = "Current Price:";
-            // 
-            // txtCurrentPrice
-            // 
-            this.txtCurrentPrice.BackColor = System.Drawing.Color.AliceBlue;
-            this.txtCurrentPrice.ForeColor = System.Drawing.Color.Black;
-            this.txtCurrentPrice.Location = new System.Drawing.Point(431, 154);
-            this.txtCurrentPrice.Name = "txtCurrentPrice";
-            this.txtCurrentPrice.ReadOnly = true;
-            this.txtCurrentPrice.Size = new System.Drawing.Size(214, 20);
-            this.txtCurrentPrice.TabIndex = 49;
             // 
             // Dividends
             // 
