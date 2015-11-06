@@ -284,7 +284,7 @@
             // btnHighlightAll
             // 
             this.btnHighlightAll.ForeColor = System.Drawing.Color.Black;
-            this.btnHighlightAll.Location = new System.Drawing.Point(678, 13);
+            this.btnHighlightAll.Location = new System.Drawing.Point(677, 13);
             this.btnHighlightAll.Name = "btnHighlightAll";
             this.btnHighlightAll.Size = new System.Drawing.Size(65, 23);
             this.btnHighlightAll.TabIndex = 26;
@@ -298,7 +298,7 @@
             this.lblIndustryAll.AutoSize = true;
             this.lblIndustryAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIndustryAll.ForeColor = System.Drawing.Color.White;
-            this.lblIndustryAll.Location = new System.Drawing.Point(402, 19);
+            this.lblIndustryAll.Location = new System.Drawing.Point(411, 18);
             this.lblIndustryAll.Name = "lblIndustryAll";
             this.lblIndustryAll.Size = new System.Drawing.Size(56, 13);
             this.lblIndustryAll.TabIndex = 25;
@@ -321,7 +321,7 @@
             "Materials",
             "Telecommunication Services",
             "Utilities"});
-            this.ddlIndustryAll.Location = new System.Drawing.Point(464, 13);
+            this.ddlIndustryAll.Location = new System.Drawing.Point(473, 14);
             this.ddlIndustryAll.Name = "ddlIndustryAll";
             this.ddlIndustryAll.Size = new System.Drawing.Size(199, 21);
             this.ddlIndustryAll.TabIndex = 24;
@@ -366,7 +366,7 @@
             "Materials",
             "Telecommunication Services",
             "Utilities"});
-            this.ddlIndustry.Location = new System.Drawing.Point(1026, 13);
+            this.ddlIndustry.Location = new System.Drawing.Point(1026, 14);
             this.ddlIndustry.Name = "ddlIndustry";
             this.ddlIndustry.Size = new System.Drawing.Size(223, 21);
             this.ddlIndustry.TabIndex = 21;
