@@ -21,7 +21,7 @@ namespace DividendDreams
                     cnn.Open();
                     using (var cmd = cnn.CreateCommand())
                     {
-                        cmd.CommandText = "SELECT ds.id, dp.numberofshares, dp.purchaseprice, ds.symbol FROM dividendstocks ds JOIN dividendprice dp ON ds.id=dp.dividendstockid WHERE ds.stockactive='true' order by ds.id";
+                        cmd.CommandText = "SELECT ds.id, dp.numberofshares, dp.purchaseprice, ds.symbol FROM dividendstocks ds JOIN dividendprice dp ON ds.id=dp.dividendstockid WHERE ds.stockactive='true' order by ds.Symbol";
                         MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                         da.Fill(dt);
                     }
