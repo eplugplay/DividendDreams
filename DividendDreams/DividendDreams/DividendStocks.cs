@@ -21,7 +21,7 @@ namespace DividendDreams
                     cnn.Open();
                     using (var cmd = cnn.CreateCommand())
                     {
-                        cmd.CommandText = "SELECT ds.id, dp.numberofshares, dp.purchaseprice, ds.symbol FROM dividendstocks ds JOIN dividendprice dp ON ds.id=dp.dividendstockid WHERE ds.stockactive='true' order by ds.Symbol";
+                        cmd.CommandText = "SELECT ds.id, dp.numberofshares, dp.purchaseprice, ds.symbol, ds.dividendinterval FROM dividendstocks ds JOIN dividendprice dp ON ds.id=dp.dividendstockid WHERE ds.stockactive='true' order by ds.Symbol";
                         MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                         da.Fill(dt);
                     }
@@ -44,7 +44,7 @@ namespace DividendDreams
                     cnn.Open();
                     using (var cmd = cnn.CreateCommand())
                     {
-                        cmd.CommandText = "SELECT ds.symbol, ds.stockname, ds.industry, dp.numberofshares, ds.stockactive, dp.purchaseprice FROM dividendstocks ds join dividendprice dp on ds.id = dp.dividendstockid WHERE ds.id=@id";
+                        cmd.CommandText = "SELECT ds.symbol, ds.stockname, ds.industry, dp.numberofshares, ds.stockactive, dp.purchaseprice, ds.dividendinterval FROM dividendstocks ds join dividendprice dp on ds.id = dp.dividendstockid WHERE ds.id=@id";
                         cmd.Parameters.AddWithValue("id", id);
                         MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                         da.Fill(dt);
@@ -55,7 +55,7 @@ namespace DividendDreams
                     {
                         using (var cmd = cnn.CreateCommand())
                         {
-                            cmd.CommandText = "SELECT ds.symbol, ds.stockname, ds.industry, ds.stockactive FROM dividendstocks ds WHERE ds.id=@id";
+                            cmd.CommandText = "SELECT ds.symbol, ds.stockname, ds.industry, ds.stockactive, ds.dividendinterval FROM dividendstocks ds WHERE ds.id=@id";
                             cmd.Parameters.AddWithValue("id", id);
                             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                             da.Fill(dt);
@@ -334,7 +334,7 @@ namespace DividendDreams
             }
         }
 
-        public static string NewDividendStock(string symbol, string stockname, string industry)
+        public static string NewDividendStock(string symbol, string stockname, string industry, string dividendinterval)
         {
             string ID = "0";
             try
@@ -344,10 +344,11 @@ namespace DividendDreams
                     cnn.Open();
                     using (var cmd = cnn.CreateCommand())
                     {
-                        cmd.CommandText = @"INSERT INTO dividendstocks (symbol, stockname, industry, stockactive) VALUES (@symbol, @stockname, @industry, 'false'); SELECT LAST_INSERT_ID();";
+                        cmd.CommandText = @"INSERT INTO dividendstocks (symbol, stockname, industry, stockactive, dividendinterval) VALUES (@symbol, @stockname, @industry, 'false', @dividendinterval); SELECT LAST_INSERT_ID();";
                         cmd.Parameters.AddWithValue("symbol", symbol);
                         cmd.Parameters.AddWithValue("stockname", stockname);
                         cmd.Parameters.AddWithValue("industry", industry);
+                        cmd.Parameters.AddWithValue("dividendinterval", dividendinterval);
                         ID = cmd.ExecuteScalar().ToString();
                     }
                 }
@@ -359,7 +360,7 @@ namespace DividendDreams
             return ID;
         }
 
-        public static void UpdateDividendStock(string id, string symbol, string stockname, string industry)
+        public static void UpdateDividendStock(string id, string symbol, string stockname, string industry, string dividendinterval)
         {
             try
             {
@@ -368,10 +369,11 @@ namespace DividendDreams
                     cnn.Open();
                     using (var cmd = cnn.CreateCommand())
                     {
-                        cmd.CommandText = @"UPDATE dividendstocks SET symbol=@symbol, stockname=@stockname, industry=@industry WHERE id=@id";
+                        cmd.CommandText = @"UPDATE dividendstocks SET symbol=@symbol, stockname=@stockname, industry=@industry, dividendinterval=@dividendinterval WHERE id=@id";
                         cmd.Parameters.AddWithValue("symbol", symbol);
                         cmd.Parameters.AddWithValue("stockname", stockname);
                         cmd.Parameters.AddWithValue("industry", industry);
+                        cmd.Parameters.AddWithValue("dividendinterval", dividendinterval);
                         cmd.Parameters.AddWithValue("id", id);
                         cmd.ExecuteNonQuery();
                     }

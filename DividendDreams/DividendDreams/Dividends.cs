@@ -37,7 +37,7 @@ namespace DividendDreams
             Application.DoEvents();
             if (Edit)
             {
-                DividendStocks.UpdateDividendStock(ID, txtSymbol.Text, txtStockName.Text, ddlIndustry.Text);
+                DividendStocks.UpdateDividendStock(ID, txtSymbol.Text, txtStockName.Text, ddlIndustry.Text, ddlDividendInterval.Text);
                 ReloadMainDividends();
                 Program.MainMenu.lbAllDividends.SelectedValue = Convert.ToInt32(ID);
                 pw.Close();
@@ -45,7 +45,7 @@ namespace DividendDreams
             }
             else
             {
-                ID = DividendStocks.NewDividendStock(txtSymbol.Text, txtStockName.Text, ddlIndustry.Text);
+                ID = DividendStocks.NewDividendStock(txtSymbol.Text, txtStockName.Text, ddlIndustry.Text, ddlDividendInterval.Text);
                 Program.MainMenu.LoadAllDividends();
                 Program.MainMenu.lbAllDividends.SelectedValue = Convert.ToInt32(ID);
                 pw.Close();
@@ -103,6 +103,7 @@ namespace DividendDreams
             txtSymbol.Text = dt.Rows[0]["symbol"].ToString();
             txtStockName.Text = dt.Rows[0]["stockname"].ToString();
             ddlIndustry.SelectedIndex = ddlIndustry.FindString(dt.Rows[0]["industry"].ToString());
+            ddlDividendInterval.SelectedIndex = ddlDividendInterval.FindString(dt.Rows[0]["dividendinterval"].ToString());
             txtAnnualDividend.Text = YahooFinance.GetValues(Symbol, "d", false);
             txtDividendPercent.Text = YahooFinance.GetValues(Symbol, "y", false);
             txtMarketCap.Text = YahooFinance.GetValues(Symbol, "j1", false);

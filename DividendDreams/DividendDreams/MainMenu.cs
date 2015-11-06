@@ -556,12 +556,19 @@ namespace DividendDreams
                         date = monthYear.Split('/');
                         monthYear = date[0].Trim() + "/" + date[2];
                         dtpMonthYear = dtpPayDate.Value.ToString("MM/yyyy");
+                        //string dividendInterval = GetDividendInterval(Convert.ToInt32(drv["id"]), dt);
+                        //if (dividendInterval == "Monthly")
+                        //{
+                        //    lb.SelectedIndices.Add(i);
+                        //    totalDiv += GetDiv(Convert.ToInt32(drv["id"]), dt);
+                        //    individualDivData += symbol + ": $" + Math.Round((GetDiv(Convert.ToInt32(drv["id"]), dt) / 4), 2) + "\n\n";
+                        //}
                         if (monthYear == dtpMonthYear)
                         {
-                            cnt++;
                             lb.SelectedIndices.Add(i);
                             totalDiv += GetDiv(Convert.ToInt32(drv["id"]), dt);
                             individualDivData += symbol + ": $" + Math.Round((GetDiv(Convert.ToInt32(drv["id"]), dt) / 4), 2) + "\n\n";
+                            cnt++;
                         }
                     }
                 }
@@ -577,6 +584,19 @@ namespace DividendDreams
             {
                 MessageBox.Show(string.Format("No Results for {0}", dtpMonthYear));
             }
+        }
+
+        public string GetDividendInterval(int id, DataTable dt)
+        {
+            string divInterval = "";
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                if (Convert.ToInt32(dt.Rows[i]["id"]) == id)
+                {
+                    divInterval = dt.Rows[i]["dividendinterval"].ToString();
+                }
+            }
+            return divInterval;
         }
 
         public decimal GetDiv(int id, DataTable dt)
