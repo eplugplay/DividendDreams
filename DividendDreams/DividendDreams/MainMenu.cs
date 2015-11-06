@@ -100,11 +100,11 @@ namespace DividendDreams
                 {
                     DividendTotalPercentage += (decimal).09;
                 }
-                if (dt.Rows[i]["symbol"].ToString() == "GDX")
-                {
-                    DividendTotalPercentage -= Convert.ToDecimal(DivYield[i]);
-                    DividendTotalPercentage += (decimal).80;
-                }
+                //if (dt.Rows[i]["symbol"].ToString() == "GDX")
+                //{
+                //    DividendTotalPercentage -= Convert.ToDecimal(DivYield[i]);
+                //    DividendTotalPercentage += (decimal).80;
+                //}
                 MarketTotalPrice += (Convert.ToDecimal(dt.Rows[i]["numberofshares"]) * Convert.ToDecimal(CurrentStockPrice[i]));
                 //StatusVal += val;
                 //if (StatusVal < 88)
@@ -540,14 +540,16 @@ namespace DividendDreams
             int cnt = 0;
             string monthYear = "";
             string dtpMonthYear = "";
+            string individualDivData = "";
             DataTable dt = DividendStocks.GetCurrentDividends();
             for (int i = 0; i < lb.Items.Count; i++)
             {
                 DataRowView drv = lb.Items[i] as DataRowView;
                 string[] date = drv["symbolName"].ToString().Split('*');
+                string[] symbolSplit = date[0].Split('-');
+                string symbol = symbolSplit[0].Trim();
                 if (date.Length == 2)
                 {
-
                     monthYear = date[1].ToString();
                     if (monthYear != "N/A")
                     {
@@ -559,6 +561,7 @@ namespace DividendDreams
                             cnt++;
                             lb.SelectedIndices.Add(i);
                             totalDiv += GetDiv(Convert.ToInt32(drv["id"]), dt);
+                            individualDivData += symbol + ": $" + Math.Round((GetDiv(Convert.ToInt32(drv["id"]), dt) / 4), 2) + "\n\n";
                         }
                     }
                 }
@@ -568,7 +571,7 @@ namespace DividendDreams
             pw.Close();
             if (cnt != 0)
             {
-                MessageBox.Show(string.Format("{0} results\n\n" + "Date: {1} \n\n" + "This Month: ${2}\n\n" + "This Year: ${3}", cnt, dtpMonthYear,  Math.Round(quarterlyDiv, 2), Math.Round(totalDiv, 2)));
+                MessageBox.Show(string.Format("{0} results\n\n" + "Date: {1} \n\n" + individualDivData + "This Month: ${2}\n\n", cnt, dtpMonthYear,  Math.Round(quarterlyDiv, 2)));
             }
             else
             {
