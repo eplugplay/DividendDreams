@@ -18,17 +18,6 @@ C:\Users\stevey\Documents\GitHub\DividendDreams\DividendDreams\obj\x86\Debug\Div
 C:\Users\stevey\Documents\GitHub\DividendDreams\DividendDreams\bin\Debug\DividendDreams.exe
 C:\Users\stevey\Documents\GitHub\DividendDreams\DividendDreams\bin\Debug\DividendDreams.pdb
 C:\Users\stevey\Documents\GitHub\DividendDreams\DividendDreams\obj\x86\Debug\DividendDreams.Shares.resources
-C:\Users\Steve Yi\Documents\GitHub\DividendDreams\DividendDreams\DividendDreams\bin\Debug\DividendDreams.exe.config
-C:\Users\Steve Yi\Documents\GitHub\DividendDreams\DividendDreams\DividendDreams\bin\Debug\DividendDreams.exe
-C:\Users\Steve Yi\Documents\GitHub\DividendDreams\DividendDreams\DividendDreams\bin\Debug\DividendDreams.pdb
-C:\Users\Steve Yi\Documents\GitHub\DividendDreams\DividendDreams\DividendDreams\obj\x86\Debug\DividendDreams.MainMenu.resources
-C:\Users\Steve Yi\Documents\GitHub\DividendDreams\DividendDreams\DividendDreams\obj\x86\Debug\DividendDreams.Dividends.resources
-C:\Users\Steve Yi\Documents\GitHub\DividendDreams\DividendDreams\DividendDreams\obj\x86\Debug\DividendDreams.PleaseWait.resources
-C:\Users\Steve Yi\Documents\GitHub\DividendDreams\DividendDreams\DividendDreams\obj\x86\Debug\DividendDreams.Properties.Resources.resources
-C:\Users\Steve Yi\Documents\GitHub\DividendDreams\DividendDreams\DividendDreams\obj\x86\Debug\DividendDreams.Shares.resources
-C:\Users\Steve Yi\Documents\GitHub\DividendDreams\DividendDreams\DividendDreams\obj\x86\Debug\DividendDreams.csproj.GenerateResource.Cache
-C:\Users\Steve Yi\Documents\GitHub\DividendDreams\DividendDreams\DividendDreams\obj\x86\Debug\DividendDreams.exe
-C:\Users\Steve Yi\Documents\GitHub\DividendDreams\DividendDreams\DividendDreams\obj\x86\Debug\DividendDreams.pdb
 C:\Users\stevey\Documents\GitHub\DividendDreams\DividendDreams\DividendDreams\bin\Debug\DividendDreams.exe.config
 C:\Users\stevey\Documents\GitHub\DividendDreams\DividendDreams\DividendDreams\bin\Debug\DividendDreams.exe
 C:\Users\stevey\Documents\GitHub\DividendDreams\DividendDreams\DividendDreams\bin\Debug\DividendDreams.pdb
@@ -40,3 +29,14 @@ C:\Users\stevey\Documents\GitHub\DividendDreams\DividendDreams\DividendDreams\ob
 C:\Users\stevey\Documents\GitHub\DividendDreams\DividendDreams\DividendDreams\obj\x86\Debug\DividendDreams.csproj.GenerateResource.Cache
 C:\Users\stevey\Documents\GitHub\DividendDreams\DividendDreams\DividendDreams\obj\x86\Debug\DividendDreams.exe
 C:\Users\stevey\Documents\GitHub\DividendDreams\DividendDreams\DividendDreams\obj\x86\Debug\DividendDreams.pdb
+C:\Users\Steve Yi\Documents\GitHub\DividendDreams\DividendDreams\DividendDreams\bin\Debug\DividendDreams.exe.config
+C:\Users\Steve Yi\Documents\GitHub\DividendDreams\DividendDreams\DividendDreams\bin\Debug\DividendDreams.exe
+C:\Users\Steve Yi\Documents\GitHub\DividendDreams\DividendDreams\DividendDreams\bin\Debug\DividendDreams.pdb
+C:\Users\Steve Yi\Documents\GitHub\DividendDreams\DividendDreams\DividendDreams\obj\x86\Debug\DividendDreams.MainMenu.resources
+C:\Users\Steve Yi\Documents\GitHub\DividendDreams\DividendDreams\DividendDreams\obj\x86\Debug\DividendDreams.Dividends.resources
+C:\Users\Steve Yi\Documents\GitHub\DividendDreams\DividendDreams\DividendDreams\obj\x86\Debug\DividendDreams.PleaseWait.resources
+C:\Users\Steve Yi\Documents\GitHub\DividendDreams\DividendDreams\DividendDreams\obj\x86\Debug\DividendDreams.Properties.Resources.resources
+C:\Users\Steve Yi\Documents\GitHub\DividendDreams\DividendDreams\DividendDreams\obj\x86\Debug\DividendDreams.Shares.resources
+C:\Users\Steve Yi\Documents\GitHub\DividendDreams\DividendDreams\DividendDreams\obj\x86\Debug\DividendDreams.csproj.GenerateResource.Cache
+C:\Users\Steve Yi\Documents\GitHub\DividendDreams\DividendDreams\DividendDreams\obj\x86\Debug\DividendDreams.exe
+C:\Users\Steve Yi\Documents\GitHub\DividendDreams\DividendDreams\DividendDreams\obj\x86\Debug\DividendDreams.pdb

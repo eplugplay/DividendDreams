@@ -274,7 +274,7 @@ namespace DividendDreams
             dtFinal.Columns.Add("symbol", typeof(string));
             dtFinal.Columns.Add("stockname", typeof(string));
             dtFinal.Columns.Add("industry", typeof(string));
-            dtFinal.Columns.Add("numberofshares", typeof(int));
+            dtFinal.Columns.Add("numberofshares", typeof(decimal));
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 DataRow dr = dtFinal.NewRow();
@@ -299,12 +299,11 @@ namespace DividendDreams
                     MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                     da.Fill(dtTemp);
                 }
-                int numShares = 0;
+                decimal numShares = 0;
                 for (int a = 0; a < dtTemp.Rows.Count; a++)
                 {
-                    numShares += Convert.ToInt32(dtTemp.Rows[a]["numberofshares"]);
+                    numShares += Convert.ToDecimal(dtTemp.Rows[a]["numberofshares"]);
                 }
-
                 dt.Rows[i]["numberofshares"] = numShares;
                 dtTemp.Clear();
             }
